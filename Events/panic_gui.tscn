@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://davbdyjq0v622"]
+
+[ext_resource type="Script" path="res://PanicGUI.gd" id="1_3ixtw"]
+
+[node name="PanicGUI" type="Area2D"]
+script = ExtResource("1_3ixtw")

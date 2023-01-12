@@ -1,0 +1,201 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8qpomyr8edpv"]
+
+[ext_resource type="Script" path="res://UI/Miners/copper_minerUI.gd" id="1_4j1j6"]
+[ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="2_nvjei"]
+[ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="3_r5qwl"]
+
+[node name="MinerUI" type="CanvasLayer"]
+script = ExtResource("1_4j1j6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 352.0
+offset_bottom = 194.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Copper:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "0"
+horizontal_alignment = 1
+
+[node name="MineCopper" type="Button" parent="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -31.0
+offset_right = 36.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Mine Copper"
+
+[node name="UpgEff" type="Button" parent="ColorRect"]
+offset_left = 230.0
+offset_top = 10.0
+offset_right = 400.0
+offset_bottom = 45.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_r5qwl")
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Upgrade Efficiency"
+
+[node name="Label" type="Label" parent="ColorRect/UpgEff"]
+offset_top = 35.0
+offset_right = 213.0
+offset_bottom = 51.0
+scale = Vector2(0.8, 0.8)
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/UpgEff"]
+offset_top = 47.5
+offset_right = 213.0
+offset_bottom = 63.5
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0.94902, 0.458824, 0.25098, 1)
+text = "10 copper"
+horizontal_alignment = 1
+
+[node name="UpgYield" type="Button" parent="ColorRect"]
+offset_left = 230.0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 83.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_r5qwl")
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Upgrade Yield"
+
+[node name="Label" type="Label" parent="ColorRect/UpgYield"]
+offset_top = 35.0
+offset_right = 213.0
+offset_bottom = 51.0
+scale = Vector2(0.8, 0.8)
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/UpgYield"]
+offset_top = 47.5
+offset_right = 213.0
+offset_bottom = 63.5
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0.94902, 0.458824, 0.25098, 1)
+text = "100 copper"
+horizontal_alignment = 1
+
+[node name="Automine" type="Button" parent="ColorRect"]
+offset_left = 130.0
+offset_top = 110.0
+offset_right = 246.0
+offset_bottom = 144.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_r5qwl")
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Automine AI"
+
+[node name="Label" type="Label" parent="ColorRect/Automine"]
+offset_top = 35.0
+offset_right = 144.0
+offset_bottom = 51.0
+scale = Vector2(0.8, 0.8)
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/Automine"]
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 64.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0.94902, 0.458824, 0.25098, 1)
+text = "300 copper"
+horizontal_alignment = 1
+
+[node name="UpgAIEff" type="Button" parent="ColorRect"]
+offset_left = 230.0
+offset_top = 90.0
+offset_right = 400.0
+offset_bottom = 124.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_r5qwl")
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Upgrade Automine Efficiency"
+
+[node name="Label" type="Label" parent="ColorRect/UpgAIEff"]
+offset_top = 35.0
+offset_right = 213.0
+offset_bottom = 51.0
+scale = Vector2(0.8, 0.8)
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/UpgAIEff"]
+offset_top = 47.5
+offset_right = 213.0
+offset_bottom = 63.5
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0.94902, 0.458824, 0.25098, 1)
+text = "150 copper"
+horizontal_alignment = 1
+
+[node name="UpgAIYield" type="Button" parent="ColorRect"]
+offset_left = 230.0
+offset_top = 130.0
+offset_right = 400.0
+offset_bottom = 164.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_r5qwl")
+theme_override_fonts/font = ExtResource("2_nvjei")
+text = "Upgrade Automine Yield"
+
+[node name="Label" type="Label" parent="ColorRect/UpgAIYield"]
+offset_top = 35.0
+offset_right = 213.0
+offset_bottom = 51.0
+scale = Vector2(0.8, 0.8)
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/UpgAIYield"]
+offset_top = 47.5
+offset_right = 213.0
+offset_bottom = 63.5
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0.94902, 0.458824, 0.25098, 1)
+text = "300 copper"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="pressed" from="ColorRect/MineCopper" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/UpgEff" to="." method="_on_upg_eff_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

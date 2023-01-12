@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cctcsiympb27p"]
+
+[ext_resource type="Script" path="res://UI/player_ui.gd" id="1_spoxc"]
+[ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="1_t6w7q"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_spoxc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 112.0
+offset_bottom = 16.0
+theme = ExtResource("1_t6w7q")
+show_percentage = false

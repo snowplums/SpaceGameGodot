@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://8vp1ha4fo81u"]
+
+[ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="1_bfagu"]
+
+[node name="Lobby" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+texture_filter = 2
+offset_left = 109.0
+offset_top = 21.0
+offset_right = 211.0
+offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+texture_filter = 1
+offset_right = 102.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "Lobby"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 91.0
+columns = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+offset_top = 2.0
+offset_right = 30.0
+offset_bottom = 18.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "Name:"
+
+[node name="NameTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+offset_left = 34.0
+offset_right = 102.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "test"
+expand_to_text_length = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="IPAddressLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+offset_top = 27.0
+offset_right = 30.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "IP:"
+
+[node name="IPTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+offset_left = 34.0
+offset_top = 25.0
+offset_right = 102.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "localhost"
+expand_to_text_length = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+offset_top = 52.0
+offset_right = 30.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "Port:"
+
+[node name="PortTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+offset_left = 34.0
+offset_top = 50.0
+offset_right = 102.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "1234"
+expand_to_text_length = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="HostBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+texture_filter = 1
+offset_top = 95.0
+offset_right = 102.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "Host"
+
+[node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+texture_filter = 1
+offset_top = 120.0
+offset_right = 102.0
+offset_bottom = 141.0
+theme_override_fonts/font = ExtResource("1_bfagu")
+text = "Join"

@@ -1,0 +1,167 @@
+[gd_scene load_steps=27 format=3 uid="uid://dd3rwom3iqraa"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_1r5t6"]
+[ext_resource type="Texture2D" uid="uid://beoff2tecnmbp" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_idle_anim_strip_4.png" id="2_cereu"]
+[ext_resource type="Texture2D" uid="uid://b3ek0d5wcsvb7" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_jump_down_anim_strip_3.png" id="3_hjdle"]
+[ext_resource type="Texture2D" uid="uid://dgp0egri02t36" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_run_anim_strip_6.png" id="3_xq5sp"]
+[ext_resource type="Texture2D" uid="uid://x5xakded4xve" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_jump_up_anim_strip_3.png" id="4_06124"]
+[ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="4_qppab"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="7_r30cr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v8to"]
+atlas = ExtResource("2_cereu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrhm3"]
+atlas = ExtResource("2_cereu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma2oq"]
+atlas = ExtResource("2_cereu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cmiv"]
+atlas = ExtResource("2_cereu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqvv6"]
+atlas = ExtResource("3_hjdle")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tictr"]
+atlas = ExtResource("3_hjdle")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxbup"]
+atlas = ExtResource("3_hjdle")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s3sg"]
+atlas = ExtResource("4_06124")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dvhy"]
+atlas = ExtResource("4_06124")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xn0j"]
+atlas = ExtResource("4_06124")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e247i"]
+atlas = ExtResource("3_xq5sp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_untce"]
+atlas = ExtResource("3_xq5sp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6uvi"]
+atlas = ExtResource("3_xq5sp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48wv4"]
+atlas = ExtResource("3_xq5sp")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fq7b"]
+atlas = ExtResource("3_xq5sp")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj6id"]
+atlas = ExtResource("3_xq5sp")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5npd"]
+animations = [{
+"frames": [SubResource("AtlasTexture_4v8to"), SubResource("AtlasTexture_qrhm3"), SubResource("AtlasTexture_ma2oq"), SubResource("AtlasTexture_0cmiv")],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_nqvv6"), SubResource("AtlasTexture_tictr"), SubResource("AtlasTexture_cxbup")],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_4s3sg"), SubResource("AtlasTexture_4dvhy"), SubResource("AtlasTexture_8xn0j")],
+"loop": true,
+"name": &"jump_up",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_e247i"), SubResource("AtlasTexture_untce"), SubResource("AtlasTexture_s6uvi"), SubResource("AtlasTexture_48wv4"), SubResource("AtlasTexture_5fq7b"), SubResource("AtlasTexture_uj6id")],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1i0s"]
+size = Vector2(11, 14)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kvi78"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("Name:text")
+properties/3/spawn = true
+properties/3/sync = true
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 2
+script = ExtResource("1_1r5t6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+frames = SubResource("SpriteFrames_x5npd")
+animation = &"jump_down"
+speed_scale = 1.2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_e1i0s")
+
+[node name="Name" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -21.0
+offset_right = 12.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_qppab")
+theme_override_font_sizes/font_size = 16
+text = "test"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_kvi78")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="WaveSpawner" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.835294, 0.937255, 0.745098, 1)
+energy = 0.5
+texture = ExtResource("7_r30cr")
+texture_scale = 0.05

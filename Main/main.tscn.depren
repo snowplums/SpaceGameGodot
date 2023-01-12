@@ -1,0 +1,7 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
+[ext_resource type="Texture2D" uid="uid://g5ooalppsk3" path="res://Assets/stonetile.png" id="2_tgva4"]
+[ext_resource type="PackedScene" uid="uid://8vp1ha4fo81u" path="res://Lobby/lobby.tscn" id="3_a5uyi"]
+[ext_resource type="Texture2D" uid="uid://f5c2l8nqqewb" path="res://Assets/platform_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="3_g3w6r"]
+[ext_resource type="PackedScene" uid="uid://tn15euxviakg" path="res://Spaceship/turret.tscn" id="5_72lsw"]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://my0silap2x70"]
+
+[ext_resource type="Texture2D" uid="uid://d3rq3l13pxqf3" path="res://Spaceship/light.png" id="1_3ghr6"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="2_ayrfi"]
+[ext_resource type="PackedScene" uid="uid://c0qcu0dx6w62d" path="res://Attacking/ufo_enemy.tscn" id="3_hudbi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg4v6"]
+atlas = ExtResource("1_3ghr6")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8nrj"]
+atlas = ExtResource("1_3ghr6")
+region = Rect2(5, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjtc5"]
+animations = [{
+"frames": [SubResource("AtlasTexture_tg4v6"), SubResource("AtlasTexture_x8nrj")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joiii"]
+atlas = ExtResource("1_3ghr6")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o8fe"]
+atlas = ExtResource("1_3ghr6")
+region = Rect2(5, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qb5br"]
+animations = [{
+"frames": [SubResource("AtlasTexture_joiii"), SubResource("AtlasTexture_3o8fe")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q353l"]
+atlas = ExtResource("1_3ghr6")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h50fa"]
+atlas = ExtResource("1_3ghr6")
+region = Rect2(5, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g18u6"]
+animations = [{
+"frames": [SubResource("AtlasTexture_q353l"), SubResource("AtlasTexture_h50fa")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PowerOutage" type="Node"]
+
+[node name="lightswitch" type="AnimatedSprite2D" parent="."]
+position = Vector2(-255, -45)
+frames = SubResource("SpriteFrames_pjtc5")
+
+[node name="PointLight2D" type="PointLight2D" parent="lightswitch"]
+color = Color(0.736486, 0.417925, 0.117541, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("2_ayrfi")
+texture_scale = 0.05
+
+[node name="lightswitch2" type="AnimatedSprite2D" parent="."]
+position = Vector2(261, 38)
+frames = SubResource("SpriteFrames_qb5br")
+
+[node name="PointLight2D" type="PointLight2D" parent="lightswitch2"]
+color = Color(0.736486, 0.417925, 0.117541, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("2_ayrfi")
+texture_scale = 0.05
+
+[node name="lightswitch3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-249, 114)
+frames = SubResource("SpriteFrames_g18u6")
+
+[node name="PointLight2D" type="PointLight2D" parent="lightswitch3"]
+color = Color(0.736486, 0.417925, 0.117541, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("2_ayrfi")
+texture_scale = 0.05
+
+[node name="Darkness" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="UFO Enemy" parent="." instance=ExtResource("3_hudbi")]

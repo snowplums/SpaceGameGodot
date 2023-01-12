@@ -1,0 +1,377 @@
+[gd_scene load_steps=16 format=3 uid="uid://b6jpugk1rh22h"]
+
+[ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
+[ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
+[ext_resource type="PackedScene" uid="uid://8vp1ha4fo81u" path="res://Lobby/lobby.tscn" id="3_a5uyi"]
+[ext_resource type="Script" path="res://Main/wavespawner.gd" id="3_krohm"]
+[ext_resource type="Script" path="res://Main/background.gd" id="3_nge16"]
+[ext_resource type="Script" path="res://Main/spaceship.gd" id="3_nqtl8"]
+[ext_resource type="Texture2D" uid="uid://fk4gfmmuaoyq" path="res://Assets/Space Background (3).png" id="4_j3nk7"]
+[ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="5_4ik6t"]
+[ext_resource type="PackedScene" uid="uid://cmky5y7s8arno" path="res://Spaceship/Miners/copper_miner.tscn" id="7_ypygh"]
+[ext_resource type="PackedScene" uid="uid://c02st1m00tiyw" path="res://Spaceship/turret.tscn" id="8_yec01"]
+[ext_resource type="Texture2D" uid="uid://db2otpoad2p15" path="res://Assets/spaceship.png" id="10_25g0d"]
+[ext_resource type="PackedScene" uid="uid://cn1gemr7hl5t4" path="res://Spaceship/platform.tscn" id="12_lxbp4"]
+[ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
+[ext_resource type="PackedScene" uid="uid://my0silap2x70" path="res://Events/power_outage.tscn" id="13_ukgca"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
+closed = false
+polygon = PackedVector2Array(-268, -96, -268, -21, -116, -21, -116, 16, -121, 16, -121, -16, -268, -16, -268, 16, -273, 16, -273, -16, -348, -16, -348, 59, -116, 59, -116, 96, -121, 96, -121, 64, -268, 64, -268, 139, 251, 139, 331, 59, 326, 59, 321, 64, -60, 64, -60, 96, -65, 96, -65, 59, 590, 59, 422, -26, 404, -26, 404, 16, 399, 16, 399, -16, 319, -16, 319, -21, 394, -21, 393, -26, 323, -96, 244, -96, 244, -21, 276, -21, 276, -16, 244, -16, 244, 16, 239, 16, 239, -16, -60, -16, -60, 16, -65, 16, -65, -21, 239, -21, 239, -96, -60, -96, -60, -64, -65, -64, -65, -96, -116, -96, -116, -64, -121, -64, -121, -96, -268, -96)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_wo2cs")
+
+[node name="Network" type="Node" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player/player.tscn")
+spawn_path = NodePath("../Network")
+
+[node name="PlayerUI" parent="." instance=ExtResource("2_6lilu")]
+
+[node name="Wavespawner" type="Node2D" parent="."]
+script = ExtResource("3_krohm")
+
+[node name="WaveTimer" type="Timer" parent="Wavespawner"]
+wait_time = 10.0
+one_shot = true
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Spaceship" type="Node2D" parent="World"]
+script = ExtResource("3_nqtl8")
+
+[node name="EnemyTarget" type="Marker2D" parent="World/Spaceship"]
+position = Vector2(0, 50)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="World/Spaceship"]
+script = ExtResource("3_nge16")
+
+[node name="Layer 1" type="ParallaxLayer" parent="World/Spaceship/ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Spaceship/ParallaxBackground/Layer 1"]
+texture = ExtResource("4_j3nk7")
+
+[node name="Turrets" type="Node2D" parent="World/Spaceship"]
+
+[node name="Turret" parent="World/Spaceship/Turrets" instance=ExtResource("8_yec01")]
+z_index = 1
+position = Vector2(256, 149)
+
+[node name="Turret2" parent="World/Spaceship/Turrets" instance=ExtResource("8_yec01")]
+z_index = 1
+position = Vector2(320, -108)
+
+[node name="Miners" type="Node2D" parent="World/Spaceship"]
+
+[node name="Copper Miner" parent="World/Spaceship/Miners" instance=ExtResource("7_ypygh")]
+z_index = 2
+position = Vector2(320, 38)
+
+[node name="ShipHurtBox" type="Area2D" parent="World/Spaceship"]
+script = ExtResource("5_4ik6t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Spaceship/ShipHurtBox"]
+polygon = PackedVector2Array(589, 58, 331, 60, 252, 138, -268, 138, -268, 60, -347, 59, -347, -17, -278, -17, -280, -24, -272, -24, -272, -96, 320, -96, 392, -24, 424, -24)
+
+[node name="SpaceshipSprite" type="Sprite2D" parent="World/Spaceship"]
+position = Vector2(96, 8)
+texture = ExtResource("10_25g0d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Spaceship/SpaceshipSprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Spaceship/SpaceshipSprite/StaticBody2D"]
+polygon = PackedVector2Array(-206, 131, -364, 131, -364, 51, -444, 51, -444, -24, -374, -24, -374, -34, -364, -34, -364, -104, 227, -104, 297, -34, 326, -34, 494, 50, 494, 51, 234, 51, 234, 52, 155, 131, -206, 131, -206, 126, 155, 126, 219, 62, 219, 61, -151, 61, -151, 93, -166, 93, -166, 46, 473, 46, 473, 45, 326, -29, 313, -29, 313, 13, 298, 13, 298, -19, 218, -19, 218, -34, 291, -34, 291, -35, 227, -99, 153, -99, 153, -34, 185, -34, 185, -19, 153, -19, 153, 13, 138, 13, 138, -19, -151, -19, -151, 13, -166, 13, -166, -34, 138, -34, 138, -99, -151, -99, -151, -67, -166, -67, -166, -99, -207, -99, -207, -67, -222, -67, -222, -99, -359, -99, -359, -34, -207, -34, -207, 13, -222, 13, -222, -19, -359, -19, -359, 13, -374, 13, -374, -19, -439, -19, -439, 46, -207, 46, -207, 93, -222, 93, -222, 61, -359, 61, -359, 126, -206, 126)
+
+[node name="Doors_Platforms" type="Node2D" parent="World/Spaceship"]
+
+[node name="Platform" parent="World/Spaceship/Doors_Platforms" instance=ExtResource("12_lxbp4")]
+position = Vector2(-90.5, 55.5)
+scale = Vector2(1.00001, 1)
+
+[node name="Platform2" parent="World/Spaceship/Doors_Platforms" instance=ExtResource("12_lxbp4")]
+position = Vector2(-90.5, 95.5)
+scale = Vector2(1.00001, 1)
+
+[node name="Platform3" parent="World/Spaceship/Doors_Platforms" instance=ExtResource("12_lxbp4")]
+position = Vector2(-90.5, 15.5)
+scale = Vector2(1.00001, 1)
+
+[node name="Platform4" parent="World/Spaceship/Doors_Platforms" instance=ExtResource("12_lxbp4")]
+position = Vector2(-90.5, -24.5)
+scale = Vector2(1.00001, 1)
+
+[node name="Platform5" parent="World/Spaceship/Doors_Platforms" instance=ExtResource("12_lxbp4")]
+position = Vector2(297.5, -24.5)
+scale = Vector2(0.8, 1)
+
+[node name="Platform6" parent="World/Spaceship/Doors_Platforms" instance=ExtResource("12_lxbp4")]
+position = Vector2(297.5, 15.5)
+scale = Vector2(0.8, 1)
+
+[node name="Door" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-62.5, 37.5)
+
+[node name="Door8" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(241.5, 37.5)
+
+[node name="Door9" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(401.5, 37.5)
+
+[node name="Door5" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-62.5, 117.5)
+
+[node name="Door2" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-118.5, 37.5)
+
+[node name="Door7" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-270.5, 37.5)
+
+[node name="Door6" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-118.5, 117.5)
+
+[node name="Door3" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-118.5, -42.5)
+
+[node name="Door4" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
+position = Vector2(-62.5, -42.5)
+
+[node name="FireSpawnPoints" type="Node2D" parent="World/Spaceship"]
+
+[node name="R1F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(-196, -29)
+
+[node name="R2F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(-196, 51)
+
+[node name="R3F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(-194, 131)
+
+[node name="R4F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(320, 51)
+
+[node name="R5F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(89, -30)
+
+[node name="R6F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(89, 52)
+
+[node name="R7F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(100, 132)
+
+[node name="R8F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
+position = Vector2(-311, 52)
+
+[node name="PowerOutage" parent="World/Spaceship" instance=ExtResource("13_ukgca")]
+
+[node name="Enemies" type="Node2D" parent="World"]
+
+[node name="EnemySpawnPoints" type="Node2D" parent="World"]
+
+[node name="Marker2D" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-232, -584)
+
+[node name="Marker2D2" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-184, -584)
+
+[node name="Marker2D3" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-136, -584)
+
+[node name="Marker2D4" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-88, -584)
+
+[node name="Marker2D5" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-40, -584)
+
+[node name="Marker2D6" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(8, -584)
+
+[node name="Marker2D7" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(56, -584)
+
+[node name="Marker2D8" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(112, -584)
+
+[node name="Marker2D9" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(168, -584)
+
+[node name="Marker2D10" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(224, -584)
+
+[node name="Marker2D11" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(288, -568)
+
+[node name="Marker2D12" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(352, -552)
+
+[node name="Marker2D13" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(408, -536)
+
+[node name="Marker2D14" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(464, -512)
+
+[node name="Marker2D15" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(528, -488)
+
+[node name="Marker2D16" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(576, -456)
+
+[node name="Marker2D17" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(616, -424)
+
+[node name="Marker2D18" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(656, -392)
+
+[node name="Marker2D19" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(696, -360)
+
+[node name="Marker2D20" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(736, -336)
+
+[node name="Marker2D21" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(768, -296)
+
+[node name="Marker2D22" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(808, -256)
+
+[node name="Marker2D23" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(848, -216)
+
+[node name="Marker2D24" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(872, -168)
+
+[node name="Marker2D25" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(896, -112)
+
+[node name="Marker2D26" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(920, -56)
+
+[node name="Marker2D27" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(936, -8)
+
+[node name="Marker2D28" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(944, 32)
+
+[node name="Marker2D29" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(920, 80)
+
+[node name="Marker2D30" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(912, 128)
+
+[node name="Marker2D31" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(912, 176)
+
+[node name="Marker2D32" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(904, 224)
+
+[node name="Marker2D33" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(896, 272)
+
+[node name="Marker2D34" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(888, 320)
+
+[node name="Marker2D36" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(864, 352)
+
+[node name="Marker2D37" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(840, 384)
+
+[node name="Marker2D38" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(808, 424)
+
+[node name="Marker2D39" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(768, 464)
+
+[node name="Marker2D40" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(720, 496)
+
+[node name="Marker2D41" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(664, 512)
+
+[node name="Marker2D42" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(600, 520)
+
+[node name="Marker2D43" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(528, 536)
+
+[node name="Marker2D44" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(456, 552)
+
+[node name="Marker2D45" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(384, 568)
+
+[node name="Marker2D46" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(320, 576)
+
+[node name="Marker2D47" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(256, 576)
+
+[node name="Marker2D48" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(200, 576)
+
+[node name="Marker2D49" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(152, 576)
+
+[node name="Marker2D50" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(96, 576)
+
+[node name="Marker2D51" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(32, 576)
+
+[node name="Marker2D52" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-32, 576)
+
+[node name="Marker2D53" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-104, 576)
+
+[node name="Marker2D54" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-184, 568)
+
+[node name="Marker2D55" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
+position = Vector2(-240, 568)
+
+[node name="FireLightBounds" type="LightOccluder2D" parent="World"]
+occluder = SubResource("OccluderPolygon2D_nxaxi")
+
+[node name="Lobby" parent="." instance=ExtResource("3_a5uyi")]
+visible = false
+
+[node name="VBoxContainer" parent="Lobby/CenterContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" parent="Lobby/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="GridContainer" parent="Lobby/CenterContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="NameLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="0"]
+layout_mode = 2
+
+[node name="NameTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="1"]
+layout_mode = 2
+
+[node name="IPAddressLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="2"]
+layout_mode = 2
+
+[node name="IPTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="3"]
+layout_mode = 2
+
+[node name="PortLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="4"]
+layout_mode = 2
+
+[node name="PortTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="5"]
+layout_mode = 2
+
+[node name="HostBtn" parent="Lobby/CenterContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="JoinBtn" parent="Lobby/CenterContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/HostBtn" to="." method="_on_host_btn_pressed"]
+[connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
+
+[editable path="Lobby"]
