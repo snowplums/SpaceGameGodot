@@ -11,6 +11,7 @@ size = Vector2(10, 10)
 size = Vector2(8, 8)
 
 [node name="Bullet" type="RigidBody2D"]
+z_index = 1
 gravity_scale = 0.0
 max_contacts_reported = 1
 contact_monitor = true

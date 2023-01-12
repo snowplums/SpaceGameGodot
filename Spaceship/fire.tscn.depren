@@ -1,0 +1,7 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://Spaceship/fire.gd" id="1_ct5j6"]
+[ext_resource type="Texture2D" uid="uid://b5kef4dsw2ci8" path="res://Assets/Smoke &amp; Fire.png" id="2_xit87"]
+[ext_resource type="Texture2D" uid="uid://cvb3ybmi0yi7c" path="res://Assets/Solid_white.png" id="3_bibhm"]
+[ext_resource type="Script" path="res://Attacking/HitBox.gd" id="4_rhky0"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="5_mj3qy"]

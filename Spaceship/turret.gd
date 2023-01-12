@@ -15,7 +15,7 @@ func _process(_delta):
 		active = !active
 		in_use = !in_use
 	if in_radius and active:
-		rpc("turret_active", rotation)
+		rpc("turret_active", $Sprite2D.rotation)
 		in_use = true
 	else:
 		if host != null:
@@ -36,7 +36,31 @@ func _on_area_2d_body_exited(body):
 @rpc(any_peer, call_local)
 func turret_active(turret_rotation):
 	in_use = true
-	global_rotation = turret_rotation
+	$Sprite2D.global_rotation = turret_rotation
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 	host.can_move = false
 	host.on_turret_activate(self)
+
+func turret():
+	if in_use == true:
+		get_node("Sprite2D").look_at(get_global_mouse_position())
+		if Input.is_action_pressed("ui_accept"):
+			in_use = false
+			active = false
+		if Input.is_action_pressed("left_click") and can_fire:
+			rpc("turret_fire")
+			can_fire = false
+			await get_tree().create_timer(fire_rate).timeout
+			can_fire = true
+
+func on_turret_activate(turret_node):
+	in_use = true
+	turret_scene = turret_node
+
+@rpc(any_peer, call_local)
+func turret_fire():
+	var bullet_instance = bullet.instantiate()
+	bullet_instance.position = turret_scene.get_global_position()
+	bullet_instance.rotation = turret_scene.rotation
+	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(turret_scene.get_node("Sprite2D").rotation), Vector2())
+	get_node("/root/Main/Network").add_child(bullet_instance)

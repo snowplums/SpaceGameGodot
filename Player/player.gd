@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 120.0
+var SPEED = 120.0
 const JUMP_VELOCITY = -300.0
 const bullet = preload("res://spaceship/bullet.tscn")
 
@@ -10,19 +10,33 @@ const bullet = preload("res://spaceship/bullet.tscn")
 @onready var label = $Name
 @onready var sprite = $AnimatedSprite2D
 @onready var raycast = $RayCast2D
-@onready var miner = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Copper Miner")
+@onready var miner = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Miner")
+@onready var crusher = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Crusher")
+@onready var smelter = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Smelter")
+@onready var ship_inventory = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Inventory")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var username = ""
-
+var is_host
 
 var can_move = true
-var on_turret = false
 var host = null
+
+#Turret variables
+var on_turret = false
 var can_fire = true
 var fire_rate = 0.2
 var bullet_speed = 1000
 var turret_scene = null
+
+#Miner variables
+var geode_amt = 0
+var crushed_copper_amt = 0
+var smelted_copper_amt = 0
+
+var max_geode_amt = 1
+var max_crushed_copper_amt = 1
+var max_smelted_copper_amt = 1
 
 
 func _enter_tree():
@@ -36,9 +50,14 @@ func _ready():
 
 
 func _physics_process(delta):
+	#print(geode_amt)
 	check_radius()
 	if on_turret and synchronizer.is_multiplayer_authority():
 		turret()
+	if synchronizer.is_multiplayer_authority() and (geode_amt > 0 or crushed_copper_amt > 0 or smelted_copper_amt > 0):
+		SPEED = 60
+	else:
+		SPEED = 120
 	# Add the gravity.
 	if synchronizer.is_multiplayer_authority() and can_move:
 		if not is_on_floor():
@@ -81,28 +100,9 @@ func check_radius():
 			miner.in_radius = true
 		if raycast.get_collider().name == "TurretRadius":
 			raycast.get_collider().get_parent().in_radius = true
-
-func turret():
-	if turret_scene.in_use == true:
-		turret_scene.look_at(get_global_mouse_position())
-		if Input.is_action_pressed("ui_accept"):
-			on_turret = false
-			turret_scene.in_use = false
-			turret_scene.active = false
-		if Input.is_action_pressed("left_click") and can_fire:
-			rpc("turret_fire")
-			can_fire = false
-			await get_tree().create_timer(fire_rate).timeout
-			can_fire = true
-
-func on_turret_activate(turret_node):
-	on_turret = true
-	turret_scene = turret_node
-
-@rpc(any_peer, call_local)
-func turret_fire():
-	var bullet_instance = bullet.instantiate()
-	bullet_instance.position = turret_scene.get_global_position()
-	bullet_instance.rotation = turret_scene.rotation
-	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(turret_scene.rotation), Vector2())
-	get_node("/root/Main/Network").add_child(bullet_instance)
+		if raycast.get_collider().name == "CrusherRadius":
+			crusher.in_radius = true
+		if raycast.get_collider().name == "SmelterRadius":
+			smelter.in_radius = true
+		if raycast.get_collider().name == "InventoryRadius":
+			ship_inventory.in_radius = true

@@ -1,38 +1,38 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxksb3h38mbnx"]
+[gd_scene load_steps=14 format=3 uid="uid://dyoelru6b35tf"]
 
-[ext_resource type="Script" path="res://Spaceship/fire.gd" id="1_hs35j"]
-[ext_resource type="Texture2D" uid="uid://b5kef4dsw2ci8" path="res://Assets/Smoke &amp; Fire.png" id="2_ees7b"]
-[ext_resource type="Texture2D" uid="uid://cvb3ybmi0yi7c" path="res://Assets/Solid_white.png" id="3_tvadn"]
-[ext_resource type="Script" path="res://Attacking/HitBox.gd" id="4_0eh4e"]
-[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="5_s1owe"]
+[ext_resource type="Script" path="res://Spaceship/fire.gd" id="1_qs4fo"]
+[ext_resource type="Texture2D" uid="uid://b5kef4dsw2ci8" path="res://Assets/Smoke &amp; Fire.png" id="2_xit87"]
+[ext_resource type="Texture2D" uid="uid://cvb3ybmi0yi7c" path="res://Assets/Solid_white.png" id="3_bibhm"]
+[ext_resource type="Script" path="res://Attacking/HitBox.gd" id="4_rhky0"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="5_mj3qy"]
 
-[sub_resource type="Curve" id="Curve_u3rte"]
+[sub_resource type="Curve" id="Curve_7v11r"]
 min_value = -200.0
 max_value = 200.0
 _data = [Vector2(0.00704226, 1), 0.0, 0.0, 0, 0, Vector2(1, -70), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_ossys"]
+[sub_resource type="Gradient" id="Gradient_gyb6f"]
 colors = PackedColorArray(0.336608, 0.336608, 0.336608, 0.541176, 0.442911, 0.442911, 0.442911, 0)
 
-[sub_resource type="Curve" id="Curve_yloyc"]
+[sub_resource type="Curve" id="Curve_jrmx1"]
 min_value = -200.0
 max_value = 200.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.985916, -112.727), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_uo3cy"]
+[sub_resource type="Curve" id="Curve_6s41m"]
 _data = [Vector2(0, 0.272727), 0.0, 0.0, 0, 0, Vector2(0.0703125, 0.427273), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_lqdle"]
+[sub_resource type="Gradient" id="Gradient_yoh7t"]
 offsets = PackedFloat32Array(0, 0.295238, 1)
 colors = PackedColorArray(0.796078, 0.541176, 0, 0.501961, 0.713726, 0.137255, 0, 0.501961, 0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2ecy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmacu"]
 size = Vector2(22.5352, 15.2676)
 
-[sub_resource type="Animation" id="Animation_2hxdh"]
+[sub_resource type="Animation" id="Animation_m1by4"]
 resource_name = "firegrow"
 length = 20.0
 tracks/0/type = "value"
@@ -60,20 +60,20 @@ tracks/1/keys = {
 "values": [20.0, 30.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ybp2o"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5x1ct"]
 _data = {
-"firegrow": SubResource("Animation_2hxdh")
+"firegrow": SubResource("Animation_m1by4")
 }
 
 [node name="firemain" type="Node2D"]
 z_index = 3
-script = ExtResource("1_hs35j")
+script = ExtResource("1_qs4fo")
 
 [node name="smoke" type="CPUParticles2D" parent="."]
 position = Vector2(0, -24)
 amount = 75
 lifetime = 5.0
-texture = ExtResource("2_ees7b")
+texture = ExtResource("2_xit87")
 emission_shape = 3
 emission_rect_extents = Vector2(20, 2)
 direction = Vector2(0, -1)
@@ -82,18 +82,18 @@ gravity = Vector2(0, -15)
 angular_velocity_max = 30.0
 linear_accel_min = 1.0
 linear_accel_max = 1.0
-linear_accel_curve = SubResource("Curve_u3rte")
+linear_accel_curve = SubResource("Curve_7v11r")
 angle_max = 360.0
 scale_amount_min = 0.3
 scale_amount_max = 0.6
-color_ramp = SubResource("Gradient_ossys")
-anim_speed_curve = SubResource("Curve_yloyc")
+color_ramp = SubResource("Gradient_gyb6f")
+anim_speed_curve = SubResource("Curve_jrmx1")
 
 [node name="fire" type="CPUParticles2D" parent="."]
 scale = Vector2(1.42, 1.42)
 amount = 500
 preprocess = 2.0
-texture = ExtResource("3_tvadn")
+texture = ExtResource("3_bibhm")
 emission_shape = 3
 emission_rect_extents = Vector2(1, 1)
 direction = Vector2(0, -1)
@@ -106,32 +106,25 @@ angular_velocity_max = 154.29
 angle_max = 90.0
 scale_amount_min = 0.05
 scale_amount_max = 0.1
-scale_amount_curve = SubResource("Curve_uo3cy")
-color_ramp = SubResource("Gradient_lqdle")
+scale_amount_curve = SubResource("Curve_6s41m")
+color_ramp = SubResource("Gradient_yoh7t")
 
 [node name="HitBox" type="Area2D" parent="fire"]
-script = ExtResource("4_0eh4e")
+script = ExtResource("4_rhky0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fire/HitBox"]
 visible = false
 position = Vector2(0, -5.6338)
 scale = Vector2(0.8, 1)
-shape = SubResource("RectangleShape2D_s2ecy")
+shape = SubResource("RectangleShape2D_xmacu")
 
 [node name="firegrow" type="AnimationPlayer" parent="fire"]
 libraries = {
-"": SubResource("AnimationLibrary_ybp2o")
+"": SubResource("AnimationLibrary_5x1ct")
 }
 
 [node name="firelight" type="PointLight2D" parent="."]
 color = Color(0.498039, 0.0784314, 0.0235294, 1)
 energy = 0.25
 shadow_enabled = true
-texture = ExtResource("5_s1owe")
-
-[node name="firebackgroundlight" type="PointLight2D" parent="."]
-scale = Vector2(1.42, 1.42)
-color = Color(0.905882, 0.596078, 0.133333, 1)
-energy = 0.2
-shadow_enabled = true
-texture = ExtResource("5_s1owe")
+texture = ExtResource("5_mj3qy")

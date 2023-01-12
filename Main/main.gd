@@ -8,8 +8,6 @@ var username = "player"
 var host = null
 var game_running = false
 
-
-
 func _ready():
 	$Lobby.visible = true
 

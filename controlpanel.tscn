@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b7jr3aacnaqol"]
+
+[node name="lockdown" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]

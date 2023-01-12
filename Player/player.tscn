@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dd3rwom3iqraa"]
+[gd_scene load_steps=26 format=3 uid="uid://dd3rwom3iqraa"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1r5t6"]
 [ext_resource type="Texture2D" uid="uid://beoff2tecnmbp" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_idle_anim_strip_4.png" id="2_cereu"]
@@ -6,99 +6,98 @@
 [ext_resource type="Texture2D" uid="uid://dgp0egri02t36" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_run_anim_strip_6.png" id="3_xq5sp"]
 [ext_resource type="Texture2D" uid="uid://x5xakded4xve" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_jump_up_anim_strip_3.png" id="4_06124"]
 [ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="4_qppab"]
-[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="7_r30cr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmq1j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqakx"]
 atlas = ExtResource("2_cereu")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kcp6a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2nts"]
 atlas = ExtResource("2_cereu")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oyt0t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxclg"]
 atlas = ExtResource("2_cereu")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wl64c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8hv7"]
 atlas = ExtResource("2_cereu")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5y3i0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1et6a"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dyfsw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k78vb"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cjuo3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_myawe"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_weydw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dm8h"]
 atlas = ExtResource("4_06124")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ho62r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybcd0"]
 atlas = ExtResource("4_06124")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vb72g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxfg6"]
 atlas = ExtResource("4_06124")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqgus"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7flb"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kb6cs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wj4l"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uu5qu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocmuq"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1tot"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcw7l"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_88uni"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3c4k"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6ton"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnrxl"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7dd3n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_klaah"]
 animations = [{
-"frames": [SubResource("AtlasTexture_fmq1j"), SubResource("AtlasTexture_kcp6a"), SubResource("AtlasTexture_oyt0t"), SubResource("AtlasTexture_wl64c")],
+"frames": [SubResource("AtlasTexture_qqakx"), SubResource("AtlasTexture_d2nts"), SubResource("AtlasTexture_kxclg"), SubResource("AtlasTexture_t8hv7")],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_5y3i0"), SubResource("AtlasTexture_dyfsw"), SubResource("AtlasTexture_cjuo3")],
+"frames": [SubResource("AtlasTexture_1et6a"), SubResource("AtlasTexture_k78vb"), SubResource("AtlasTexture_myawe")],
 "loop": true,
 "name": &"jump_down",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_weydw"), SubResource("AtlasTexture_ho62r"), SubResource("AtlasTexture_vb72g")],
+"frames": [SubResource("AtlasTexture_4dm8h"), SubResource("AtlasTexture_ybcd0"), SubResource("AtlasTexture_rxfg6")],
 "loop": true,
 "name": &"jump_up",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_kqgus"), SubResource("AtlasTexture_kb6cs"), SubResource("AtlasTexture_uu5qu"), SubResource("AtlasTexture_a1tot"), SubResource("AtlasTexture_88uni"), SubResource("AtlasTexture_l6ton")],
+"frames": [SubResource("AtlasTexture_w7flb"), SubResource("AtlasTexture_2wj4l"), SubResource("AtlasTexture_ocmuq"), SubResource("AtlasTexture_tcw7l"), SubResource("AtlasTexture_h3c4k"), SubResource("AtlasTexture_pnrxl")],
 "loop": true,
 "name": &"run",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcbwm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1j2b"]
 size = Vector2(11, 14)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vvumv"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jeui4"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
@@ -118,14 +117,14 @@ script = ExtResource("1_1r5t6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-frames = SubResource("SpriteFrames_7dd3n")
+frames = SubResource("SpriteFrames_klaah")
 animation = &"jump_down"
 speed_scale = 1.2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
-shape = SubResource("RectangleShape2D_bcbwm")
+shape = SubResource("RectangleShape2D_d1j2b")
 
 [node name="Name" type="Label" parent="."]
 anchors_preset = 7
@@ -150,7 +149,7 @@ horizontal_alignment = 1
 zoom = Vector2(0.7, 0.7)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_vvumv")
+replication_config = SubResource("SceneReplicationConfig_jeui4")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 11)
@@ -159,9 +158,3 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="WaveSpawner" type="Node2D" parent="."]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.835294, 0.937255, 0.745098, 1)
-energy = 0.5
-texture = ExtResource("7_r30cr")
-texture_scale = 0.05

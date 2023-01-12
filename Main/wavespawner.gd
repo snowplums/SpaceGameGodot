@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var enemy_1 = preload("res://spaceship/enemy.tscn")
-@onready var enemy_2 = preload("res://spaceship/enemy2.tscn")
+@onready var enemy_1 = preload("res://Attacking/enemy_1.tscn")
+@onready var enemy_2 = preload("res://Attacking/enemy_2.tscn")
 @onready var enemy_type = [enemy_1, enemy_2]
 
 @onready var spawn_array = get_tree().get_nodes_in_group("EnemySpawnPoints")

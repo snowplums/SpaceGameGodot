@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6jpugk1rh22h"]
+[gd_scene load_steps=18 format=3 uid="uid://b6jpugk1rh22h"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
 [ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
@@ -8,12 +8,14 @@
 [ext_resource type="Script" path="res://Main/spaceship.gd" id="3_nqtl8"]
 [ext_resource type="Texture2D" uid="uid://fk4gfmmuaoyq" path="res://Assets/Space Background (3).png" id="4_j3nk7"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="5_4ik6t"]
-[ext_resource type="PackedScene" uid="uid://cmky5y7s8arno" path="res://Spaceship/Miners/copper_miner.tscn" id="7_ypygh"]
 [ext_resource type="PackedScene" uid="uid://c02st1m00tiyw" path="res://Spaceship/turret.tscn" id="8_yec01"]
+[ext_resource type="PackedScene" uid="uid://3bme60i5a1pi" path="res://Spaceship/Miners/crusher.tscn" id="9_q21qt"]
 [ext_resource type="Texture2D" uid="uid://db2otpoad2p15" path="res://Assets/spaceship.png" id="10_25g0d"]
+[ext_resource type="PackedScene" uid="uid://eepmdlch0g3f" path="res://Spaceship/Miners/smelter.tscn" id="10_m7k1i"]
+[ext_resource type="PackedScene" uid="uid://cfo2ett4iitp4" path="res://Spaceship/Miners/ship_inventory.tscn" id="11_ppb2v"]
 [ext_resource type="PackedScene" uid="uid://cn1gemr7hl5t4" path="res://Spaceship/platform.tscn" id="12_lxbp4"]
+[ext_resource type="PackedScene" uid="uid://cc4w4bxorccxb" path="res://Spaceship/Miners/miner.tscn" id="13_hjaj2"]
 [ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
-[ext_resource type="PackedScene" uid="uid://my0silap2x70" path="res://Events/power_outage.tscn" id="13_ukgca"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
 closed = false
@@ -32,6 +34,7 @@ spawn_path = NodePath("../Network")
 
 [node name="Wavespawner" type="Node2D" parent="."]
 script = ExtResource("3_krohm")
+spawnposition = null
 
 [node name="WaveTimer" type="Timer" parent="Wavespawner"]
 wait_time = 10.0
@@ -60,15 +63,35 @@ texture = ExtResource("4_j3nk7")
 z_index = 1
 position = Vector2(256, 149)
 
+[node name="TurretRadius" parent="World/Spaceship/Turrets/Turret" index="1"]
+position = Vector2(-10, -34)
+
+[node name="CollisionShape2D" parent="World/Spaceship/Turrets/Turret/TurretRadius" index="0"]
+position = Vector2(0, 0)
+
 [node name="Turret2" parent="World/Spaceship/Turrets" instance=ExtResource("8_yec01")]
 z_index = 1
 position = Vector2(320, -108)
 
+[node name="TurretRadius" parent="World/Spaceship/Turrets/Turret2" index="1"]
+position = Vector2(41, 62)
+
+[node name="CollisionShape2D" parent="World/Spaceship/Turrets/Turret2/TurretRadius" index="0"]
+position = Vector2(0, 0)
+
 [node name="Miners" type="Node2D" parent="World/Spaceship"]
 
-[node name="Copper Miner" parent="World/Spaceship/Miners" instance=ExtResource("7_ypygh")]
-z_index = 2
-position = Vector2(320, 38)
+[node name="Miner" parent="World/Spaceship/Miners" instance=ExtResource("13_hjaj2")]
+position = Vector2(200, -42)
+
+[node name="Crusher" parent="World/Spaceship/Miners" instance=ExtResource("9_q21qt")]
+position = Vector2(-210, 118)
+
+[node name="Smelter" parent="World/Spaceship/Miners" instance=ExtResource("10_m7k1i")]
+position = Vector2(123, 118)
+
+[node name="Inventory" parent="World/Spaceship/Miners" instance=ExtResource("11_ppb2v")]
+position = Vector2(-311, 38)
 
 [node name="ShipHurtBox" type="Area2D" parent="World/Spaceship"]
 script = ExtResource("5_4ik6t")
@@ -163,8 +186,6 @@ position = Vector2(100, 132)
 
 [node name="R8F0" type="Marker2D" parent="World/Spaceship/FireSpawnPoints"]
 position = Vector2(-311, 52)
-
-[node name="PowerOutage" parent="World/Spaceship" instance=ExtResource("13_ukgca")]
 
 [node name="Enemies" type="Node2D" parent="World"]
 
@@ -374,4 +395,6 @@ layout_mode = 2
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/HostBtn" to="." method="_on_host_btn_pressed"]
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
 
+[editable path="World/Spaceship/Turrets/Turret"]
+[editable path="World/Spaceship/Turrets/Turret2"]
 [editable path="Lobby"]
