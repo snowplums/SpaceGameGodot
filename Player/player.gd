@@ -14,7 +14,7 @@ const bullet = preload("res://spaceship/bullet.tscn")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var username = ""
-var is_host
+
 
 var can_move = true
 var on_turret = false
