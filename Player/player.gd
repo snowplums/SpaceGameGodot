@@ -22,13 +22,6 @@ var is_host
 var can_move = true
 var host = null
 
-#Turret variables
-var on_turret = false
-var can_fire = true
-var fire_rate = 0.2
-var bullet_speed = 1000
-var turret_scene = null
-
 #Miner variables
 var geode_amt = 0
 var crushed_copper_amt = 0
@@ -52,8 +45,6 @@ func _ready():
 func _physics_process(delta):
 	#print(geode_amt)
 	check_radius()
-	if on_turret and synchronizer.is_multiplayer_authority():
-		turret()
 	if synchronizer.is_multiplayer_authority() and (geode_amt > 0 or crushed_copper_amt > 0 or smelted_copper_amt > 0):
 		SPEED = 60
 	else:

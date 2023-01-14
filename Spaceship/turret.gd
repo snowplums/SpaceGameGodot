@@ -2,9 +2,10 @@ extends Node2D
 
 @export var bullet_speed = 1000
 @export var fire_rate = 0.2
-@export var in_use = false
-@export var active = false
+@export var bullet_damage = 10
 
+var in_use = false
+var active = false
 const bullet = preload("res://spaceship/bullet.tscn")
 var can_fire = true
 var in_radius = false
@@ -13,15 +14,11 @@ var host = null
 func _process(_delta):
 	if in_radius and Input.is_action_just_pressed("E") and !in_use:
 		active = !active
-		in_use = !in_use
+		host = get_node("/root/Main/Network").get_node(str(multiplayer.get_unique_id()))
+		host.can_move = false
 	if in_radius and active:
 		rpc("turret_active", $Sprite2D.rotation)
-		in_use = true
-	else:
-		if host != null:
-			host.can_move = true
-		in_use = false
-		active = false
+	turret()
 
 
 func _on_area_2d_body_entered(body):
@@ -38,29 +35,30 @@ func turret_active(turret_rotation):
 	in_use = true
 	$Sprite2D.global_rotation = turret_rotation
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
-	host.can_move = false
-	host.on_turret_activate(self)
+
+@rpc(any_peer, call_local, reliable)
+func turret_deactivate():
+	in_use = false
+	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
+	active = false
 
 func turret():
-	if in_use == true:
+	if in_use == true and active == true:
 		get_node("Sprite2D").look_at(get_global_mouse_position())
 		if Input.is_action_pressed("ui_accept"):
-			in_use = false
-			active = false
+			rpc("turret_deactivate")
+			host.can_move = true
 		if Input.is_action_pressed("left_click") and can_fire:
 			rpc("turret_fire")
 			can_fire = false
 			await get_tree().create_timer(fire_rate).timeout
 			can_fire = true
 
-func on_turret_activate(turret_node):
-	in_use = true
-	turret_scene = turret_node
-
 @rpc(any_peer, call_local)
 func turret_fire():
 	var bullet_instance = bullet.instantiate()
-	bullet_instance.position = turret_scene.get_global_position()
-	bullet_instance.rotation = turret_scene.rotation
-	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(turret_scene.get_node("Sprite2D").rotation), Vector2())
+	bullet_instance.position = get_global_position()
+	bullet_instance.rotation = rotation
+	bullet_instance.set_damage(bullet_damage)
+	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(get_node("Sprite2D").rotation), Vector2())
 	get_node("/root/Main/Network").add_child(bullet_instance)
