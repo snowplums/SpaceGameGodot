@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6a84wye8eca3"]
+
+[ext_resource type="Script" path="res://Spaceship/UpgradeRoom/upgrades.gd" id="1_l4um3"]
+[ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="2_q05ux"]
+[ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="3_lyb5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fcrp"]
+size = Vector2(155, 113)
+
+[node name="Upgrades" type="Node2D"]
+script = ExtResource("1_l4um3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_q05ux")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2fcrp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+offset = Vector2(160, 90)
+transform = Transform2D(1, 0, 0, 1, 160, 90)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -120.0
+offset_top = -58.0
+offset_right = 122.0
+offset_bottom = 57.0
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 11.0
+offset_right = 212.0
+offset_bottom = 45.0
+theme = ExtResource("3_lyb5b")
+theme_override_font_sizes/font_size = 32
+text = "Upgrade Damage"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]

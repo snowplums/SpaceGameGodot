@@ -11,14 +11,29 @@ var can_fire = true
 var in_radius = false
 var host = null
 
+var on = false
+
 func _process(_delta):
-	if in_radius and Input.is_action_just_pressed("E") and !in_use:
-		active = !active
-		host = get_node("/root/Main/Network").get_node(str(multiplayer.get_unique_id()))
-		host.can_move = false
+	if in_radius and Input.is_action_just_pressed("E"):
+		if(!in_use):
+			active = true
+			host = get_node("/root/Main/Network").get_node(str(multiplayer.get_unique_id()))
+			host.can_move = false
+		else:
+			rpc("turret_deactivate")
+			host.can_move = true
+			print("E")
+	
+	if(in_use and active and Input.is_action_just_pressed("E")):
+		rpc("turret_deactivate")
+		host.can_move = true
+		print("E")
 	if in_radius and active:
 		rpc("turret_active", $Sprite2D.rotation)
+	
+	
 	turret()
+		
 
 
 func _on_area_2d_body_entered(body):
@@ -45,9 +60,10 @@ func turret_deactivate():
 func turret():
 	if in_use == true and active == true:
 		get_node("Sprite2D").look_at(get_global_mouse_position())
-		if Input.is_action_pressed("ui_accept"):
-			rpc("turret_deactivate")
-			host.can_move = true
+#		if Input.is_action_just_pressed("E"):
+#			rpc("turret_deactivate")
+#			host.can_move = true
+#			print("E")
 		if Input.is_action_pressed("left_click") and can_fire:
 			rpc("turret_fire")
 			can_fire = false

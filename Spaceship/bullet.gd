@@ -6,4 +6,4 @@ func _on_body_entered(body):
 		queue_free()
 
 func set_damage(new_damage):
-	$Hitbox.damage = new_damage
+	$Sprite2D/HitBox.damage = new_damage
