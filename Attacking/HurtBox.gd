@@ -6,6 +6,7 @@ func _init() -> void:
 	collision_layer = 4
 	collision_mask = 2
 
+#hey guys
 
 func _ready() -> void:
 	area_entered.connect(self._on_area_entered)
