@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://3gr7hq1y6jld"]
+
+[ext_resource type="Script" path="res://Events/power_outage.gd" id="1_8ykiw"]
+[ext_resource type="Texture2D" path="res://Assets/lightswitch.png" id="2_2bn5t"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="2_ayrfi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg4v6"]
+atlas = ExtResource("2_2bn5t")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8nrj"]
+atlas = ExtResource("2_2bn5t")
+region = Rect2(5, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjtc5"]
+animations = [{
+"frames": [SubResource("AtlasTexture_tg4v6"), SubResource("AtlasTexture_x8nrj")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c8oq"]
+radius = 21.095
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joiii"]
+atlas = ExtResource("2_2bn5t")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o8fe"]
+atlas = ExtResource("2_2bn5t")
+region = Rect2(5, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qb5br"]
+animations = [{
+"frames": [SubResource("AtlasTexture_joiii"), SubResource("AtlasTexture_3o8fe")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q353l"]
+atlas = ExtResource("2_2bn5t")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h50fa"]
+atlas = ExtResource("2_2bn5t")
+region = Rect2(5, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g18u6"]
+animations = [{
+"frames": [SubResource("AtlasTexture_q353l"), SubResource("AtlasTexture_h50fa")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PowerOutage" type="Node2D"]
+script = ExtResource("1_8ykiw")
+
+[node name="lightswitch" type="AnimatedSprite2D" parent="."]
+position = Vector2(-255, -45)
+frames = SubResource("SpriteFrames_pjtc5")
+
+[node name="switch1light" type="PointLight2D" parent="lightswitch"]
+visible = false
+color = Color(0.34902, 0.823529, 0.117647, 1)
+energy = 1.3
+shadow_enabled = true
+texture = ExtResource("2_ayrfi")
+texture_scale = 0.02
+
+[node name="switchradius" type="Area2D" parent="lightswitch"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch/switchradius"]
+shape = SubResource("CircleShape2D_5c8oq")
+
+[node name="lightswitch2" type="AnimatedSprite2D" parent="."]
+position = Vector2(261, 38)
+frames = SubResource("SpriteFrames_qb5br")
+
+[node name="switch2light" type="PointLight2D" parent="lightswitch2"]
+visible = false
+color = Color(0.34902, 0.823529, 0.117647, 1)
+energy = 1.3
+shadow_enabled = true
+texture = ExtResource("2_ayrfi")
+texture_scale = 0.02
+
+[node name="switchradius" type="Area2D" parent="lightswitch2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch2/switchradius"]
+shape = SubResource("CircleShape2D_5c8oq")
+
+[node name="lightswitch3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-249, 114)
+frames = SubResource("SpriteFrames_g18u6")
+
+[node name="switch3light" type="PointLight2D" parent="lightswitch3"]
+visible = false
+color = Color(0.34902, 0.823529, 0.117647, 1)
+energy = 1.3
+shadow_enabled = true
+texture = ExtResource("2_ayrfi")
+texture_scale = 0.02
+
+[node name="switchradius" type="Area2D" parent="lightswitch3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch3/switchradius"]
+shape = SubResource("CircleShape2D_5c8oq")
+
+[node name="Darkness" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
