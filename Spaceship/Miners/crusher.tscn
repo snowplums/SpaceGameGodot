@@ -100,7 +100,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp5rd"]
-size = Vector2(80, 40)
+size = Vector2(30, 34)
 
 [node name="Crusher" type="Node2D"]
 z_index = 1

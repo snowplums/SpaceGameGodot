@@ -100,7 +100,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_caprw"]
-size = Vector2(80, 40)
+size = Vector2(30, 34)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_46cav"]
 properties/0/path = NodePath(".:copper")
@@ -127,7 +127,7 @@ playing = true
 [node name="MinerRadius" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinerRadius"]
-position = Vector2(0, -4)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_caprw")
 
 [node name="GeodeTimer" type="Timer" parent="."]
