@@ -6,33 +6,33 @@
 [ext_resource type="Script" path="res://Attacking/HitBox.gd" id="4_rhky0"]
 [ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="5_mj3qy"]
 
-[sub_resource type="Curve" id="Curve_7v11r"]
+[sub_resource type="Curve" id="Curve_2lj0x"]
 min_value = -200.0
 max_value = 200.0
 _data = [Vector2(0.00704226, 1), 0.0, 0.0, 0, 0, Vector2(1, -70), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_gyb6f"]
+[sub_resource type="Gradient" id="Gradient_q7f7s"]
 colors = PackedColorArray(0.336608, 0.336608, 0.336608, 0.541176, 0.442911, 0.442911, 0.442911, 0)
 
-[sub_resource type="Curve" id="Curve_jrmx1"]
+[sub_resource type="Curve" id="Curve_8yese"]
 min_value = -200.0
 max_value = 200.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.985916, -112.727), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_6s41m"]
+[sub_resource type="Curve" id="Curve_wprq4"]
 _data = [Vector2(0, 0.272727), 0.0, 0.0, 0, 0, Vector2(0.0703125, 0.427273), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_yoh7t"]
+[sub_resource type="Gradient" id="Gradient_aiv7n"]
 offsets = PackedFloat32Array(0, 0.295238, 1)
 colors = PackedColorArray(0.796078, 0.541176, 0, 0.501961, 0.713726, 0.137255, 0, 0.501961, 0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmacu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee8fa"]
 size = Vector2(22.5352, 15.2676)
 
-[sub_resource type="Animation" id="Animation_m1by4"]
+[sub_resource type="Animation" id="Animation_j5k4f"]
 resource_name = "firegrow"
 length = 20.0
 tracks/0/type = "value"
@@ -60,9 +60,9 @@ tracks/1/keys = {
 "values": [20.0, 30.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5x1ct"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klwk0"]
 _data = {
-"firegrow": SubResource("Animation_m1by4")
+"firegrow": SubResource("Animation_j5k4f")
 }
 
 [node name="firemain" type="Node2D"]
@@ -82,12 +82,12 @@ gravity = Vector2(0, -15)
 angular_velocity_max = 30.0
 linear_accel_min = 1.0
 linear_accel_max = 1.0
-linear_accel_curve = SubResource("Curve_7v11r")
+linear_accel_curve = SubResource("Curve_2lj0x")
 angle_max = 360.0
 scale_amount_min = 0.3
 scale_amount_max = 0.6
-color_ramp = SubResource("Gradient_gyb6f")
-anim_speed_curve = SubResource("Curve_jrmx1")
+color_ramp = SubResource("Gradient_q7f7s")
+anim_speed_curve = SubResource("Curve_8yese")
 
 [node name="fire" type="CPUParticles2D" parent="."]
 scale = Vector2(1.42, 1.42)
@@ -106,8 +106,8 @@ angular_velocity_max = 154.29
 angle_max = 90.0
 scale_amount_min = 0.05
 scale_amount_max = 0.1
-scale_amount_curve = SubResource("Curve_6s41m")
-color_ramp = SubResource("Gradient_yoh7t")
+scale_amount_curve = SubResource("Curve_wprq4")
+color_ramp = SubResource("Gradient_aiv7n")
 
 [node name="HitBox" type="Area2D" parent="fire"]
 script = ExtResource("4_rhky0")
@@ -116,11 +116,11 @@ script = ExtResource("4_rhky0")
 visible = false
 position = Vector2(0, -5.6338)
 scale = Vector2(0.8, 1)
-shape = SubResource("RectangleShape2D_xmacu")
+shape = SubResource("RectangleShape2D_ee8fa")
 
 [node name="firegrow" type="AnimationPlayer" parent="fire"]
 libraries = {
-"": SubResource("AnimationLibrary_5x1ct")
+"": SubResource("AnimationLibrary_klwk0")
 }
 
 [node name="firelight" type="PointLight2D" parent="."]
