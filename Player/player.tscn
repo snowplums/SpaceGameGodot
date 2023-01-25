@@ -7,97 +7,97 @@
 [ext_resource type="Texture2D" uid="uid://x5xakded4xve" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_jump_up_anim_strip_3.png" id="4_06124"]
 [ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="4_qppab"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yk4kn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pfej"]
 atlas = ExtResource("2_cereu")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pom4r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xruaa"]
 atlas = ExtResource("2_cereu")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lsadt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_402vb"]
 atlas = ExtResource("2_cereu")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nwtrg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8r6e"]
 atlas = ExtResource("2_cereu")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nghqs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fygik"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k3eyh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnyy2"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_538qp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kgu4"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ryiku"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ao3i"]
 atlas = ExtResource("4_06124")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8hun6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hokka"]
 atlas = ExtResource("4_06124")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dm54"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkumf"]
 atlas = ExtResource("4_06124")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1syj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn7oh"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ldo1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy0l"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xm8km"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oae4"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4e5ic"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahre0"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ij23p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5sw2"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xescf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_65xfx"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yl6d6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxwkf"]
 animations = [{
-"frames": [SubResource("AtlasTexture_yk4kn"), SubResource("AtlasTexture_pom4r"), SubResource("AtlasTexture_lsadt"), SubResource("AtlasTexture_nwtrg")],
+"frames": [SubResource("AtlasTexture_1pfej"), SubResource("AtlasTexture_xruaa"), SubResource("AtlasTexture_402vb"), SubResource("AtlasTexture_x8r6e")],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_nghqs"), SubResource("AtlasTexture_k3eyh"), SubResource("AtlasTexture_538qp")],
+"frames": [SubResource("AtlasTexture_fygik"), SubResource("AtlasTexture_cnyy2"), SubResource("AtlasTexture_2kgu4")],
 "loop": true,
 "name": &"jump_down",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_ryiku"), SubResource("AtlasTexture_8hun6"), SubResource("AtlasTexture_3dm54")],
+"frames": [SubResource("AtlasTexture_1ao3i"), SubResource("AtlasTexture_hokka"), SubResource("AtlasTexture_fkumf")],
 "loop": true,
 "name": &"jump_up",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_e1syj"), SubResource("AtlasTexture_6ldo1"), SubResource("AtlasTexture_xm8km"), SubResource("AtlasTexture_4e5ic"), SubResource("AtlasTexture_ij23p"), SubResource("AtlasTexture_xescf")],
+"frames": [SubResource("AtlasTexture_xn7oh"), SubResource("AtlasTexture_5uy0l"), SubResource("AtlasTexture_4oae4"), SubResource("AtlasTexture_ahre0"), SubResource("AtlasTexture_c5sw2"), SubResource("AtlasTexture_65xfx")],
 "loop": true,
 "name": &"run",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6mt1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiwu1"]
 size = Vector2(11, 14)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2wb4e"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5anjm"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
@@ -117,14 +117,14 @@ script = ExtResource("1_1r5t6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-frames = SubResource("SpriteFrames_yl6d6")
+frames = SubResource("SpriteFrames_jxwkf")
 animation = &"jump_down"
 speed_scale = 1.2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
-shape = SubResource("RectangleShape2D_f6mt1")
+shape = SubResource("RectangleShape2D_eiwu1")
 
 [node name="Name" type="Label" parent="."]
 anchors_preset = 7
@@ -149,7 +149,7 @@ horizontal_alignment = 1
 zoom = Vector2(0.7, 0.7)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_2wb4e")
+replication_config = SubResource("SceneReplicationConfig_5anjm")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 11)

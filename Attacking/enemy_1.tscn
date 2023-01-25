@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Attacking/enemy.gd" id="1_4r6j8"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="1_vf2el"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lg33"]
 size = Vector2(32, 32)
 
@@ -23,10 +24,12 @@ texture = ExtResource("1_0ri43")
 script = ExtResource("1_vf2el")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+
 shape = SubResource("RectangleShape2D_6lg33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k5icb")
+
 
 [node name="ShipDetection" type="Node2D" parent="."]
 
