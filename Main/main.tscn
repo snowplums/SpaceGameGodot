@@ -17,6 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://cc4w4bxorccxb" path="res://Spaceship/Miners/miner.tscn" id="13_hjaj2"]
 [ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
 [ext_resource type="PackedScene" uid="uid://b6a84wye8eca3" path="res://Spaceship/UpgradeRoom/upgrades.tscn" id="16_2uy0y"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" path="res://Events/power_outage.tscn" id="17_pdwsh"]
+[ext_resource type="Script" path="res://Main/lockdown.gd" id="18_nm41n"]
+[ext_resource type="Texture2D" path="res://Assets/buton.png" id="19_8fpvh"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="20_uupph"]
+>>>>>>> Stashed changes
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
 closed = false
@@ -364,6 +371,39 @@ occluder = SubResource("OccluderPolygon2D_nxaxi")
 
 [node name="Lobby" parent="." instance=ExtResource("3_a5uyi")]
 visible = false
+
+[node name="VBoxContainer" parent="Lobby/CenterContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" parent="Lobby/CenterContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="GridContainer" parent="Lobby/CenterContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="NameLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="0"]
+layout_mode = 2
+
+[node name="NameTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="1"]
+layout_mode = 2
+
+[node name="IPAddressLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="2"]
+layout_mode = 2
+
+[node name="IPTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="3"]
+layout_mode = 2
+
+[node name="PortLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="4"]
+layout_mode = 2
+
+[node name="PortTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="5"]
+layout_mode = 2
+
+[node name="HostBtn" parent="Lobby/CenterContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="JoinBtn" parent="Lobby/CenterContainer/VBoxContainer" index="3"]
+layout_mode = 2
 
 [node name="VBoxContainer" parent="Lobby/CenterContainer" index="0"]
 layout_mode = 2
