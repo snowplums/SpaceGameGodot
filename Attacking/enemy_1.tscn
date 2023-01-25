@@ -4,10 +4,17 @@
 [ext_resource type="Script" path="res://Attacking/enemy.gd" id="1_4r6j8"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="1_vf2el"]
 
+<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4t2py"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4iew3"]
+=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65pdl"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onpes"]
+>>>>>>> Stashed changes
 size = Vector2(32, 32)
 
 [node name="Enemy1" type="CharacterBody2D"]
@@ -23,10 +30,17 @@ texture = ExtResource("1_0ri43")
 script = ExtResource("1_vf2el")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+<<<<<<< Updated upstream
 shape = SubResource("RectangleShape2D_4t2py")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4iew3")
+=======
+shape = SubResource("RectangleShape2D_65pdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_onpes")
+>>>>>>> Stashed changes
 
 [node name="ShipDetection" type="Node2D" parent="."]
 
