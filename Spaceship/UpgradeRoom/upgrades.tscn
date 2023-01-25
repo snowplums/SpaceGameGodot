@@ -32,7 +32,6 @@ offset_bottom = 57.0
 color = Color(0.317647, 0.317647, 0.317647, 1)
 
 [node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
 offset_left = 36.0
 offset_top = 11.0
 offset_right = 212.0

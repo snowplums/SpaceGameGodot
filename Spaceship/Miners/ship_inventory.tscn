@@ -100,7 +100,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wff8k"]
-size = Vector2(80, 40)
+size = Vector2(30, 34)
 
 [node name="ship_inventory" type="Node2D"]
 z_index = 1
