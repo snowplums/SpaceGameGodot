@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if(in_radius):
 		if(Input.is_action_just_pressed("E")):
 			$CanvasLayer.visible=!$CanvasLayer.visible
@@ -20,10 +20,12 @@ func _process(delta):
 		$CanvasLayer.visible=false
 
 func _on_area_2d_body_entered(body):
-	in_radius=true
+	if body.is_in_group("player"):
+		in_radius=true
 
 func _on_area_2d_body_exited(body):
-	in_radius=false
+	if body.is_in_group("player"):
+		in_radius=false
 
 func _on_button_pressed():
 	if(inv.smelted_copper >= upgrade_price):
@@ -33,7 +35,7 @@ func _on_button_pressed():
 
 
 @rpc(any_peer, call_local, reliable)
-func upgrade_turret(upgrade_val):
+func upgrade_turret(_upgrade_val):
 	inv.smelted_copper -= upgrade_price
 	turret.bullet_damage+= upgrade_amount
 	upgrade_price +=upgrade_amount

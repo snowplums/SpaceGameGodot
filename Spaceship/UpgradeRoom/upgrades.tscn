@@ -1,22 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6a84wye8eca3"]
 
 [ext_resource type="Script" path="res://Spaceship/UpgradeRoom/upgrades.gd" id="1_l4um3"]
-[ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="2_q05ux"]
+[ext_resource type="Texture2D" uid="uid://g5ooalppsk3" path="res://Assets/stonetile.png" id="2_q6quj"]
 [ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="3_lyb5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fcrp"]
-size = Vector2(155, 113)
+size = Vector2(104, 49)
 
 [node name="Upgrades" type="Node2D"]
 script = ExtResource("1_l4um3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_q05ux")
+scale = Vector2(2, 2)
+texture = ExtResource("2_q6quj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_2fcrp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

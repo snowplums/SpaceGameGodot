@@ -36,6 +36,7 @@ func _process(_delta):
 func smelt_ore():
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 	if host.crushed_copper_amt >= 1 and (crushed_copper+smelted_copper) < max_smelted_ores:
+		$AnimatedSprite2D.play("start")
 		host.crushed_copper_amt -= 1
 		crushed_copper += 1
 		$SmelterTimer.start()
@@ -44,6 +45,7 @@ func smelt_ore():
 func grab_smelted_ore():
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 	if smelted_copper >= 1:
+		$AnimatedSprite2D.play("idle")
 		host.smelted_copper_amt += 1
 		smelted_copper -= 1
 	print("Crushed: " + str(smelted_copper))

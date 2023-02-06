@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b6jpugk1rh22h"]
+[gd_scene load_steps=28 format=3 uid="uid://b6jpugk1rh22h"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
 [ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
@@ -6,22 +6,22 @@
 [ext_resource type="Script" path="res://Main/wavespawner.gd" id="3_krohm"]
 [ext_resource type="Script" path="res://Main/background.gd" id="3_nge16"]
 [ext_resource type="Script" path="res://Main/spaceship.gd" id="3_nqtl8"]
-[ext_resource type="Texture2D" uid="uid://fk4gfmmuaoyq" path="res://Assets/Space Background (3).png" id="4_j3nk7"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="5_4ik6t"]
+[ext_resource type="Texture2D" uid="uid://b3hjce017tqrc" path="res://Assets/Space Background (4).png" id="6_8npim"]
 [ext_resource type="PackedScene" uid="uid://c02st1m00tiyw" path="res://Spaceship/turret.tscn" id="8_yec01"]
 [ext_resource type="PackedScene" uid="uid://3bme60i5a1pi" path="res://Spaceship/Miners/crusher.tscn" id="9_q21qt"]
-[ext_resource type="Texture2D" uid="uid://db2otpoad2p15" path="res://Assets/spaceship.png" id="10_25g0d"]
 [ext_resource type="PackedScene" uid="uid://eepmdlch0g3f" path="res://Spaceship/Miners/smelter.tscn" id="10_m7k1i"]
 [ext_resource type="PackedScene" uid="uid://cfo2ett4iitp4" path="res://Spaceship/Miners/ship_inventory.tscn" id="11_ppb2v"]
 [ext_resource type="PackedScene" uid="uid://cn1gemr7hl5t4" path="res://Spaceship/platform.tscn" id="12_lxbp4"]
+[ext_resource type="Texture2D" uid="uid://dj0whqka3jbaq" path="res://Assets/Ship.png" id="13_c8o8b"]
 [ext_resource type="PackedScene" uid="uid://cc4w4bxorccxb" path="res://Spaceship/Miners/miner.tscn" id="13_hjaj2"]
 [ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
 [ext_resource type="PackedScene" uid="uid://b6a84wye8eca3" path="res://Spaceship/UpgradeRoom/upgrades.tscn" id="16_2uy0y"]
-
 [ext_resource type="PackedScene" uid="uid://c6ws56gpdebu5" path="res://Events/power_outage.tscn" id="17_pdwsh"]
 [ext_resource type="Script" path="res://Main/lockdown.gd" id="18_nm41n"]
 [ext_resource type="Texture2D" uid="uid://bnga6hvum01rf" path="res://Assets/buton.png" id="19_8fpvh"]
 [ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="20_uupph"]
+[ext_resource type="PackedScene" uid="uid://ce7iwtjtou3re" path="res://UI/waiting_room.tscn" id="22_on1a5"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
 closed = false
@@ -59,10 +59,8 @@ spawn_path = NodePath("../Network")
 
 [node name="Wavespawner" type="Node2D" parent="."]
 script = ExtResource("3_krohm")
-spawnposition = null
 
 [node name="WaveTimer" type="Timer" parent="Wavespawner"]
-wait_time = 10.0
 one_shot = true
 
 [node name="World" type="Node2D" parent="."]
@@ -77,10 +75,10 @@ position = Vector2(0, 50)
 script = ExtResource("3_nge16")
 
 [node name="Layer 1" type="ParallaxLayer" parent="World/Spaceship/ParallaxBackground"]
-motion_mirroring = Vector2(1000, 0)
+motion_mirroring = Vector2(2000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Spaceship/ParallaxBackground/Layer 1"]
-texture = ExtResource("4_j3nk7")
+texture = ExtResource("6_8npim")
 
 [node name="Turrets" type="Node2D" parent="World/Spaceship"]
 
@@ -113,10 +111,10 @@ position = Vector2(200, -42)
 position = Vector2(-210, 118)
 
 [node name="Smelter" parent="World/Spaceship/Miners" instance=ExtResource("10_m7k1i")]
-position = Vector2(123, 118)
+position = Vector2(166.5, 107.5)
 
 [node name="Inventory" parent="World/Spaceship/Miners" instance=ExtResource("11_ppb2v")]
-position = Vector2(-311, 38)
+position = Vector2(-310, 32)
 
 [node name="ShipHurtBox" type="Area2D" parent="World/Spaceship"]
 script = ExtResource("5_4ik6t")
@@ -126,12 +124,12 @@ polygon = PackedVector2Array(589, 58, 331, 60, 252, 138, -268, 138, -268, 60, -3
 
 [node name="SpaceshipSprite" type="Sprite2D" parent="World/Spaceship"]
 position = Vector2(96, 8)
-texture = ExtResource("10_25g0d")
+texture = ExtResource("13_c8o8b")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Spaceship/SpaceshipSprite"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Spaceship/SpaceshipSprite/StaticBody2D"]
-polygon = PackedVector2Array(-206, 131, -364, 131, -364, 51, -444, 51, -444, -24, -374, -24, -374, -34, -364, -34, -364, -104, 227, -104, 297, -34, 326, -34, 494, 50, 494, 51, 234, 51, 234, 52, 155, 131, -206, 131, -206, 126, 155, 126, 219, 62, 219, 61, -151, 61, -151, 93, -166, 93, -166, 46, 473, 46, 473, 45, 326, -29, 313, -29, 313, 13, 298, 13, 298, -19, 218, -19, 218, -34, 291, -34, 291, -35, 227, -99, 153, -99, 153, -34, 185, -34, 185, -19, 153, -19, 153, 13, 138, 13, 138, -19, -151, -19, -151, 13, -166, 13, -166, -34, 138, -34, 138, -99, -151, -99, -151, -67, -166, -67, -166, -99, -207, -99, -207, -67, -222, -67, -222, -99, -359, -99, -359, -34, -207, -34, -207, 13, -222, 13, -222, -19, -359, -19, -359, 13, -374, 13, -374, -19, -439, -19, -439, 46, -207, 46, -207, 93, -222, 93, -222, 61, -359, 61, -359, 126, -206, 126)
+polygon = PackedVector2Array(-206, 131, -364, 131, -364, 51, -444, 51, -444, -24, -374, -24, -374, -34, -364, -34, -364, -104, 227, -104, 297, -34, 326, -34, 490, 47, 490, 51, 234, 51, 234, 52, 155, 131, -206, 131, -206, 126, 155, 126, 219, 62, 219, 61, -151, 61, -151, 93, -166, 93, -166, 46, 473, 46, 473, 45, 326, -29, 313, -29, 313, 13, 298, 13, 298, -19, 218, -19, 218, -34, 291, -34, 291, -35, 227, -99, 153, -99, 153, -34, 185, -34, 185, -19, 153, -19, 153, 13, 138, 13, 138, -19, -151, -19, -151, 13, -166, 13, -166, -34, 138, -34, 138, -99, -151, -99, -151, -67, -166, -67, -166, -99, -207, -99, -207, -67, -222, -67, -222, -99, -359, -99, -359, -34, -207, -34, -207, 13, -222, 13, -222, -19, -359, -19, -359, 13, -374, 13, -374, -19, -439, -19, -439, 46, -207, 46, -207, 93, -222, 93, -222, 61, -359, 61, -359, 126, -206, 126)
 
 [node name="Doors_Platforms" type="Node2D" parent="World/Spaceship"]
 
@@ -215,7 +213,7 @@ position = Vector2(-311, 52)
 [node name="Upgrades" type="Node2D" parent="World/Spaceship"]
 
 [node name="Upgrades" parent="World/Spaceship/Upgrades" instance=ExtResource("16_2uy0y")]
-position = Vector2(27, 24)
+position = Vector2(27, 38)
 
 [node name="PowerOutage" parent="World/Spaceship" instance=ExtResource("17_pdwsh")]
 
@@ -385,6 +383,26 @@ position = Vector2(-184, 568)
 [node name="Marker2D55" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
 position = Vector2(-240, 568)
 
+[node name="FlyerPoints" type="Node2D" parent="World"]
+
+[node name="Marker2D" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(200, -216)
+
+[node name="Marker2D2" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(-104, -216)
+
+[node name="Marker2D3" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(464, -130)
+
+[node name="Marker2D4" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(410, 176)
+
+[node name="Marker2D5" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(184, 257)
+
+[node name="Marker2D6" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(-104, 257)
+
 [node name="FireLightBounds" type="LightOccluder2D" parent="World"]
 visible = false
 occluder = SubResource("OccluderPolygon2D_nxaxi")
@@ -443,42 +461,14 @@ layout_mode = 2
 [node name="JoinBtn" parent="Lobby/CenterContainer/VBoxContainer" index="3"]
 layout_mode = 2
 
-[node name="VBoxContainer" parent="Lobby/CenterContainer" index="0"]
-layout_mode = 2
-
-[node name="Label" parent="Lobby/CenterContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="GridContainer" parent="Lobby/CenterContainer/VBoxContainer" index="1"]
-layout_mode = 2
-
-[node name="NameLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="0"]
-layout_mode = 2
-
-[node name="NameTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="1"]
-layout_mode = 2
-
-[node name="IPAddressLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="2"]
-layout_mode = 2
-
-[node name="IPTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="3"]
-layout_mode = 2
-
-[node name="PortLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="4"]
-layout_mode = 2
-
-[node name="PortTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="5"]
-layout_mode = 2
-
-[node name="HostBtn" parent="Lobby/CenterContainer/VBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="JoinBtn" parent="Lobby/CenterContainer/VBoxContainer" index="3"]
-layout_mode = 2
+[node name="WaitingRoom" parent="." instance=ExtResource("22_on1a5")]
+visible = false
 
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/HostBtn" to="." method="_on_host_btn_pressed"]
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
+[connection signal="pressed" from="WaitingRoom/ReadyBtn" to="." method="_on_ready_btn_pressed"]
 
 [editable path="World/Spaceship/Turrets/Turret"]
 [editable path="World/Spaceship/Turrets/Turret2"]
 [editable path="Lobby"]
+[editable path="WaitingRoom"]

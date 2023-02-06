@@ -1,19 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8bgign6brcj4"]
 
-[ext_resource type="Script" path="res://Attacking/enemy.gd" id="1_5sbx1"]
+[ext_resource type="Script" path="res://Attacking/enemy_2.gd" id="1_82w1w"]
 [ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="2_yqemj"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="3_6lof6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc2jc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26pff"]
 size = Vector2(32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt7lh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8hd"]
 size = Vector2(32, 32)
 
-[node name="Enemy1" type="CharacterBody2D"]
+[node name="Enemy2" type="CharacterBody2D"]
 modulate = Color(0.72549, 0, 0, 1)
 z_index = 1
-script = ExtResource("1_5sbx1")
+collision_layer = 2
+script = ExtResource("1_82w1w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 2.38419e-07)
@@ -24,10 +25,10 @@ texture = ExtResource("2_yqemj")
 script = ExtResource("3_6lof6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_tc2jc")
+shape = SubResource("RectangleShape2D_26pff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_lt7lh")
+shape = SubResource("RectangleShape2D_1r8hd")
 
 [node name="ShipDetection" type="Node2D" parent="."]
 
@@ -62,3 +63,7 @@ collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="WanderTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

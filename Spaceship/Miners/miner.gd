@@ -24,6 +24,7 @@ func _on_area_2d_body_exited(body):
 
 func start_mining():
 	if geode != max_geode_capacity:
+		$AnimatedSprite2D.play("start")
 		$GeodeTimer.start()
 	
 func _ready():
@@ -39,6 +40,7 @@ func grab_geode():
 	synchronizer.set_multiplayer_authority(multiplayer.get_remote_sender_id())
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 	if host.geode_amt < host.max_geode_amt:
+		$AnimatedSprite2D.play("idle")
 		geode -= 1
 		start_mining()
 		host.geode_amt += 1

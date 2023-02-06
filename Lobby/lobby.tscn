@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://8vp1ha4fo81u"]
+[gd_scene load_steps=3 format=3 uid="uid://8vp1ha4fo81u"]
 
+[ext_resource type="Script" path="res://Lobby/lobby.gd" id="1_0b81l"]
 [ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="1_bfagu"]
 
 [node name="Lobby" type="CanvasLayer"]
+script = ExtResource("1_0b81l")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -16,46 +18,48 @@ color = Color(0.156863, 0.156863, 0.156863, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.5
-offset_bottom = 1.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 texture_filter = 2
-offset_left = 109.0
-offset_top = 21.0
-offset_right = 211.0
-offset_bottom = 162.0
+offset_left = 324.0
+offset_top = 65.0
+offset_right = 636.0
+offset_bottom = 474.0
+theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 texture_filter = 1
-offset_right = 102.0
-offset_bottom = 16.0
+offset_right = 312.0
+offset_bottom = 54.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 64
 text = "Lobby"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
-offset_top = 20.0
-offset_right = 102.0
-offset_bottom = 91.0
+offset_top = 69.0
+offset_right = 312.0
+offset_bottom = 261.0
+theme_override_constants/v_separation = 15
 columns = 2
 
 [node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
 texture_filter = 1
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 18.0
+offset_right = 120.0
+offset_bottom = 54.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 64
 text = "Name:"
 
 [node name="NameTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
 texture_filter = 1
-offset_left = 34.0
-offset_right = 102.0
-offset_bottom = 21.0
+offset_left = 124.0
+offset_right = 312.0
+offset_bottom = 54.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 48
 text = "test"
 expand_to_text_length = true
 caret_blink = true
@@ -63,19 +67,21 @@ caret_blink_interval = 0.5
 
 [node name="IPAddressLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
 texture_filter = 1
-offset_top = 27.0
-offset_right = 30.0
-offset_bottom = 43.0
+offset_top = 69.0
+offset_right = 120.0
+offset_bottom = 123.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 64
 text = "IP:"
 
 [node name="IPTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
 texture_filter = 1
-offset_left = 34.0
-offset_top = 25.0
-offset_right = 102.0
-offset_bottom = 46.0
+offset_left = 124.0
+offset_top = 69.0
+offset_right = 312.0
+offset_bottom = 123.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 48
 text = "localhost"
 expand_to_text_length = true
 caret_blink = true
@@ -83,19 +89,21 @@ caret_blink_interval = 0.5
 
 [node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
 texture_filter = 1
-offset_top = 52.0
-offset_right = 30.0
-offset_bottom = 68.0
+offset_top = 138.0
+offset_right = 120.0
+offset_bottom = 192.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 64
 text = "Port:"
 
 [node name="PortTextBox" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
 texture_filter = 1
-offset_left = 34.0
-offset_top = 50.0
-offset_right = 102.0
-offset_bottom = 71.0
+offset_left = 124.0
+offset_top = 138.0
+offset_right = 312.0
+offset_bottom = 192.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 48
 text = "1234"
 expand_to_text_length = true
 caret_blink = true
@@ -103,16 +111,18 @@ caret_blink_interval = 0.5
 
 [node name="HostBtn" type="Button" parent="CenterContainer/VBoxContainer"]
 texture_filter = 1
-offset_top = 95.0
-offset_right = 102.0
-offset_bottom = 116.0
+offset_top = 276.0
+offset_right = 312.0
+offset_bottom = 335.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 64
 text = "Host"
 
 [node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
 texture_filter = 1
-offset_top = 120.0
-offset_right = 102.0
-offset_bottom = 141.0
+offset_top = 350.0
+offset_right = 312.0
+offset_bottom = 409.0
 theme_override_fonts/font = ExtResource("1_bfagu")
+theme_override_font_sizes/font_size = 64
 text = "Join"

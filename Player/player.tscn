@@ -7,97 +7,97 @@
 [ext_resource type="Texture2D" uid="uid://x5xakded4xve" path="res://Assets/platform_metroidvania asset pack v1.01/herochar sprites(new)/herochar_jump_up_anim_strip_3.png" id="4_06124"]
 [ext_resource type="FontFile" uid="uid://ctio1ec7i37wq" path="res://Assets/monogram.ttf" id="4_qppab"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pfej"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyfel"]
 atlas = ExtResource("2_cereu")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xruaa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u02l5"]
 atlas = ExtResource("2_cereu")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_402vb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3hij"]
 atlas = ExtResource("2_cereu")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8r6e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_816yg"]
 atlas = ExtResource("2_cereu")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fygik"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm3dg"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnyy2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8usjb"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2kgu4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm8sj"]
 atlas = ExtResource("3_hjdle")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ao3i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yoxl"]
 atlas = ExtResource("4_06124")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hokka"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rnwo"]
 atlas = ExtResource("4_06124")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkumf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a2uh"]
 atlas = ExtResource("4_06124")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xn7oh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucfe8"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy0l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvuk1"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4oae4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_djrxa"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahre0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iej2r"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5sw2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5fmr"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_65xfx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vepk"]
 atlas = ExtResource("3_xq5sp")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jxwkf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_iaj2c"]
 animations = [{
-"frames": [SubResource("AtlasTexture_1pfej"), SubResource("AtlasTexture_xruaa"), SubResource("AtlasTexture_402vb"), SubResource("AtlasTexture_x8r6e")],
+"frames": [SubResource("AtlasTexture_nyfel"), SubResource("AtlasTexture_u02l5"), SubResource("AtlasTexture_t3hij"), SubResource("AtlasTexture_816yg")],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_fygik"), SubResource("AtlasTexture_cnyy2"), SubResource("AtlasTexture_2kgu4")],
+"frames": [SubResource("AtlasTexture_xm3dg"), SubResource("AtlasTexture_8usjb"), SubResource("AtlasTexture_mm8sj")],
 "loop": true,
 "name": &"jump_down",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_1ao3i"), SubResource("AtlasTexture_hokka"), SubResource("AtlasTexture_fkumf")],
+"frames": [SubResource("AtlasTexture_3yoxl"), SubResource("AtlasTexture_1rnwo"), SubResource("AtlasTexture_4a2uh")],
 "loop": true,
 "name": &"jump_up",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_xn7oh"), SubResource("AtlasTexture_5uy0l"), SubResource("AtlasTexture_4oae4"), SubResource("AtlasTexture_ahre0"), SubResource("AtlasTexture_c5sw2"), SubResource("AtlasTexture_65xfx")],
+"frames": [SubResource("AtlasTexture_ucfe8"), SubResource("AtlasTexture_dvuk1"), SubResource("AtlasTexture_djrxa"), SubResource("AtlasTexture_iej2r"), SubResource("AtlasTexture_w5fmr"), SubResource("AtlasTexture_3vepk")],
 "loop": true,
 "name": &"run",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiwu1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddmu2"]
 size = Vector2(11, 14)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5anjm"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o8rwf"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
@@ -117,14 +117,14 @@ script = ExtResource("1_1r5t6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-frames = SubResource("SpriteFrames_jxwkf")
+frames = SubResource("SpriteFrames_iaj2c")
 animation = &"jump_down"
 speed_scale = 1.2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
-shape = SubResource("RectangleShape2D_eiwu1")
+shape = SubResource("RectangleShape2D_ddmu2")
 
 [node name="Name" type="Label" parent="."]
 anchors_preset = 7
@@ -146,10 +146,10 @@ text = "test"
 horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(1.6, 1.6)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_5anjm")
+replication_config = SubResource("SceneReplicationConfig_o8rwf")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 11)

@@ -38,12 +38,14 @@ func crush_geode():
 	if host.geode_amt >= 1 and (geode+crushed_copper) < max_crushed_ores:
 		host.geode_amt -= 1
 		geode += 1
+		$AnimatedSprite2D.play("start")
 		$CrusherTimer.start()
 
 @rpc(any_peer, call_local, reliable, 1)
 func grab_crushed_ore():
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 	if crushed_copper >= 1:
+		$AnimatedSprite2D.play("idle")
 		host.crushed_copper_amt += 1
 		crushed_copper -= 1
 	print("Crushed: " + str(crushed_copper))

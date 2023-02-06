@@ -18,6 +18,7 @@ func _process(_delta):
 		if(!in_use):
 			active = true
 			host = get_node("/root/Main/Network").get_node(str(multiplayer.get_unique_id()))
+			host.velocity = Vector2.ZERO
 			host.can_move = false
 		else:
 			rpc("turret_deactivate")
