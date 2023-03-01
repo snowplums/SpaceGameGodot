@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://boifnd33ehvt1"]
+
+[ext_resource type="Texture2D" uid="uid://e81l070x7anv" path="res://Assets/Ship Directory/Spritesheet_UI_Flat_Select_01.png" id="1_bkf6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oycaw"]
+atlas = ExtResource("1_bkf6b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ld5"]
+atlas = ExtResource("1_bkf6b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nblh"]
+atlas = ExtResource("1_bkf6b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u378"]
+atlas = ExtResource("1_bkf6b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_al3j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oycaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ld5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nblh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u378")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Selection" type="AnimatedSprite2D"]
+modulate = Color(0, 0.329412, 0, 1)
+sprite_frames = SubResource("SpriteFrames_al3j8")
+autoplay = "default"
+frame_progress = 0.106463

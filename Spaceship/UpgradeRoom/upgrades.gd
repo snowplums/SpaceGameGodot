@@ -34,7 +34,7 @@ func _on_button_pressed():
 
 
 
-@rpc(any_peer, call_local, reliable)
+@rpc("any_peer", "call_local", "reliable")
 func upgrade_turret(_upgrade_val):
 	inv.smelted_copper -= upgrade_price
 	turret.bullet_damage+= upgrade_amount

@@ -10,21 +10,21 @@ var firerooms = ["no","no","no","no","no","no","no","no"]
 var label_array = []
 @onready var doors = get_tree().get_nodes_in_group("Door")
 
-func take_damage(damage):
+func take_damage(hitbox):
+	if multiplayer.get_unique_id() == 1 and hitbox.shotFromTurret == false:
+		rpc("update_damage", hitbox.damage)
+		hitbox.get_parent().bullet_hit()
+
+func take_damage_direct(damage):
 	if multiplayer.get_unique_id() == 1:
-		print("took damage")
 		rpc("update_damage", damage)
 
-@rpc(authority, call_local)
+@rpc("authority", "call_local")
 func update_damage(damage):
-	print(multiplayer.get_remote_sender_id())
 	var new_ship_health = ship_health - damage
 	ship_health = new_ship_health
 	if ship_health < 0:
 		ship_health = 0
-
-
-
 
 func _ready():
 	background()
@@ -43,8 +43,8 @@ func background():
 func randomroom():
 	rng.randomize()
 	random_room = rng.randi_range(1,8)
-	
-	
+
+
 func spreadfire(roomnum):
 	var fire = fire_scene.instantiate()
 	label_array.append(fire)
@@ -86,8 +86,8 @@ func startfire():
 		print("y'all bad")
 	else:
 		startfire()
-		
-		
+
+
 func stopfire():
 	ship_fire_status = "firestopping"
 	for door in doors:
@@ -104,7 +104,7 @@ func stopfire():
 	for i in 8:
 		firerooms[i] = "no"
 
-	
+
 func stopfireend(fire_num):
 	var fire = label_array[fire_num]
 	var fire_size_energy = fire.get_node("firelight").get_energy()

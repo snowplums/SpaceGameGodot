@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var synchronizer = $MultiplayerSynchronizer
-@export var copper = 0
 @export var active = false
 
 var in_radius = false
@@ -20,6 +18,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
+		$AnimationPlayer.play("RESET")
 		in_radius = false
 
 func start_mining():
@@ -35,9 +34,8 @@ func _process(_delta):
 		rpc("grab_geode")
 		#host.can_move = false (if want animation to play make it so player cant move)
 
-@rpc(any_peer, call_local, reliable, 1)
+@rpc("any_peer", "call_local", "reliable", 1)
 func grab_geode():
-	synchronizer.set_multiplayer_authority(multiplayer.get_remote_sender_id())
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 	if host.geode_amt < host.max_geode_amt:
 		$AnimatedSprite2D.play("idle")

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="2_yqemj"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="3_6lof6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_26pff"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh0vm"]
+size = Vector2(34, 34)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8hd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0npwy"]
 size = Vector2(32, 32)
 
 [node name="Enemy2" type="CharacterBody2D"]
@@ -22,13 +22,14 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_yqemj")
 
 [node name="HurtBox" type="Area2D" parent="."]
+input_pickable = false
 script = ExtResource("3_6lof6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_26pff")
+shape = SubResource("RectangleShape2D_nh0vm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1r8hd")
+shape = SubResource("RectangleShape2D_0npwy")
 
 [node name="ShipDetection" type="Node2D" parent="."]
 
@@ -66,4 +67,8 @@ collide_with_bodies = false
 
 [node name="WanderTimer" type="Timer" parent="."]
 
+[node name="SpawnDelayTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

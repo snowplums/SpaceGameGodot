@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b6jpugk1rh22h"]
+[gd_scene load_steps=71 format=3 uid="uid://c05gxn6dckk1y"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
 [ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
@@ -17,11 +17,294 @@
 [ext_resource type="PackedScene" uid="uid://cc4w4bxorccxb" path="res://Spaceship/Miners/miner.tscn" id="13_hjaj2"]
 [ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
 [ext_resource type="PackedScene" uid="uid://b6a84wye8eca3" path="res://Spaceship/UpgradeRoom/upgrades.tscn" id="16_2uy0y"]
+[ext_resource type="Texture2D" uid="uid://omu1h00kdm1f" path="res://Assets/door.png" id="16_cxwmg"]
 [ext_resource type="PackedScene" uid="uid://c6ws56gpdebu5" path="res://Events/power_outage.tscn" id="17_pdwsh"]
+[ext_resource type="PackedScene" uid="uid://cnkw5rtawrytc" path="res://Spaceship/ShipDirectory/ship_control.tscn" id="18_gu2aq"]
 [ext_resource type="Script" path="res://Main/lockdown.gd" id="18_nm41n"]
 [ext_resource type="Texture2D" uid="uid://bnga6hvum01rf" path="res://Assets/buton.png" id="19_8fpvh"]
 [ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="20_uupph"]
 [ext_resource type="PackedScene" uid="uid://ce7iwtjtou3re" path="res://UI/waiting_room.tscn" id="22_on1a5"]
+[ext_resource type="AudioStream" uid="uid://dxvx2dapcdhot" path="res://Assets/Sound Effects/Music/space-ambience-by-alexander-nakarada-from-filmmusic-io.mp3" id="23_lk2wb"]
+[ext_resource type="AudioStream" uid="uid://7d2pn3uud1q5" path="res://Assets/Sound Effects/Music/deep-space-ambiance-48854.mp3" id="24_fqhd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1xcg"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ckr"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc0hu"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4e8v"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxp12"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65svu"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu2w3"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h37b1"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4k6n"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53nu2"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f5g1"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orar0"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjq0j"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1od24"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tg83"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(240, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x86s"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(256, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qv31"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(272, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0vr2"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(288, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr0ij"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(304, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3r0g"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhevo"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdqjr"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdyle"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxfg2"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwme0"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxdtq"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4obyo"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nst1v"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxnav"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql2o8"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os87g"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh7c8"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yxui"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kogj8"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(240, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn3x8"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(256, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c5hp"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(272, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_017k8"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(288, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3w7q"]
+atlas = ExtResource("16_cxwmg")
+region = Rect2(304, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bu33j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1xcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ckr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc0hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4e8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxp12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65svu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu2w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h37b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4k6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53nu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f5g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orar0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjq0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1od24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tg83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x86s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qv31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0vr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr0ij")
+}],
+"loop": true,
+"name": &"door_close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3r0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhevo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdqjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdyle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxfg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwme0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxdtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4obyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nst1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxnav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql2o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os87g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh7c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yxui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kogj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn3x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c5hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_017k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3w7q")
+}],
+"loop": true,
+"name": &"door_open",
+"speed": 5.0
+}]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
 closed = false
@@ -37,7 +320,13 @@ region = Rect2(7, 0, 7, 7)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uk8qe"]
 animations = [{
-"frames": [SubResource("AtlasTexture_7ewyy"), SubResource("AtlasTexture_6afpk")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ewyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6afpk")
+}],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -51,16 +340,22 @@ script = ExtResource("1_wo2cs")
 
 [node name="Network" type="Node" parent="."]
 
+[node name="Objects" type="Node" parent="."]
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Player/player.tscn")
 spawn_path = NodePath("../Network")
 
 [node name="PlayerUI" parent="." instance=ExtResource("2_6lilu")]
 
+[node name="CanvasLayer" parent="PlayerUI" index="0"]
+visible = false
+
 [node name="Wavespawner" type="Node2D" parent="."]
 script = ExtResource("3_krohm")
 
 [node name="WaveTimer" type="Timer" parent="Wavespawner"]
+wait_time = 5.0
 one_shot = true
 
 [node name="World" type="Node2D" parent="."]
@@ -120,7 +415,7 @@ position = Vector2(-310, 32)
 script = ExtResource("5_4ik6t")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Spaceship/ShipHurtBox"]
-polygon = PackedVector2Array(589, 58, 331, 60, 252, 138, -268, 138, -268, 60, -347, 59, -347, -17, -278, -17, -280, -24, -272, -24, -272, -96, 320, -96, 392, -24, 424, -24)
+polygon = PackedVector2Array(593, 59, 330, 59, 251, 138, -268, 139, -268, 59, -348, 59, -348, -16, -278, -16, -278, -26, -268, -26, -268, -96, 323, -95, 392, -26, 422, -26)
 
 [node name="SpaceshipSprite" type="Sprite2D" parent="World/Spaceship"]
 position = Vector2(96, 8)
@@ -159,30 +454,48 @@ scale = Vector2(0.8, 1)
 
 [node name="Door" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-62.5, 37.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door8" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(241.5, 37.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door9" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(401.5, 37.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door5" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-62.5, 117.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door2" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-118.5, 37.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door7" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-270.5, 37.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door6" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-118.5, 117.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door3" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-118.5, -42.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="Door4" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-62.5, -42.5)
+sprite_frames = SubResource("SpriteFrames_bu33j")
+frame = 0
 
 [node name="FireSpawnPoints" type="Node2D" parent="World/Spaceship"]
 
@@ -216,6 +529,9 @@ position = Vector2(-311, 52)
 position = Vector2(27, 38)
 
 [node name="PowerOutage" parent="World/Spaceship" instance=ExtResource("17_pdwsh")]
+
+[node name="ShipControl" parent="World/Spaceship" instance=ExtResource("18_gu2aq")]
+position = Vector2(516.5, 40.5)
 
 [node name="Enemies" type="Node2D" parent="World"]
 
@@ -261,64 +577,64 @@ position = Vector2(352, -552)
 position = Vector2(408, -536)
 
 [node name="Marker2D14" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(464, -512)
+position = Vector2(468, -533)
 
 [node name="Marker2D15" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(528, -488)
+position = Vector2(541, -525)
 
 [node name="Marker2D16" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(576, -456)
+position = Vector2(604, -504)
 
 [node name="Marker2D17" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(616, -424)
+position = Vector2(656, -476)
 
 [node name="Marker2D18" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(656, -392)
+position = Vector2(704, -443)
 
 [node name="Marker2D19" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(696, -360)
+position = Vector2(745, -410)
 
 [node name="Marker2D20" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(736, -336)
+position = Vector2(782, -380)
 
 [node name="Marker2D21" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(768, -296)
+position = Vector2(828, -341)
 
 [node name="Marker2D22" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(808, -256)
+position = Vector2(884, -298)
 
 [node name="Marker2D23" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(848, -216)
+position = Vector2(919, -239)
 
 [node name="Marker2D24" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(872, -168)
+position = Vector2(941, -177)
 
 [node name="Marker2D25" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(896, -112)
+position = Vector2(972, -122)
 
 [node name="Marker2D26" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(920, -56)
+position = Vector2(982, -57)
 
 [node name="Marker2D27" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(936, -8)
+position = Vector2(980, -4)
 
 [node name="Marker2D28" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(944, 32)
+position = Vector2(970, 42)
 
 [node name="Marker2D29" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(920, 80)
+position = Vector2(961, 87)
 
 [node name="Marker2D30" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(912, 128)
+position = Vector2(954, 136)
 
 [node name="Marker2D31" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(912, 176)
+position = Vector2(943, 182)
 
 [node name="Marker2D32" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(904, 224)
+position = Vector2(933, 230)
 
 [node name="Marker2D33" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
-position = Vector2(896, 272)
+position = Vector2(920, 277)
 
 [node name="Marker2D34" type="Marker2D" parent="World/EnemySpawnPoints" groups=["EnemySpawnPoints"]]
 position = Vector2(888, 320)
@@ -412,7 +728,7 @@ position = Vector2(254.56, -38.083)
 script = ExtResource("18_nm41n")
 
 [node name="LockdownButton" type="AnimatedSprite2D" parent="World/lockdown"]
-frames = SubResource("SpriteFrames_uk8qe")
+sprite_frames = SubResource("SpriteFrames_uk8qe")
 
 [node name="PointLight2D" type="PointLight2D" parent="World/lockdown/LockdownButton"]
 color = Color(0.533333, 0.0470588, 0.0745098, 1)
@@ -424,6 +740,14 @@ texture_scale = 0.02
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/lockdown/buttonradius"]
 shape = SubResource("CircleShape2D_t0kvh")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_lk2wb")
+volume_db = -80.0
+
+[node name="AmbientNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_fqhd4")
+volume_db = -19.0
 
 [node name="Lobby" parent="." instance=ExtResource("3_a5uyi")]
 visible = false
@@ -464,10 +788,12 @@ layout_mode = 2
 [node name="WaitingRoom" parent="." instance=ExtResource("22_on1a5")]
 visible = false
 
+[connection signal="timeout" from="Wavespawner/WaveTimer" to="Wavespawner" method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/HostBtn" to="." method="_on_host_btn_pressed"]
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="WaitingRoom/ReadyBtn" to="." method="_on_ready_btn_pressed"]
 
+[editable path="PlayerUI"]
 [editable path="World/Spaceship/Turrets/Turret"]
 [editable path="World/Spaceship/Turrets/Turret2"]
 [editable path="Lobby"]

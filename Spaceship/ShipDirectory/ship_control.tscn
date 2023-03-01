@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnkw5rtawrytc"]
+
+[ext_resource type="Texture2D" uid="uid://c66dci03hhl2d" path="res://Assets/shipui.png" id="1_ph78d"]
+[ext_resource type="PackedScene" uid="uid://bsglqgif0sxqa" path="res://Spaceship/ShipDirectory/ship_directory_ui.tscn" id="3_oyd4h"]
+[ext_resource type="Script" path="res://Spaceship/ShipDirectory/ship_control.gd" id="3_sd1yb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_loqwl"]
+size = Vector2(68, 25)
+
+[sub_resource type="Animation" id="Animation_fu0rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o1rn4"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.2, 1.2, 1.2, 1), Color(1.5, 1.5, 1.5, 1), Color(1.2, 1.2, 1.2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jgnq"]
+_data = {
+"RESET": SubResource("Animation_fu0rt"),
+"pulse": SubResource("Animation_o1rn4")
+}
+
+[node name="ShipControl" type="Sprite2D"]
+texture = ExtResource("1_ph78d")
+script = ExtResource("3_sd1yb")
+
+[node name="DirectoryRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectoryRadius"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_loqwl")
+
+[node name="Ship Directory UI" parent="." instance=ExtResource("3_oyd4h")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_1jgnq")
+}
+
+[connection signal="body_entered" from="DirectoryRadius" to="." method="_on_directory_radius_body_entered"]
+[connection signal="body_exited" from="DirectoryRadius" to="." method="_on_directory_radius_body_exited"]
+[connection signal="pressed" from="Ship Directory UI/GoButton" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="Ship Directory UI/X" to="." method="_on_x_pressed"]
+
+[editable path="Ship Directory UI"]

@@ -16,9 +16,7 @@ func _on_animation_finished():
 		stop()
 
 func door_open():
-	playing = true
 	play("door_open",true)
 	
 func door_close():
-	playing = true
 	play("door_close")

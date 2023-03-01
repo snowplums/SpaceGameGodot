@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjcepwmay0itt"]
+
+[ext_resource type="Texture2D" uid="uid://bokr0abx4qcoi" path="res://Assets/notifyparticle.png" id="1_wejhh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eqp0p"]
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_igwb1"]
+max_value = 1.5
+_data = [Vector2(0, 0.654545), 0.0, 0.0, 0, 0, Vector2(0.715556, 1.37727), 0.0, 0.0, 0, 0, Vector2(1, 0.340909), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_o60c4"]
+offsets = PackedFloat32Array(0, 0.980952)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.724415, 0.727972, 1)
+
+[node name="NotifyParticles" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_eqp0p")
+emitting = false
+amount = 28
+lifetime = 1.65
+one_shot = true
+explosiveness = 0.5
+texture = ExtResource("1_wejhh")
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 210.0
+initial_velocity_max = 410.0
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_min = 1.05
+scale_amount_max = 1.55
+scale_amount_curve = SubResource("Curve_igwb1")
+color = Color(1, 1, 1, 0.721569)
+color_ramp = SubResource("Gradient_o60c4")
+anim_speed_min = 0.5
+anim_speed_max = 0.5

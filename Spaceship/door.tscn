@@ -157,12 +157,126 @@ region = Rect2(304, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bu33j"]
 animations = [{
-"frames": [SubResource("AtlasTexture_c1xcg"), SubResource("AtlasTexture_n7ckr"), SubResource("AtlasTexture_yc0hu"), SubResource("AtlasTexture_t4e8v"), SubResource("AtlasTexture_mxp12"), SubResource("AtlasTexture_65svu"), SubResource("AtlasTexture_tu2w3"), SubResource("AtlasTexture_h37b1"), SubResource("AtlasTexture_q4k6n"), SubResource("AtlasTexture_53nu2"), SubResource("AtlasTexture_1f5g1"), SubResource("AtlasTexture_orar0"), SubResource("AtlasTexture_wjq0j"), SubResource("AtlasTexture_1od24"), SubResource("AtlasTexture_3tg83"), SubResource("AtlasTexture_3x86s"), SubResource("AtlasTexture_2qv31"), SubResource("AtlasTexture_s0vr2"), SubResource("AtlasTexture_lr0ij")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1xcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ckr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc0hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4e8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxp12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65svu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu2w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h37b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4k6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53nu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f5g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orar0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjq0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1od24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tg83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x86s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qv31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0vr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr0ij")
+}],
 "loop": true,
 "name": &"door_close",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_w3r0g"), SubResource("AtlasTexture_yhevo"), SubResource("AtlasTexture_rdqjr"), SubResource("AtlasTexture_gdyle"), SubResource("AtlasTexture_xxfg2"), SubResource("AtlasTexture_iwme0"), SubResource("AtlasTexture_wxdtq"), SubResource("AtlasTexture_4obyo"), SubResource("AtlasTexture_nst1v"), SubResource("AtlasTexture_mxnav"), SubResource("AtlasTexture_ql2o8"), SubResource("AtlasTexture_os87g"), SubResource("AtlasTexture_mh7c8"), SubResource("AtlasTexture_4yxui"), SubResource("AtlasTexture_kogj8"), SubResource("AtlasTexture_qn3x8"), SubResource("AtlasTexture_0c5hp"), SubResource("AtlasTexture_017k8"), SubResource("AtlasTexture_t3w7q")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3r0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhevo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdqjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdyle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxfg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwme0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxdtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4obyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nst1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxnav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql2o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os87g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh7c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yxui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kogj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn3x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c5hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_017k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3w7q")
+}],
 "loop": true,
 "name": &"door_open",
 "speed": 5.0
@@ -175,7 +289,7 @@ size = Vector2(14, 32)
 polygon = PackedVector2Array(8, 17, 8, 23, 2, 23, -2, 23, -8, 23, -8, 17, -8, -17, -2, -17, -2, -23, 2, -23, 2, -17, 8, -17)
 
 [node name="Door" type="AnimatedSprite2D"]
-frames = SubResource("SpriteFrames_bu33j")
+sprite_frames = SubResource("SpriteFrames_bu33j")
 animation = &"door_open"
 frame = 10
 speed_scale = 8.0

@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://h5br6acjkjsr"]
+
+[ext_resource type="Script" path="res://Bullet/Bullet.gd" id="1_t1a5d"]
+[ext_resource type="Texture2D" uid="uid://c4jwoh42c43nx" path="res://Assets/bullet.png" id="1_tbipn"]
+[ext_resource type="PackedScene" uid="uid://de1rsb7kebbvj" path="res://Bullet/BulletSmoke.tscn" id="2_ab5st"]
+[ext_resource type="PackedScene" uid="uid://doj2buexpci6y" path="res://Bullet/BulletImpact.tscn" id="3_cfsi5"]
+[ext_resource type="PackedScene" uid="uid://bxv271058besd" path="res://UI/trail_2d.tscn" id="5_qwb1q"]
+[ext_resource type="Script" path="res://Attacking/HitBox.gd" id="6_1uak4"]
+[ext_resource type="Texture2D" uid="uid://dr6mqvxbha5ia" path="res://Assets/godot-light-texture-oval-transparent-png-937587.png" id="7_kumtk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e757j"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_2j6yc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_joes8"]
+resource_name = "default"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81da3"]
+_data = {
+"RESET": SubResource("Animation_2j6yc"),
+"default": SubResource("Animation_joes8")
+}
+
+[sub_resource type="Curve" id="Curve_f1l4r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3lkjj"]
+radius = 6.0
+height = 18.0
+
+[node name="Bullet" type="CharacterBody2D" groups=["bullet"]]
+z_index = 1
+collision_layer = 0
+script = ExtResource("1_t1a5d")
+smokeScene = ExtResource("2_ab5st")
+bulletImpact = ExtResource("3_cfsi5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tbipn")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e757j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_81da3")
+}
+
+[node name="Trail2D" parent="." instance=ExtResource("5_qwb1q")]
+show_behind_parent = true
+width = 5.0
+width_curve = SubResource("Curve_f1l4r")
+default_color = Color(1, 0.435294, 0.364706, 1)
+length = 10
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("6_1uak4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3lkjj")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.301961, 0.235294, 1)
+energy = 0.5
+texture = ExtResource("7_kumtk")
+texture_scale = 0.04
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

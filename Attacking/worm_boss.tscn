@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://7csyvi5nd4rj"]
+
+[ext_resource type="Texture2D" uid="uid://dr6e8qu8bi08w" path="res://Assets/Enemies/wormboss.png" id="1_wyrcq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qn78u"]
+radius = 49.0
+height = 630.0
+
+[node name="WormBoss" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wyrcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qn78u")

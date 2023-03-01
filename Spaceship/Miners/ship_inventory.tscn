@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfo2ett4iitp4"]
+[gd_scene load_steps=7 format=3 uid="uid://cfo2ett4iitp4"]
 
 [ext_resource type="Script" path="res://Spaceship/Miners/ship_inventory.gd" id="1_4ieof"]
 [ext_resource type="Texture2D" uid="uid://dmgfc3sqja6sv" path="res://Assets/inventory.png" id="2_t3koc"]
@@ -6,18 +6,63 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wff8k"]
 size = Vector2(64, 45)
 
+[sub_resource type="Animation" id="Animation_2533t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.2, 1.2, 1.2, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l7uqs"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.2, 1.2, 1.2, 1), Color(1.5, 1.5, 1.5, 1), Color(1.2, 1.2, 1.2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gddss"]
+_data = {
+"RESET": SubResource("Animation_2533t"),
+"pulse": SubResource("Animation_l7uqs")
+}
+
 [node name="ship_inventory" type="Node2D"]
 z_index = 1
 script = ExtResource("1_4ieof")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1.2, 1.2, 1.2, 1)
 texture = ExtResource("2_t3koc")
 
 [node name="InventoryRadius" type="Area2D" parent="."]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryRadius"]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_wff8k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gddss")
+}
 
 [connection signal="body_entered" from="InventoryRadius" to="." method="_on_inventory_radius_body_entered"]
 [connection signal="body_exited" from="InventoryRadius" to="." method="_on_inventory_radius_body_exited"]

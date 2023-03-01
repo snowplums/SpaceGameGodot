@@ -1,35 +1,291 @@
-[gd_scene load_steps=6 format=3 uid="uid://y6palycxok7r"]
+[gd_scene load_steps=26 format=3 uid="uid://y6palycxok7r"]
 
-[ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="1_0ri43"]
 [ext_resource type="Script" path="res://Attacking/enemy.gd" id="1_4r6j8"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="1_vf2el"]
+[ext_resource type="Texture2D" uid="uid://uo0ghis45d2v" path="res://Assets/drone.png" id="2_s0spo"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="3_ovcyx"]
+[ext_resource type="Texture2D" uid="uid://c3h4io4uac0bk" path="res://Assets/Bullet/debris.png" id="3_xl042"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g52ew"]
-size = Vector2(32, 32)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8kkt2"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x2c25"]
-radius = 16.0
+[sub_resource type="Gradient" id="Gradient_6cde2"]
+colors = PackedColorArray(1, 1, 1, 1, 0.629675, 0.629675, 0.629675, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qn01g"]
+gradient = SubResource("Gradient_6cde2")
+
+[sub_resource type="Curve" id="Curve_vrq11"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.241071, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xrbhv"]
+curve = SubResource("Curve_vrq11")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cpp80"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_disable_z = true
+spread = 25.0
+gravity = Vector3(0, 0, 0)
+angular_velocity_max = 25.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 25.0
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_xrbhv")
+color = Color(0.898039, 0.898039, 0.898039, 1)
+color_ramp = SubResource("GradientTexture1D_qn01g")
+anim_offset_max = 1.0
+
+[sub_resource type="Animation" id="Animation_j1kg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uq3o3"]
+resource_name = "drill_in"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_vr83p"]
+resource_name = "drill_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [43, 44, 45, 46, 47]
+}
+
+[sub_resource type="Animation" id="Animation_a3bps"]
+resource_name = "drilling"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_fi44e"]
+resource_name = "drop"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_bl1mm"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_m7rq7"]
+resource_name = "land"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_kuocw"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btlfb"]
+_data = {
+"RESET": SubResource("Animation_j1kg6"),
+"drill_in": SubResource("Animation_uq3o3"),
+"drill_out": SubResource("Animation_vr83p"),
+"drilling": SubResource("Animation_a3bps"),
+"drop": SubResource("Animation_fi44e"),
+"idle": SubResource("Animation_bl1mm"),
+"land": SubResource("Animation_m7rq7"),
+"walk": SubResource("Animation_kuocw")
+}
+
+[sub_resource type="Animation" id="Animation_ncgeb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2s73c"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.431373, 0.34902, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orq04"]
+_data = {
+"RESET": SubResource("Animation_ncgeb"),
+"hit": SubResource("Animation_2s73c")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41j7d"]
+size = Vector2(24, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t48d8"]
+radius = 7.0
 
 [node name="Enemy1" type="CharacterBody2D"]
 z_index = 1
-collision_layer = 2
+collision_layer = 0
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_4r6j8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.57628e-07, 0)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_0ri43")
+position = Vector2(0, -9)
+texture = ExtResource("2_s0spo")
+hframes = 48
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8kkt2")
+process_material = SubResource("ParticleProcessMaterial_cpp80")
+texture = ExtResource("3_xl042")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "drop"
+libraries = {
+"": SubResource("AnimationLibrary_btlfb")
+}
+
+[node name="DamagePlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_orq04")
+}
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="EyeLight" type="PointLight2D" parent="Lights"]
+position = Vector2(2, 9.53674e-07)
+scale = Vector2(1.36719, 1.36719)
+enabled = false
+color = Color(0.858824, 0.231373, 0, 1)
+energy = 1.25
+texture = ExtResource("3_ovcyx")
+texture_scale = 0.01
+
+[node name="SirenLight" type="PointLight2D" parent="Lights"]
+position = Vector2(2.5, -6.5)
+scale = Vector2(0.488281, 0.488281)
+enabled = false
+color = Color(0.835294, 0.0117647, 0, 1)
+energy = 1.5
+texture = ExtResource("3_ovcyx")
+texture_scale = 0.01
 
 [node name="HurtBox" type="Area2D" parent="."]
+input_pickable = false
 script = ExtResource("1_vf2el")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_g52ew")
+shape = SubResource("RectangleShape2D_41j7d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_x2c25")
+shape = SubResource("CircleShape2D_t48d8")
 
 [node name="ShipDetection" type="Node2D" parent="."]
 
@@ -124,4 +380,10 @@ collide_with_bodies = false
 
 [node name="WanderTimer" type="Timer" parent="."]
 
+[node name="SpawnDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

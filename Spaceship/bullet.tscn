@@ -4,15 +4,17 @@
 [ext_resource type="Script" path="res://Spaceship/bullet.gd" id="1_i6ye4"]
 [ext_resource type="Script" path="res://Attacking/HitBox.gd" id="3_l6iho"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_17682"]
-size = Vector2(10, 10)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqngr"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17682"]
+size = Vector2(10, 10)
+
 [node name="Bullet" type="RigidBody2D"]
 z_index = 1
+collision_layer = 0
 gravity_scale = 0.0
+continuous_cd = 1
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_i6ye4")
@@ -20,13 +22,13 @@ script = ExtResource("1_i6ye4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1adsg")
 
-[node name="HitBox" type="Area2D" parent="Sprite2D"]
-script = ExtResource("3_l6iho")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
-shape = SubResource("RectangleShape2D_17682")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cqngr")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_l6iho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_17682")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

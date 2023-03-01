@@ -6,7 +6,7 @@ extends Node2D
 
 var in_use = false
 var active = false
-const bullet = preload("res://spaceship/bullet.tscn")
+const bullet = preload("res://Bullet/Bullet.tscn")
 var can_fire = true
 var in_radius = false
 var host = null
@@ -18,16 +18,19 @@ func _process(_delta):
 		if(!in_use):
 			active = true
 			host = get_node("/root/Main/Network").get_node(str(multiplayer.get_unique_id()))
+			host.on_turret = true
 			host.velocity = Vector2.ZERO
 			host.can_move = false
 		else:
 			rpc("turret_deactivate")
 			host.can_move = true
+			host.on_turret = false
 			print("E")
 
 	if(in_use and active and Input.is_action_just_pressed("E")):
 		rpc("turret_deactivate")
 		host.can_move = true
+		host.on_turret = false
 		print("E")
 	if in_radius and active:
 		rpc("turret_active", $Sprite2D.rotation)
@@ -44,13 +47,13 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		in_radius = false
 
-@rpc(any_peer, call_local)
+@rpc("any_peer", "call_local")
 func turret_active(turret_rotation):
 	in_use = true
 	$Sprite2D.global_rotation = turret_rotation
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
 
-@rpc(any_peer, call_local, reliable)
+@rpc("any_peer", "call_local", "reliable")
 func turret_deactivate():
 	in_use = false
 	host = get_node("/root/Main/Network").get_node(str(multiplayer.get_remote_sender_id()))
@@ -69,11 +72,13 @@ func turret():
 			await get_tree().create_timer(fire_rate).timeout
 			can_fire = true
 
-@rpc(any_peer, call_local)
+@rpc("any_peer", "call_local")
 func turret_fire():
+	$ShootNoise.pitch_scale = randf_range(0.9, 1.1)
+	$ShootNoise.play()
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.position = get_global_position()
-	bullet_instance.rotation = rotation
+	bullet_instance.rotation = get_node("Sprite2D").rotation
 	bullet_instance.set_damage(bullet_damage)
-	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(get_node("Sprite2D").rotation), Vector2())
-	get_node("/root/Main/Network").add_child(bullet_instance)
+	bullet_instance.direction = (get_global_mouse_position() - global_position).normalized()
+	get_node("/root/Main/Objects").add_child(bullet_instance)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://3bme60i5a1pi"]
+[gd_scene load_steps=48 format=3 uid="uid://3bme60i5a1pi"]
 
 [ext_resource type="Script" path="res://Spaceship/Miners/crusher.gd" id="1_qiv1r"]
 [ext_resource type="Texture2D" uid="uid://cmreynwhtryl3" path="res://Assets/rockcrusher.png" id="2_h2hy2"]
@@ -165,12 +165,132 @@ region = Rect2(1248, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_woqxw"]
 animations = [{
-"frames": [SubResource("AtlasTexture_bp57f")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp57f")
+}],
 "loop": false,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_8daeh"), SubResource("AtlasTexture_ce2ct"), SubResource("AtlasTexture_hedb8"), SubResource("AtlasTexture_efmeu"), SubResource("AtlasTexture_1qlyt"), SubResource("AtlasTexture_tjvor"), SubResource("AtlasTexture_8s76j"), SubResource("AtlasTexture_ii6cc"), SubResource("AtlasTexture_ghwdk"), SubResource("AtlasTexture_6hury"), SubResource("AtlasTexture_krft4"), SubResource("AtlasTexture_psb05"), SubResource("AtlasTexture_imebf"), SubResource("AtlasTexture_ukjcg"), SubResource("AtlasTexture_h5pbl"), SubResource("AtlasTexture_aj775"), SubResource("AtlasTexture_kbhb6"), SubResource("AtlasTexture_g7hmu"), SubResource("AtlasTexture_o3j2f"), SubResource("AtlasTexture_7n1wa"), SubResource("AtlasTexture_yjoaj"), SubResource("AtlasTexture_utnvh"), SubResource("AtlasTexture_w02qe"), SubResource("AtlasTexture_jrp6q"), SubResource("AtlasTexture_iu3rn"), SubResource("AtlasTexture_87ili"), SubResource("AtlasTexture_caxdc"), SubResource("AtlasTexture_n1p0e"), SubResource("AtlasTexture_s04n1"), SubResource("AtlasTexture_wuxsy"), SubResource("AtlasTexture_ppb0q"), SubResource("AtlasTexture_lt602"), SubResource("AtlasTexture_m4h5u"), SubResource("AtlasTexture_ur8sc"), SubResource("AtlasTexture_k3jrb"), SubResource("AtlasTexture_ynjah"), SubResource("AtlasTexture_5qobm"), SubResource("AtlasTexture_x16do"), SubResource("AtlasTexture_ddxm1")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8daeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce2ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hedb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efmeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qlyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjvor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s76j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii6cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghwdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hury")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krft4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psb05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imebf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukjcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5pbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj775")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbhb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7hmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3j2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n1wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjoaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utnvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w02qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrp6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu3rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87ili")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caxdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1p0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s04n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuxsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppb0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt602")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4h5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur8sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3jrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynjah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qobm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x16do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddxm1")
+}],
 "loop": false,
 "name": &"start",
 "speed": 5.0
@@ -179,18 +299,56 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp5rd"]
 size = Vector2(30, 37)
 
+[sub_resource type="Animation" id="Animation_spuvf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h761g"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.2, 1.2, 1.2, 1), Color(1.5, 1.5, 1.5, 1), Color(1.2, 1.2, 1.2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gef26"]
+_data = {
+"RESET": SubResource("Animation_spuvf"),
+"pulse": SubResource("Animation_h761g")
+}
+
 [node name="Crusher" type="Node2D"]
 z_index = 1
 script = ExtResource("1_qiv1r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-frames = SubResource("SpriteFrames_woqxw")
+sprite_frames = SubResource("SpriteFrames_woqxw")
 animation = &"idle"
 speed_scale = 1.5
-playing = true
 
 [node name="CrusherRadius" type="Area2D" parent="."]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrusherRadius"]
 position = Vector2(0, -2.5)
@@ -199,6 +357,11 @@ shape = SubResource("RectangleShape2D_vp5rd")
 [node name="CrusherTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gef26")
+}
 
 [connection signal="body_entered" from="CrusherRadius" to="." method="_on_crusher_radius_body_entered"]
 [connection signal="body_exited" from="CrusherRadius" to="." method="_on_crusher_radius_body_exited"]

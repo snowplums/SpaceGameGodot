@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj6q3pgtglo10"]
+
+[ext_resource type="Texture2D" uid="uid://d2617mhv7qqms" path="res://Assets/Ship Directory/picked.png" id="1_m3t55"]
+
+[node name="Picked" type="Sprite2D"]
+modulate = Color(0, 0.329412, 0, 1)
+texture = ExtResource("1_m3t55")
