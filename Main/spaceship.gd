@@ -91,6 +91,7 @@ func startfire():
 func stopfire():
 	ship_fire_status = "firestopping"
 	for door in doors:
+		print(door)
 		door.door_close()
 	await get_tree().create_timer(1).timeout
 	for n in label_array.size():

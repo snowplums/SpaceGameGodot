@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://c05gxn6dckk1y"]
+[gd_scene load_steps=31 format=3 uid="uid://c05gxn6dckk1y"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
 [ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://cc4w4bxorccxb" path="res://Spaceship/Miners/miner.tscn" id="13_hjaj2"]
 [ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
 [ext_resource type="PackedScene" uid="uid://b6a84wye8eca3" path="res://Spaceship/UpgradeRoom/upgrades.tscn" id="16_2uy0y"]
-[ext_resource type="Texture2D" uid="uid://omu1h00kdm1f" path="res://Assets/door.png" id="16_cxwmg"]
 [ext_resource type="PackedScene" uid="uid://c6ws56gpdebu5" path="res://Events/power_outage.tscn" id="17_pdwsh"]
 [ext_resource type="PackedScene" uid="uid://cnkw5rtawrytc" path="res://Spaceship/ShipDirectory/ship_control.tscn" id="18_gu2aq"]
 [ext_resource type="Script" path="res://Main/lockdown.gd" id="18_nm41n"]
@@ -26,285 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://ce7iwtjtou3re" path="res://UI/waiting_room.tscn" id="22_on1a5"]
 [ext_resource type="AudioStream" uid="uid://dxvx2dapcdhot" path="res://Assets/Sound Effects/Music/space-ambience-by-alexander-nakarada-from-filmmusic-io.mp3" id="23_lk2wb"]
 [ext_resource type="AudioStream" uid="uid://7d2pn3uud1q5" path="res://Assets/Sound Effects/Music/deep-space-ambiance-48854.mp3" id="24_fqhd4"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1xcg"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7ckr"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yc0hu"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4e8v"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(64, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxp12"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(80, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_65svu"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(96, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tu2w3"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(112, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h37b1"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(128, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4k6n"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(144, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_53nu2"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(160, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1f5g1"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(176, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_orar0"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(192, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjq0j"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(208, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1od24"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(224, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3tg83"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(240, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3x86s"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(256, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2qv31"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(272, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0vr2"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(288, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lr0ij"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(304, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3r0g"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhevo"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdqjr"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdyle"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(64, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxfg2"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(80, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iwme0"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(96, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxdtq"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(112, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4obyo"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(128, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nst1v"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(144, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxnav"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(160, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ql2o8"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(176, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_os87g"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(192, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mh7c8"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(208, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4yxui"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(224, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kogj8"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(240, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn3x8"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(256, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0c5hp"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(272, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_017k8"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(288, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3w7q"]
-atlas = ExtResource("16_cxwmg")
-region = Rect2(304, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bu33j"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c1xcg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7ckr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yc0hu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t4e8v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mxp12")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_65svu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tu2w3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h37b1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q4k6n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_53nu2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1f5g1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_orar0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wjq0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1od24")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3tg83")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3x86s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2qv31")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s0vr2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lr0ij")
-}],
-"loop": true,
-"name": &"door_close",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w3r0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yhevo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rdqjr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdyle")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xxfg2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iwme0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wxdtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4obyo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nst1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mxnav")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ql2o8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_os87g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mh7c8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4yxui")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kogj8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qn3x8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0c5hp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_017k8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3w7q")
-}],
-"loop": true,
-"name": &"door_open",
-"speed": 5.0
-}]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
 closed = false
@@ -454,48 +174,30 @@ scale = Vector2(0.8, 1)
 
 [node name="Door" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-62.5, 37.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door8" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(241.5, 37.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door9" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(401.5, 37.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door5" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-62.5, 117.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door2" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-118.5, 37.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door7" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-270.5, 37.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door6" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-118.5, 117.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door3" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-118.5, -42.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="Door4" parent="World/Spaceship/Doors_Platforms" groups=["Door"] instance=ExtResource("13_r1bk3")]
 position = Vector2(-62.5, -42.5)
-sprite_frames = SubResource("SpriteFrames_bu33j")
-frame = 0
 
 [node name="FireSpawnPoints" type="Node2D" parent="World/Spaceship"]
 
@@ -743,7 +445,7 @@ shape = SubResource("CircleShape2D_t0kvh")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_lk2wb")
-volume_db = -80.0
+volume_db = -25.0
 
 [node name="AmbientNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_fqhd4")
@@ -751,39 +453,6 @@ volume_db = -19.0
 
 [node name="Lobby" parent="." instance=ExtResource("3_a5uyi")]
 visible = false
-
-[node name="VBoxContainer" parent="Lobby/CenterContainer" index="0"]
-layout_mode = 2
-
-[node name="Label" parent="Lobby/CenterContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="GridContainer" parent="Lobby/CenterContainer/VBoxContainer" index="1"]
-layout_mode = 2
-
-[node name="NameLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="0"]
-layout_mode = 2
-
-[node name="NameTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="1"]
-layout_mode = 2
-
-[node name="IPAddressLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="2"]
-layout_mode = 2
-
-[node name="IPTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="3"]
-layout_mode = 2
-
-[node name="PortLabel" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="4"]
-layout_mode = 2
-
-[node name="PortTextBox" parent="Lobby/CenterContainer/VBoxContainer/GridContainer" index="5"]
-layout_mode = 2
-
-[node name="HostBtn" parent="Lobby/CenterContainer/VBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="JoinBtn" parent="Lobby/CenterContainer/VBoxContainer" index="3"]
-layout_mode = 2
 
 [node name="WaitingRoom" parent="." instance=ExtResource("22_on1a5")]
 visible = false

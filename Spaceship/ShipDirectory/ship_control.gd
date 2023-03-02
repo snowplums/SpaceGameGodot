@@ -32,12 +32,12 @@ func _on_x_pressed():
 
 func _on_go_button_pressed():
 	if $"Ship Directory UI"/TextureButton/Picked.visible == true:
-		print("earth")
+		get_node("/root/Main/Wavespawner").current_planet = 1 #Earth-like
 	elif $"Ship Directory UI"/TextureButton2/Picked.visible == true:
-		print("mars")
+		get_node("/root/Main/Wavespawner").current_planet = 2 #Mars
 	elif $"Ship Directory UI"/TextureButton3/Picked.visible == true:
-		print("ice")
+		get_node("/root/Main/Wavespawner").current_planet = 5 #Ice planet
 	elif $"Ship Directory UI"/TextureButton4/Picked.visible == true:
-		print("gas giant")
+		get_node("/root/Main/Wavespawner").current_planet = 4 #Gas Giant
 	elif $"Ship Directory UI"/TextureButton5/Picked.visible == true:
-		print("moon")
+		get_node("/root/Main/Wavespawner").current_planet = 3 #Moon

@@ -7,12 +7,14 @@ extends Node2D
 
 @export var enemy_1_cost = 1
 @export var enemy_2_cost = 2
-@export var enemy_3_cost = 2
+@export var enemy_3_cost = 3
 
 @onready var spawn_array = get_tree().get_nodes_in_group("EnemySpawnPoints")
 @onready var wavetimer = $WaveTimer
 @export var spawnposition = Vector2(100,100)
 var spawn_delay = 0.0
+
+var current_planet = 1 #1 is Gaia (tropical wet), #2 is Piyama (mars), #3 is Myria (moon), #4 is Odradus (gas giant), #5 is Cryovia (ice)
 
 var wave_number = 0
 var max_wave_credits = 5
@@ -37,6 +39,16 @@ func choose_spawn():
 func spawn_enemy_all(enemy_num):
 	Global.enemies_left += 1
 	var enemy_instance = enemy_type[enemy_num-1].instantiate()
+	if current_planet == 1:
+		enemy_instance.health += 10
+	elif current_planet == 2:
+		enemy_instance.health += 20
+	elif current_planet == 3:
+		enemy_instance.health += 30
+	elif current_planet == 4:
+		enemy_instance.health += 40
+	elif current_planet == 5:
+		enemy_instance.health += 50
 	enemy_instance.position = spawnposition
 	enemy_instance.spawn_delay = spawn_delay
 	get_node("/root/Main/Objects").add_child(enemy_instance)

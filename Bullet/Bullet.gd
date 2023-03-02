@@ -23,7 +23,6 @@ func _physics_process(delta):
 	velocity = direction * speed * delta
 	var collisionResult = move_and_collide(velocity)
 	if collisionResult != null:
-		print(collisionResult.get_collider())
 		$Trail2D.trail = false
 		AudioManager.play_sound(global_position, "HurtSound")
 		var smoke = smokeScene.instantiate() as GPUParticles2D

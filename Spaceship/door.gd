@@ -1,22 +1,18 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
 
 func _ready():
-	$StaticBody2D/CollisionShape2D.disabled = true
 	frame = 0
-	
-func _on_animation_finished():
-	if animation == "door_close":
-		frame = 19
-		$StaticBody2D/CollisionShape2D.disabled = false
-		stop()
-	if animation == "door_open":
-		frame = 0
-		$StaticBody2D/CollisionShape2D.disabled = true
-		stop()
+	$StaticBody2D/CollisionShape2D.disabled = true
 
 func door_open():
-	play("door_open",true)
+	$AnimationPlayer.play("door_open")
 	
 func door_close():
-	play("door_close")
+	$AnimationPlayer.play("door_close")
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "door_close":
+		$StaticBody2D/CollisionShape2D.disabled = false
+	elif anim_name == "door_open":
+		$StaticBody2D/CollisionShape2D.disabled = true

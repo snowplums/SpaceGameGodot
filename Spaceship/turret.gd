@@ -25,13 +25,11 @@ func _process(_delta):
 			rpc("turret_deactivate")
 			host.can_move = true
 			host.on_turret = false
-			print("E")
 
 	if(in_use and active and Input.is_action_just_pressed("E")):
 		rpc("turret_deactivate")
 		host.can_move = true
 		host.on_turret = false
-		print("E")
 	if in_radius and active:
 		rpc("turret_active", $Sprite2D.rotation)
 	turret()
