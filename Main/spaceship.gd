@@ -1,6 +1,6 @@
 extends Node2D
 
-var ship_health = 0
+var ship_health = 100
 var fire_scene = preload("res://Spaceship/fire.tscn")
 var firespawnpoint
 var rng = RandomNumberGenerator.new()
