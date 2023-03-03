@@ -49,13 +49,6 @@ func hackevent():
 	if n == 100:
 		print("we should kill player here")
 		hackstatus = false
-		get_node("0").emitting = false
-		get_node("1").emitting = false
-		$martincabello.visible = false
-		$speaker.visible = false
-		$orangedot.visible = false
-		$text.visible = false
-		$darken.visible = false
 		get_node("/root/Main/World/Spaceship").ship_hack_status = false
 
 #ends the hack function. Called by directly calling the function
