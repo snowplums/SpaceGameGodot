@@ -60,8 +60,8 @@ func background():
 		get_node("lightswitch/switch1light").visible = false
 		get_node("lightswitch2/switch2light").visible = false
 		get_node("lightswitch3/switch3light").visible = false
+		await get_tree().create_timer(30).timeout
 		get_node("/root/Main/World/Spaceship").ship_dark_status = false
-		await get_tree().create_timer(20).timeout
 	background()
 		
 		

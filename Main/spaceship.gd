@@ -44,15 +44,15 @@ func background():
 			if shipstatusnum <= 3 and ship_dark_status == false:
 				ship_dark_status = true
 				get_node("/root/Main/World/Spaceship/PowerOutage").darkevent()
-				await get_tree().create_timer(10).timeout
+				await get_tree().create_timer(20).timeout
 			elif shipstatusnum == 4 and ship_hack_status == false:
 				ship_hack_status = true
 				get_node("/root/Main/World/hackevent").hackevent()
-				await get_tree().create_timer(10).timeout
+				await get_tree().create_timer(20).timeout
 			elif shipstatusnum > 4 and ship_fire_status == "not":
 				ship_fire_status = "firespreading"
 				startfire()
-				await get_tree().create_timer(10).timeout
+				await get_tree().create_timer(20).timeout
 	background()
 
 func randomroom():

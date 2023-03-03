@@ -49,6 +49,14 @@ func hackevent():
 	if n == 100:
 		print("we should kill player here")
 		hackstatus = false
+		get_node("0").emitting = false
+		get_node("1").emitting = false
+		$martincabello.visible = false
+		$speaker.visible = false
+		$orangedot.visible = false
+		$text.visible = false
+		$darken.visible = false
+		get_node("/root/Main/World/Spaceship").ship_hack_status = false
 
 #ends the hack function. Called by directly calling the function
 func hackend():
@@ -82,7 +90,7 @@ func hackend():
 	await get_tree().create_timer(1).timeout
 	var TWDarken = create_tween()
 	TWDarken.tween_property(get_node("darken"),"self_modulate", Color(0, 0, 0, 0), 2)
-	await get_tree().create_timer(20).timeout
+	await get_tree().create_timer(30).timeout
 	get_node("/root/Main/World/Spaceship").ship_hack_status = false
 	
 	

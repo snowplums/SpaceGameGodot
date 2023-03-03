@@ -1,16 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://ci52wdjwr3f5k"]
+[gd_scene load_steps=21 format=3 uid="uid://de0i85iqn8228"]
 
 [ext_resource type="Script" path="res://hackevent.gd" id="1_0ckum"]
-[ext_resource type="FontFile" path="res://Assets/FallingSkyBlkObl.otf" id="1_xpbqx"]
-[ext_resource type="Texture2D" path="res://Assets/row-1-column-2.png" id="3_j5b8n"]
-[ext_resource type="Texture2D" path="res://Assets/pixil-frame-0 (1).png" id="4_bcamj"]
+[ext_resource type="FontFile" uid="uid://bgc2cit8lbjg0" path="res://Assets/FallingSkyBlkObl.otf" id="1_xpbqx"]
+[ext_resource type="Texture2D" uid="uid://c8mugrudo2s8c" path="res://Assets/row-1-column-2.png" id="3_j5b8n"]
+[ext_resource type="Texture2D" uid="uid://bthl2n1g2x3a4" path="res://Assets/pixil-frame-0 (1).png" id="4_bcamj"]
 [ext_resource type="Texture2D" uid="uid://cvb3ybmi0yi7c" path="res://Assets/Solid_white.png" id="4_hvsuf"]
-[ext_resource type="Texture2D" path="res://Assets/row-1-column-1 (1).png" id="5_7petd"]
-[ext_resource type="Texture2D" path="res://Assets/3sbe9js4vy241.jpg" id="6_yt5n2"]
-[ext_resource type="Texture2D" path="res://Assets/clipart4520272.png" id="7_kiwce"]
-[ext_resource type="Texture2D" path="res://Assets/[CITYPNG.COM]PNG Orange Circle - 1157x1157.png" id="8_kg5hy"]
+[ext_resource type="Texture2D" uid="uid://dkkjf8mlutrjx" path="res://Assets/row-1-column-1 (1).png" id="5_7petd"]
+[ext_resource type="Texture2D" uid="uid://drbiu3r14p11a" path="res://Assets/3sbe9js4vy241.jpg" id="6_yt5n2"]
+[ext_resource type="Texture2D" uid="uid://cepqiusm8xrfm" path="res://Assets/clipart4520272.png" id="7_kiwce"]
+[ext_resource type="Texture2D" uid="uid://c258lhopndial" path="res://Assets/[CITYPNG.COM]PNG Orange Circle - 1157x1157.png" id="8_kg5hy"]
 [ext_resource type="Texture2D" uid="uid://d4mjko1pipbk" path="res://Assets/image.png" id="9_g4f60"]
-[ext_resource type="Texture2D" path="res://Assets/pixil-frame-0.png" id="10_mpk82"]
+[ext_resource type="Texture2D" uid="uid://htq2eg3ax7v8" path="res://Assets/pixil-frame-0.png" id="10_mpk82"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3obw3"]
 font = ExtResource("1_xpbqx")
@@ -184,6 +184,7 @@ position = Vector2(499, 3)
 emitting = false
 amount = 500
 lifetime = 10.0
+local_coords = true
 texture = ExtResource("4_bcamj")
 emission_shape = 3
 emission_rect_extents = Vector2(500, 1)

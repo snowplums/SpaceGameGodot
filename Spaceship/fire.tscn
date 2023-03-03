@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyoelru6b35tf"]
+[gd_scene load_steps=12 format=3 uid="uid://dyoelru6b35tf"]
 
 [ext_resource type="Script" path="res://Spaceship/fire.gd" id="1_qs4fo"]
 [ext_resource type="Texture2D" uid="uid://b5kef4dsw2ci8" path="res://Assets/Smoke &amp; Fire.png" id="2_xit87"]
 [ext_resource type="Texture2D" uid="uid://cvb3ybmi0yi7c" path="res://Assets/Solid_white.png" id="3_bibhm"]
-[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="4_yn3py"]
+[ext_resource type="Texture2D" uid="uid://dr6mqvxbha5ia" path="res://Assets/godot-light-texture-oval-transparent-png-937587.png" id="4_1r2ur"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y4ghd"]
 particles_animation = true
@@ -26,7 +26,7 @@ max_value = 200.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.985916, -112.727), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dygje"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b2igk"]
 light_mode = 1
 
 [sub_resource type="Curve" id="Curve_6g42a"]
@@ -36,9 +36,6 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_h273f"]
 offsets = PackedFloat32Array(0, 0.287129, 1)
 colors = PackedColorArray(0.796078, 0.541176, 0, 0.501961, 0.713726, 0.137255, 0, 0.501961, 0, 0, 0, 1)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dn1ps"]
-light_mode = 1
 
 [node name="firemain" type="Node2D"]
 z_index = 3
@@ -66,7 +63,7 @@ color_ramp = SubResource("Gradient_r64nd")
 anim_speed_curve = SubResource("Curve_muvu1")
 
 [node name="fire" type="CPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_dygje")
+material = SubResource("CanvasItemMaterial_b2igk")
 scale = Vector2(1.4, 1.4)
 amount = 500
 preprocess = 2.0
@@ -87,10 +84,8 @@ scale_amount_curve = SubResource("Curve_6g42a")
 color_ramp = SubResource("Gradient_h273f")
 
 [node name="firelight" type="PointLight2D" parent="."]
-material = SubResource("CanvasItemMaterial_dn1ps")
-scale = Vector2(3, 1)
 color = Color(0.498039, 0.0784314, 0.0235294, 1)
 energy = 0.25
 shadow_enabled = true
-texture = ExtResource("4_yn3py")
+texture = ExtResource("4_1r2ur")
 texture_scale = 0.15
