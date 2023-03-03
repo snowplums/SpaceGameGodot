@@ -1,0 +1,214 @@
+[gd_scene load_steps=21 format=3 uid="uid://ci52wdjwr3f5k"]
+
+[ext_resource type="Script" path="res://hackevent.gd" id="1_0ckum"]
+[ext_resource type="FontFile" path="res://Assets/FallingSkyBlkObl.otf" id="1_xpbqx"]
+[ext_resource type="Texture2D" path="res://Assets/row-1-column-2.png" id="3_j5b8n"]
+[ext_resource type="Texture2D" path="res://Assets/pixil-frame-0 (1).png" id="4_bcamj"]
+[ext_resource type="Texture2D" uid="uid://cvb3ybmi0yi7c" path="res://Assets/Solid_white.png" id="4_hvsuf"]
+[ext_resource type="Texture2D" path="res://Assets/row-1-column-1 (1).png" id="5_7petd"]
+[ext_resource type="Texture2D" path="res://Assets/3sbe9js4vy241.jpg" id="6_yt5n2"]
+[ext_resource type="Texture2D" path="res://Assets/clipart4520272.png" id="7_kiwce"]
+[ext_resource type="Texture2D" path="res://Assets/[CITYPNG.COM]PNG Orange Circle - 1157x1157.png" id="8_kg5hy"]
+[ext_resource type="Texture2D" uid="uid://d4mjko1pipbk" path="res://Assets/image.png" id="9_g4f60"]
+[ext_resource type="Texture2D" path="res://Assets/pixil-frame-0.png" id="10_mpk82"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3obw3"]
+font = ExtResource("1_xpbqx")
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_4blcv"]
+font = ExtResource("1_xpbqx")
+font_size = 41
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rc7hl"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_715of"]
+font = ExtResource("1_xpbqx")
+font_size = 38
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 0.92549)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_82mqq"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gahw"]
+font = ExtResource("1_xpbqx")
+font_size = 43
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cp8sn"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g8rd1"]
+light_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vp1s"]
+font = ExtResource("1_xpbqx")
+font_size = 31
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="hackevent" type="CanvasLayer"]
+script = ExtResource("1_0ckum")
+
+[node name="darken" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0)
+visibility_layer = 513
+position = Vector2(502, 283)
+scale = Vector2(5.28, 3.06)
+texture = ExtResource("4_hvsuf")
+
+[node name="hackstart" type="Sprite2D" parent="darken"]
+position = Vector2(-25.755, 200)
+scale = Vector2(0.124, 0.204)
+texture = ExtResource("3_j5b8n")
+
+[node name="text" type="Label" parent="darken/hackstart"]
+offset_left = 200.0
+offset_top = -344.0
+offset_right = 1097.0
+offset_bottom = 330.0
+text = "HELLO SPACE SWAGBOSS, 
+ITS ME MARTIN CABELLO. 
+CICADA AND I WILL BURN 
+YOU DOWN. INITIATING HACK 
+SEQUENCE
+BYE"
+label_settings = SubResource("LabelSettings_3obw3")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="hackend" type="Sprite2D" parent="darken"]
+position = Vector2(-25.755, 200)
+scale = Vector2(0.124, 0.204)
+texture = ExtResource("5_7petd")
+
+[node name="text" type="Label" parent="darken/hackend"]
+offset_left = 203.0
+offset_top = -344.0
+offset_right = 958.0
+offset_bottom = 313.0
+text = "HELLO MR SPACE SWAGBOSS
+THIS IS VICENTE FOX, FORMER
+PRESIDENT OF SPACE MEXICO. 
+I WON'T BE ABLE TO SAVE YOU 
+NEXT TIME. CYBERSECURITY IS
+VERY IMPORTANT. GOOD LUCK
+IN YOUR SPACE ADVENTURES
+
+
+AND DON'T DESTROY YOUR PHONE
+"
+label_settings = SubResource("LabelSettings_4blcv")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="hack" type="Label" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_rc7hl")
+offset_top = -3.0
+offset_right = 960.0
+offset_bottom = 539.0
+text = "HACK:           %"
+label_settings = SubResource("LabelSettings_715of")
+horizontal_alignment = 2
+
+[node name="percent" type="Label" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_82mqq")
+offset_left = 865.0
+offset_top = -8.0
+offset_right = 933.0
+offset_bottom = 50.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_2gahw")
+horizontal_alignment = 1
+
+[node name="martincabello" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(73, 483)
+scale = Vector2(0.0555556, 0.0444265)
+texture = ExtResource("6_yt5n2")
+
+[node name="speaker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(43, 482)
+scale = Vector2(0.0379747, 0.0493764)
+texture = ExtResource("7_kiwce")
+
+[node name="orangedot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(103, 485)
+scale = Vector2(0.0110199, 0.0127485)
+texture = ExtResource("8_kg5hy")
+
+[node name="text" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.25098, 0.427451, 0.85098, 1)
+position = Vector2(525.999, 1046.15)
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("9_g4f60")
+
+[node name="0" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_cp8sn")
+position = Vector2(499, 3)
+emitting = false
+amount = 500
+lifetime = 10.0
+texture = ExtResource("10_mpk82")
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.05
+scale_amount_max = 0.05
+color = Color(0.141176, 0.635294, 0.109804, 1)
+
+[node name="1" type="CPUParticles2D" parent="."]
+visibility_layer = 513
+material = SubResource("CanvasItemMaterial_g8rd1")
+position = Vector2(499, 3)
+emitting = false
+amount = 500
+lifetime = 10.0
+texture = ExtResource("4_bcamj")
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.05
+scale_amount_max = 0.05
+color = Color(0.141176, 0.635294, 0.109804, 1)
+
+[node name="killcode" type="Label" parent="."]
+visible = false
+offset_left = 2.0
+offset_top = 497.0
+offset_right = 171.0
+offset_bottom = 540.0
+text = "KILL CODE: "
+label_settings = SubResource("LabelSettings_0vp1s")
+
+[node name="Label" type="Label" parent="killcode"]
+visible = false
+layout_mode = 0
+offset_left = 172.0
+offset_top = 6.0
+offset_right = 229.0
+offset_bottom = 38.0

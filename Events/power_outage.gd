@@ -10,7 +10,7 @@ var in_radius3 = false
 
 
 
-# Called when the node enters the scene tree for the first time.
+# sets the default condition of the ship in prep for a dark event
 func _ready():
 	get_node("lightswitch/switch1light").visible = false
 	get_node("lightswitch2/switch2light").visible = false
@@ -21,6 +21,9 @@ func _ready():
 	get_node("Darkness").visible = false
 	background()
 	
+	
+#detects whether levers are switched, and if all are switched the darkevent
+#will end
 func _process(_delta):
 	in_radius1 = false
 	in_radius2 = false
@@ -47,7 +50,8 @@ func _process(_delta):
 		get_node("lightswitch3/switch3light").set_color("#59d21e")
 		get_node("lightswitch3").set_frame(2)
 
-	
+#this function is run at all times to determine whether a ship's lights
+#are turning on or not. If they are, this function turns on all lights
 func background():
 	await get_tree().create_timer(1).timeout
 	if ship_dark_status == "turningon":
@@ -56,8 +60,12 @@ func background():
 		get_node("lightswitch/switch1light").visible = false
 		get_node("lightswitch2/switch2light").visible = false
 		get_node("lightswitch3/switch3light").visible = false
+		get_node("/root/Main/World/Spaceship").ship_dark_status = false
+		await get_tree().create_timer(20).timeout
 	background()
 		
+		
+#this is the main function which makes the ship dark and activates levers
 func darkevent():
 	get_node("Darkness").visible = true
 	await get_tree().create_timer(1).timeout

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c05gxn6dckk1y"]
+[gd_scene load_steps=32 format=3 uid="uid://c05gxn6dckk1y"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
 [ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Main/lockdown.gd" id="18_nm41n"]
 [ext_resource type="Texture2D" uid="uid://bnga6hvum01rf" path="res://Assets/buton.png" id="19_8fpvh"]
 [ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="20_uupph"]
+[ext_resource type="PackedScene" uid="uid://ci52wdjwr3f5k" path="res://Events/hackevent.tscn" id="22_e0k4n"]
 [ext_resource type="PackedScene" uid="uid://ce7iwtjtou3re" path="res://UI/waiting_room.tscn" id="22_on1a5"]
 [ext_resource type="AudioStream" uid="uid://dxvx2dapcdhot" path="res://Assets/Sound Effects/Music/space-ambience-by-alexander-nakarada-from-filmmusic-io.mp3" id="23_lk2wb"]
 [ext_resource type="AudioStream" uid="uid://7d2pn3uud1q5" path="res://Assets/Sound Effects/Music/deep-space-ambiance-48854.mp3" id="24_fqhd4"]
@@ -442,6 +443,8 @@ texture_scale = 0.02
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/lockdown/buttonradius"]
 shape = SubResource("CircleShape2D_t0kvh")
+
+[node name="hackevent" parent="World" instance=ExtResource("22_e0k4n")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_lk2wb")

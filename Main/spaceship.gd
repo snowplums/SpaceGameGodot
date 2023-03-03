@@ -1,10 +1,12 @@
 extends Node2D
 
-var ship_health = 100
+var ship_health = 0
 var fire_scene = preload("res://Spaceship/fire.tscn")
 var firespawnpoint
 var rng = RandomNumberGenerator.new()
 var ship_fire_status = "not"
+var ship_dark_status = false
+var ship_hack_status = false
 var random_room
 var firerooms = ["no","no","no","no","no","no","no","no"]
 var label_array = []
@@ -28,16 +30,29 @@ func update_damage(damage):
 
 func _ready():
 	background()
-#this means that instead of being instantly less than 30 your fire starts
-#there is an increased chance of fire each second the lower your hp
-#subject to balance (rn roughly one fire every  2 minute with 80 health, one fire every 30 seconds with 40 health
+
+#every time the ship is low on health, it will run this function
+#it chooses between different ship events
 func background():
 	await get_tree().create_timer(1).timeout
-	if ship_health <= 80 and ship_fire_status == "not":
+	if ship_health <= 80:
 		var randomvalue = rng.randi_range(1, pow(ship_health, 2))
-		if randomvalue <= 100:
-			ship_fire_status = "firespreading"
-			startfire()
+		if randomvalue <= 80:
+			var shipstatusnum
+			rng.randomize()
+			shipstatusnum = rng.randi_range(1,10)
+			if shipstatusnum <= 3 and ship_dark_status == false:
+				ship_dark_status = true
+				get_node("/root/Main/World/Spaceship/PowerOutage").darkevent()
+				await get_tree().create_timer(10).timeout
+			elif shipstatusnum == 4 and ship_hack_status == false:
+				ship_hack_status = true
+				get_node("/root/Main/World/hackevent").hackevent()
+				await get_tree().create_timer(10).timeout
+			elif shipstatusnum > 4 and ship_fire_status == "not":
+				ship_fire_status = "firespreading"
+				startfire()
+				await get_tree().create_timer(10).timeout
 	background()
 
 func randomroom():
@@ -100,7 +115,7 @@ func stopfire():
 	for door in doors:
 		door.door_open()
 	label_array = []
-	await get_tree().create_timer(40).timeout
+	await get_tree().create_timer(60).timeout
 	ship_fire_status = "not"
 	for i in 8:
 		firerooms[i] = "no"
