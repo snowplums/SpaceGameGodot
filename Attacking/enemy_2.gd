@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 @onready var wander_timer = $WanderTimer
 
 const bullet = preload("res://Bullet/Bullet.tscn")
-@export var bullet_damage = 10
+@export var damage = 10
 @export var bullet_speed = 1000
 
 func _ready():
@@ -50,7 +50,7 @@ func attack():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.position = get_global_position()
 	bullet_instance.rotate(position.angle_to_point(Vector2.ZERO))
-	bullet_instance.set_damage(bullet_damage)
+	bullet_instance.set_damage(damage)
 	bullet_instance.shot_from_turret(false)
 	bullet_instance.set_speed(bullet_speed)
 	bullet_instance.collision_mask = 0

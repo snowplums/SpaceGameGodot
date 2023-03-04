@@ -31,13 +31,18 @@ func _on_x_pressed():
 
 
 func _on_go_button_pressed():
-	if $"Ship Directory UI"/TextureButton/Picked.visible == true:
-		get_node("/root/Main/Wavespawner").current_planet = 1 #Earth-like
-	elif $"Ship Directory UI"/TextureButton2/Picked.visible == true:
-		get_node("/root/Main/Wavespawner").current_planet = 2 #Mars
-	elif $"Ship Directory UI"/TextureButton3/Picked.visible == true:
-		get_node("/root/Main/Wavespawner").current_planet = 5 #Ice planet
-	elif $"Ship Directory UI"/TextureButton4/Picked.visible == true:
-		get_node("/root/Main/Wavespawner").current_planet = 4 #Gas Giant
-	elif $"Ship Directory UI"/TextureButton5/Picked.visible == true:
-		get_node("/root/Main/Wavespawner").current_planet = 3 #Moon
+	if $"Ship Directory UI"/TextureButton/Picked.visible == true and Global.planets_unlocked >= 1:
+		Global.current_planet = 1 #Earth-like
+		print(Global.current_planet)
+	elif $"Ship Directory UI"/TextureButton2/Picked.visible == true and Global.planets_unlocked >= 2:
+		Global.current_planet = 2 #Mars
+		print(Global.current_planet)
+	elif $"Ship Directory UI"/TextureButton3/Picked.visible == true and Global.planets_unlocked >= 5:
+		Global.current_planet = 5 #Ice planet
+		print(Global.current_planet)
+	elif $"Ship Directory UI"/TextureButton4/Picked.visible == true and Global.planets_unlocked >= 4:
+		Global.current_planet = 4 #Gas Giant
+		print(Global.current_planet)
+	elif $"Ship Directory UI"/TextureButton5/Picked.visible == true and Global.planets_unlocked >= 3:
+		Global.current_planet = 3 #Moon
+		print(Global.current_planet)

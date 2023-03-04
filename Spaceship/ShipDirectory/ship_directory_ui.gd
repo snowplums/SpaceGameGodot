@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	picked_array = [$TextureButton5/Picked.visible, $TextureButton4/Picked.visible, $TextureButton3/Picked.visible, $TextureButton2/Picked.visible, $TextureButton/Picked.visible]
 	if picked_array.count(true) == 1:
 		$GoButton.visible = true

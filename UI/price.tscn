@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://duxsl7kbuu3dv"]
+
+[ext_resource type="Texture2D" uid="uid://eetjdnc6k1rh" path="res://Assets/miningitems.png" id="1_5i74b"]
+[ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="2_h1jk0"]
+
+[node name="Price" type="Sprite2D"]
+texture = ExtResource("1_5i74b")
+hframes = 7
+frame = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 6.0
+offset_top = -7.0
+offset_right = 46.0
+offset_bottom = 16.0
+theme = ExtResource("2_h1jk0")
+text = "1"

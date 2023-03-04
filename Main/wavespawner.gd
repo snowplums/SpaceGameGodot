@@ -39,16 +39,17 @@ func choose_spawn():
 func spawn_enemy_all(enemy_num):
 	Global.enemies_left += 1
 	var enemy_instance = enemy_type[enemy_num-1].instantiate()
-	if current_planet == 1:
+	#if Global.current_planet == 1:
+	#	enemy_instance.health += 10
+	if Global.current_planet == 2:
 		enemy_instance.health += 10
-	elif current_planet == 2:
+		enemy_instance.damage += 1
+	elif Global.current_planet == 3:
 		enemy_instance.health += 20
-	elif current_planet == 3:
+	elif Global.current_planet == 4:
 		enemy_instance.health += 30
-	elif current_planet == 4:
+	elif Global.current_planet == 5:
 		enemy_instance.health += 40
-	elif current_planet == 5:
-		enemy_instance.health += 50
 	enemy_instance.position = spawnposition
 	enemy_instance.spawn_delay = spawn_delay
 	get_node("/root/Main/Objects").add_child(enemy_instance)
