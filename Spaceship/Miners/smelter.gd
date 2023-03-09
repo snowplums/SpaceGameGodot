@@ -13,10 +13,6 @@ var smelted_gold = 0
 var smelted_baitium = 0
 var ores = [smelted_copper, smelted_iron, smelted_platinum, smelted_gold, smelted_baitium]
 var max_smelted_ores = 1 #Max number of smelted ores the smelter can carry
-
-func _on_smelter_radius_body_entered(body):
-	if body.is_in_group("player"):
-		in_radius = true
 	
 func _on_smelter_radius_body_exited(body):
 	if body.is_in_group("player"):

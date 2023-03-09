@@ -363,6 +363,5 @@ libraries = {
 "": SubResource("AnimationLibrary_gef26")
 }
 
-[connection signal="body_entered" from="CrusherRadius" to="." method="_on_crusher_radius_body_entered"]
 [connection signal="body_exited" from="CrusherRadius" to="." method="_on_crusher_radius_body_exited"]
 [connection signal="timeout" from="CrusherTimer" to="." method="_on_crusher_timer_timeout"]

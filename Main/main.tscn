@@ -76,7 +76,6 @@ visible = false
 script = ExtResource("3_krohm")
 
 [node name="WaveTimer" type="Timer" parent="Wavespawner"]
-wait_time = 5.0
 one_shot = true
 
 [node name="World" type="Node2D" parent="."]
@@ -228,7 +227,7 @@ position = Vector2(-311, 52)
 
 [node name="Upgrades" type="Node2D" parent="World/Spaceship"]
 
-[node name="Upgrades" parent="World/Spaceship/Upgrades" instance=ExtResource("16_2uy0y")]
+[node name="Upgrader" parent="World/Spaceship/Upgrades" instance=ExtResource("16_2uy0y")]
 position = Vector2(27, 38)
 
 [node name="PowerOutage" parent="World/Spaceship" instance=ExtResource("17_pdwsh")]

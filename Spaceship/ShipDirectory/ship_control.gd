@@ -15,11 +15,6 @@ func _process(_delta):
 		$"Ship Directory UI".visible=false
 
 
-func _on_directory_radius_body_entered(body):
-	if body.is_in_group("player"):
-		in_radius = true
-
-
 func _on_directory_radius_body_exited(body):
 	if body.is_in_group("player"):
 		in_radius = false

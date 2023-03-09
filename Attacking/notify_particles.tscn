@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjcepwmay0itt"]
 
-[ext_resource type="Texture2D" uid="uid://bokr0abx4qcoi" path="res://Assets/notifyparticle.png" id="1_wejhh"]
+[ext_resource type="Texture2D" uid="uid://bokr0abx4qcoi" path="res://Assets/notifyparticle.png" id="1_yerc0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eqp0p"]
 particles_animation = true
@@ -24,7 +24,7 @@ amount = 28
 lifetime = 1.65
 one_shot = true
 explosiveness = 0.5
-texture = ExtResource("1_wejhh")
+texture = ExtResource("1_yerc0")
 spread = 25.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 210.0

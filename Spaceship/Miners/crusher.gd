@@ -9,10 +9,6 @@ var geode = 0 #Amount of geodes smelting
 var crushed_amt = 0 # Amount of crushed geode
 #var crushed_iron = 0 (example for other ores)
 var max_crushed_ores = 1 #Max number of crushed ores the crusher can carry
-
-func _on_crusher_radius_body_entered(body):
-	if body.is_in_group("player"):
-		in_radius = true
 	
 func _on_crusher_radius_body_exited(body):
 	if body.is_in_group("player"):

@@ -1,30 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://xc4trswgbykr"]
+[gd_scene load_steps=9 format=3 uid="uid://bxymg81xib57t"]
 
 [ext_resource type="Script" path="res://Attacking/enemy_3.gd" id="1_5d3yk"]
 [ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="1_di34m"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="3_njbqv"]
 [ext_resource type="PackedScene" uid="uid://bjcepwmay0itt" path="res://Attacking/notify_particles.tscn" id="4_t54xb"]
-[ext_resource type="AudioStream" uid="uid://c7goprkqbe3y1" path="res://Assets/Sound Effects/Diver Enemy/notifysound.wav" id="5_skx8p"]
+[ext_resource type="AudioStream" uid="uid://c7goprkqbe3y1" path="res://Assets/Sound Effects/notifysound.wav" id="5_skx8p"]
 [ext_resource type="AudioStream" uid="uid://bpxuo56e13yh6" path="res://Assets/Sound Effects/Diver Enemy/chargesound.wav" id="6_857ds"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsxbu"]
-size = Vector2(26, 26)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m4qj"]
+size = Vector2(30, 30)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_051qg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7kua"]
 size = Vector2(42, 42)
 
 [node name="Enemy3" type="CharacterBody2D"]
-z_index = 1
-collision_layer = 2
 script = ExtResource("1_5d3yk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.0117647, 0.72549, 1, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_di34m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_bsxbu")
+shape = SubResource("RectangleShape2D_5m4qj")
 
 [node name="ShipDetection" type="RayCast2D" parent="."]
 collision_mask = 8
@@ -36,12 +33,7 @@ input_pickable = false
 script = ExtResource("3_njbqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_051qg")
-
-[node name="NotifyParticles" parent="." instance=ExtResource("4_t54xb")]
-amount = 16
-lifetime = 1.4
-spread = 13.0
+shape = SubResource("RectangleShape2D_h7kua")
 
 [node name="NotifySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_skx8p")
@@ -49,6 +41,9 @@ stream = ExtResource("5_skx8p")
 [node name="ChargeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_857ds")
 
+[node name="NotifyParticles" parent="." instance=ExtResource("4_t54xb")]
+
 [node name="SpawnDelayTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

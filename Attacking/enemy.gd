@@ -93,25 +93,36 @@ func enemy_behavior():
 		var rng = RandomNumberGenerator.new() 
 		rng.randomize()
 		random = rng.randi_range(1, 3)
-		wander_timer.wait_time = rng.randf_range(1, 3)
-		wander_timer.start()
-		
-		if random == 1:
-			if finished_landing:
-				$AnimationPlayer.play("walk")
-				$Sprite2D.flip_h = false
-				$Lights.set_scale(Vector2(1,1))
-				dir = -1
-		elif random == 2:
-			if finished_landing:
-				$AnimationPlayer.play("walk")
-				$Sprite2D.flip_h = true
-				$Lights.set_scale(Vector2(-1,1))
-				dir = 1
-		else:
-			if finished_landing:
-				$AnimationPlayer.play("idle")
-				dir = 0
+		var random_wait_time = rng.randf_range(1, 3)
+		rpc("send_enemy_data", random, random_wait_time)
+		wander_timer.wait_time = random_wait_time
+		rpc("all_enemy_behavior")
+
+
+@rpc("authority", "call_local")
+func all_enemy_behavior():
+	wander_timer.start()
+	if random == 1:
+		if finished_landing:
+			$AnimationPlayer.play("walk")
+			$Sprite2D.flip_h = false
+			$Lights.set_scale(Vector2(1,1))
+			dir = -1
+	elif random == 2:
+		if finished_landing:
+			$AnimationPlayer.play("walk")
+			$Sprite2D.flip_h = true
+			$Lights.set_scale(Vector2(-1,1))
+			dir = 1
+	else:
+		if finished_landing:
+			$AnimationPlayer.play("idle")
+			dir = 0
+	
+@rpc("any_peer", "call_remote")
+func send_enemy_data(host_random, host_random_wait_time):
+	random = host_random
+	wander_timer.wait_time = host_random_wait_time
 
 func _on_wander_timer_timeout():
 	enemy_behavior()

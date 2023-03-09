@@ -12,10 +12,6 @@ var max_geode_capacity = 1
 @export var upg_eff_cost = 10
 @export var wait_time = 1.5
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		in_radius = true
-
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		$AnimationPlayer.play("RESET")

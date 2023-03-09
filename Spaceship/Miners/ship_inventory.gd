@@ -9,10 +9,6 @@ var smelted_iron = 0 #How much smelted copper the inventory has
 var smelted_platinum = 0 #How much smelted copper the inventory has
 var smelted_gold = 0 #How much smelted copper the inventory has
 var smelted_baitium = 0 #How much smelted copper the inventory has
-
-func _on_inventory_radius_body_entered(body):
-	if body.is_in_group("player"):
-		in_radius = true
 	
 func _on_inventory_radius_body_exited(body):
 	if body.is_in_group("player"):

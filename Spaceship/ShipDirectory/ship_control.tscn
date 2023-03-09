@@ -64,7 +64,6 @@ libraries = {
 "": SubResource("AnimationLibrary_1jgnq")
 }
 
-[connection signal="body_entered" from="DirectoryRadius" to="." method="_on_directory_radius_body_entered"]
 [connection signal="body_exited" from="DirectoryRadius" to="." method="_on_directory_radius_body_exited"]
 [connection signal="pressed" from="Ship Directory UI/GoButton" to="." method="_on_go_button_pressed"]
 [connection signal="pressed" from="Ship Directory UI/X" to="." method="_on_x_pressed"]

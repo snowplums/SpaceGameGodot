@@ -15,6 +15,7 @@ var label_array = []
 func take_damage(hitbox):
 	if multiplayer.get_unique_id() == 1 and hitbox.shotFromTurret == false:
 		rpc("update_damage", hitbox.damage)
+	if hitbox.shotFromTurret == false:
 		hitbox.get_parent().bullet_hit()
 
 func take_damage_direct(damage):

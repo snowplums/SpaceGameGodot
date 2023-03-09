@@ -5,14 +5,16 @@ const SPEED = 150.0
 var health = 10
 var can_attack = false
 
-var spawn_delay = 0.0
-var finished_spawning = false
+var spawn_delay := 0.0
+var finished_spawning := false
+var counter := 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var spawn_array = get_node("/root/Main/World/FlyerPoints").get_children()
-var target
-var offset
+var target := Vector2.ZERO
+var offset := Vector2.ZERO
+var random_num := 0
 var rng = RandomNumberGenerator.new() 
 @onready var wander_timer = $WanderTimer
 
@@ -28,21 +30,39 @@ func detect_point():
 	if multiplayer.get_unique_id() == 1:
 		wander_timer.wait_time = rng.randf_range(2, 6)
 		var random = rng.randi_range(0, spawn_array.size()-1)
-		target = spawn_array[random]
+		target = spawn_array[random].position
 		var space_state = get_world_2d().direct_space_state
-		var rayparamters = PhysicsRayQueryParameters2D.create(self.position, target.position)
+		var rayparamters = PhysicsRayQueryParameters2D.create(self.position, target)
 		offset = Vector2(rng.randi_range(-15,15), rng.randi_range(-15,15))
 		var result = space_state.intersect_ray(rayparamters)
+		random_num = rng.randi_range(1, 2)
 		if result:
 			detect_point()
 		else:
+			finished_spawning = true
+			rpc("send_enemy_data", target, offset, random_num, finished_spawning)
 			wander_timer.start()
 
+@rpc("any_peer", "call_remote")
+func send_enemy_data(host_target, host_offset, host_random, host_spawn_signal):
+	target = host_target
+	offset = host_offset
+	random_num = host_random
+	finished_spawning = host_spawn_signal
+
 func _on_wander_timer_timeout():
-	var random = rng.randi_range(1, 2)
-	if random == 1:
+	rpc("enemy_attack")
+
+@rpc("authority", "call_local")
+func enemy_attack():
+	if random_num == 1:
 		detect_point()
 	else:
+		if global_position.x > 0:
+			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false
+		await get_tree().create_timer(0.3).timeout
 		attack()
 
 func attack():
@@ -59,12 +79,18 @@ func attack():
 
 func _physics_process(_delta):
 	if finished_spawning:
+		counter += 1
+		$Sprite2D.position.y = 2 * sin(counter/12)
 		if health <= 0:
 			can_attack = false
 			Global.enemies_left -= 1
 			queue_free()
-		if position.distance_to(target.position + offset) > 5:
-			velocity = position.direction_to(target.position + offset) * SPEED
+		if position.distance_to(target + offset) > 5:
+			velocity = position.direction_to(target + offset) * SPEED
+			if velocity.x > 0:
+				$Sprite2D.flip_h = false
+			else:
+				$Sprite2D.flip_h = true
 		else:
 			velocity = Vector2.ZERO
 
@@ -78,4 +104,3 @@ func take_damage(hitbox) -> void:
 func _on_spawn_delay_timer_timeout():
 	rng.randomize()
 	detect_point()
-	finished_spawning = true

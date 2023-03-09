@@ -10,6 +10,7 @@ const bullet = preload("res://Bullet/Bullet.tscn")
 var can_fire = true
 var in_radius = false
 var host = null
+var aim_location
 
 var on = false
 
@@ -35,12 +36,6 @@ func _process(_delta):
 	turret()
 		
 
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		in_radius = true
-
-
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		in_radius = false
@@ -65,11 +60,17 @@ func turret():
 #			host.can_move = true
 #			print("E")
 		if Input.is_action_pressed("left_click") and can_fire:
+			aim_location = get_global_mouse_position()
+			rpc("send_mouse_pos", aim_location)
 			rpc("turret_fire")
 			can_fire = false
 			await get_tree().create_timer(fire_rate).timeout
 			can_fire = true
 
+@rpc("any_peer", "call_remote")
+func send_mouse_pos(mouse_pos):
+	aim_location = mouse_pos
+	
 @rpc("any_peer", "call_local")
 func turret_fire():
 	$ShootNoise.pitch_scale = randf_range(0.9, 1.1)
@@ -78,5 +79,5 @@ func turret_fire():
 	bullet_instance.position = get_global_position()
 	bullet_instance.rotation = get_node("Sprite2D").rotation
 	bullet_instance.set_damage(bullet_damage)
-	bullet_instance.direction = (get_global_mouse_position() - global_position).normalized()
+	bullet_instance.direction = (aim_location - global_position).normalized()
 	get_node("/root/Main/Objects").add_child(bullet_instance)

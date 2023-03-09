@@ -247,6 +247,5 @@ libraries = {
 "": SubResource("AnimationLibrary_gef26")
 }
 
-[connection signal="body_entered" from="MinerRadius" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MinerRadius" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="GeodeTimer" to="." method="_on_geode_timer_timeout"]

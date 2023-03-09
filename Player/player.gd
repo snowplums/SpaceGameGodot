@@ -15,6 +15,7 @@ const JUMP_VELOCITY = -300.0
 @onready var smelter = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Smelter")
 @onready var ship_inventory = get_tree().get_root().get_node("Main/World/Spaceship/Miners/Inventory")
 @onready var ship_directory = get_tree().get_root().get_node("Main/World/Spaceship/ShipControl")
+@onready var upgrade_station = get_tree().get_root().get_node("Main/World/Spaceship/Upgrades/Upgrader")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var username = ""
@@ -145,3 +146,6 @@ func check_radius():
 		if raycast.get_collider().name == "DirectoryRadius":
 			raycast.get_collider().get_parent().get_node("AnimationPlayer").play("pulse")
 			ship_directory.in_radius = true
+		if raycast.get_collider().name == "UpgradeRadius":
+			#raycast.get_collider().get_parent().get_node("AnimationPlayer").play("pulse")
+			upgrade_station.in_radius = true

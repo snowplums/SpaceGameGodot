@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bokr0abx4qcoi"
-path="res://.godot/imported/Sprite-0001.png-c16feda97667151f1a063931ff67e2cc.ctex"
+uid="uid://bpxk8hq04fvug"
+path="res://.godot/imported/shank.png-4c9fa7df808b7493cf448210d91f9ee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-c16feda97667151f1a063931ff67e2cc.ctex"]
+source_file="res://Assets/Enemies/shank.png"
+dest_files=["res://.godot/imported/shank.png-4c9fa7df808b7493cf448210d91f9ee8.ctex"]
 
 [params]
 

@@ -64,5 +64,4 @@ libraries = {
 "": SubResource("AnimationLibrary_gddss")
 }
 
-[connection signal="body_entered" from="InventoryRadius" to="." method="_on_inventory_radius_body_entered"]
 [connection signal="body_exited" from="InventoryRadius" to="." method="_on_inventory_radius_body_exited"]

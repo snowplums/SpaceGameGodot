@@ -277,6 +277,5 @@ libraries = {
 "": SubResource("AnimationLibrary_gef26")
 }
 
-[connection signal="body_entered" from="SmelterRadius" to="." method="_on_smelter_radius_body_entered"]
 [connection signal="body_exited" from="SmelterRadius" to="." method="_on_smelter_radius_body_exited"]
 [connection signal="timeout" from="SmelterTimer" to="." method="_on_smelter_timer_timeout"]

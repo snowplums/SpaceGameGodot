@@ -79,7 +79,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_bfagu")
 theme_override_font_sizes/font_size = 80
-text = "Cosmic Shield"
+text = "Star Sentinel"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
