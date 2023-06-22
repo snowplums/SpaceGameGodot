@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://dyqukv30l16cn"]
+
+[ext_resource type="Script" path="res://Mining/asteroid_main.gd" id="1_678ay"]
+[ext_resource type="Texture2D" uid="uid://bb5uy6rppj1b2" path="res://Assets/Mining/asteroid-sheet.png" id="1_vybry"]
+[ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="3_07cpd"]
+[ext_resource type="AudioStream" uid="uid://dsvtlogren7h5" path="res://Assets/Mining/asteroid_break.wav" id="4_plb3d"]
+[ext_resource type="AudioStream" uid="uid://bosbh20d3laqg" path="res://Assets/Sound Effects/Attacking/stone_crack.mp3" id="5_8o0x7"]
+[ext_resource type="Texture2D" uid="uid://b5kef4dsw2ci8" path="res://Assets/Smoke &amp; Fire.png" id="5_san14"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6pqs"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="Curve" id="Curve_hcyv2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uuoo4"]
+curve = SubResource("Curve_hcyv2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nqq27"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 29.71
+initial_velocity_max = 59.12
+angular_velocity_min = 15.0
+angular_velocity_max = 15.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 20.59
+damping_max = 20.59
+angle_max = 360.0
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_uuoo4")
+
+[node name="Asteroid" type="Node2D"]
+script = ExtResource("1_678ay")
+
+[node name="AsteroidSprite" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(5, 0)
+texture = ExtResource("1_vybry")
+hframes = 5
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(5, 0)
+script = ExtResource("3_07cpd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b6pqs")
+
+[node name="Break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_plb3d")
+volume_db = -7.334
+pitch_scale = 1.38
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8o0x7")
+volume_db = -17.0
+pitch_scale = 0.9
+
+[node name="BreakParticle" type="GPUParticles2D" parent="."]
+z_index = 3
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_nqq27")
+texture = ExtResource("5_san14")
+one_shot = true
+explosiveness = 0.71
+
+[node name="SpawnDelayTimer" type="Timer" parent="."]
+
+[node name="DeletionTimer" type="Timer" parent="."]
+wait_time = 50.0
+
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]
+[connection signal="timeout" from="DeletionTimer" to="." method="_on_deletion_timer_timeout"]

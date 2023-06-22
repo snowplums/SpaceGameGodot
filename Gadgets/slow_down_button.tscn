@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmi1b6rek2i4v"]
+
+[ext_resource type="Script" path="res://Gadgets/slow_down_button.gd" id="1_vlsi7"]
+[ext_resource type="Texture2D" uid="uid://bnga6hvum01rf" path="res://Assets/buton.png" id="2_nt0bl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swojn"]
+size = Vector2(44, 38)
+
+[node name="SlowDownButton" type="Node2D"]
+script = ExtResource("1_vlsi7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nt0bl")
+hframes = 2
+
+[node name="SlowRadius" type="Area2D" parent="."]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowRadius"]
+shape = SubResource("RectangleShape2D_swojn")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="SlowDuration" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="SlowDuration" to="." method="_on_slow_duration_timeout"]

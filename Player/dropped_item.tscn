@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://cephpsfd2cgmb"]
+
+[ext_resource type="Script" path="res://Player/dropped_item.gd" id="1_7u158"]
+[ext_resource type="Texture2D" uid="uid://eetjdnc6k1rh" path="res://Assets/miningitems.png" id="1_ra5tf"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="3_lg6mw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stkcn"]
+size = Vector2(20, 12)
+
+[sub_resource type="Animation" id="Animation_fr62u"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1), Vector2(0, -3.5), Vector2(0, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glow:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(0, -0.5), Vector2(0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qg8h8"]
+_data = {
+"idle": SubResource("Animation_fr62u")
+}
+
+[node name="DroppedItem" type="Node2D" groups=["item"]]
+script = ExtResource("1_7u158")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -3.38205)
+texture = ExtResource("1_ra5tf")
+hframes = 7
+
+[node name="ItemRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemRadius"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_stkcn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_qg8h8")
+}
+
+[node name="Glow" type="PointLight2D" parent="."]
+position = Vector2(0, -0.382049)
+energy = 0.1
+texture = ExtResource("3_lg6mw")
+texture_scale = 0.02

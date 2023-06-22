@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4g0r54jwx4ri"
+path="res://.godot/imported/hit-metal-punch-153323.mp3-ab43db885f943c6a77bbcb2c3724fcda.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/Spaceship/hit-metal-punch-153323.mp3"
+dest_files=["res://.godot/imported/hit-metal-punch-153323.mp3-ab43db885f943c6a77bbcb2c3724fcda.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

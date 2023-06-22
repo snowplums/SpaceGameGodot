@@ -11,7 +11,7 @@ func _ready() -> void:
 	#body_entered.connect(self._on_body_entered)
 
 func _on_area_entered(hitbox: HitBox) -> void:
-	if hitbox == null:
+	if hitbox == null or get_parent() == null:
 		return
 	
 	if get_parent().has_method("take_damage"):

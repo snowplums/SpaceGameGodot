@@ -84,6 +84,7 @@ func _on_ready_btn_pressed():
 
 @rpc("any_peer", "call_local", "reliable")
 func start_game():
+	Global.total_players = total_players
 	get_node("Lobby").queue_free()
 	get_node("WaitingRoom").queue_free()
 	game_running = true

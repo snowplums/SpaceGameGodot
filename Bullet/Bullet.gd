@@ -16,6 +16,9 @@ func set_speed(new_speed):
 func set_damage(new_damage):
 	$HitBox.damage = new_damage
 
+func set_pierce(new_pierce):
+	$HitBox.penetration = new_pierce
+
 func shot_from_turret(new_value):
 	$HitBox.shotFromTurret = new_value
 

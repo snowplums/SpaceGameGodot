@@ -1,6 +1,11 @@
 extends Node2D
 
-var ship_health = 100
+var max_shield_health = 100
+var ship_health = 1000 # Change in ui as well!
+var shield_health = max_shield_health
+var shield_regen_rate = 6.0
+var reduction = 1.0
+
 var fire_scene = preload("res://Spaceship/fire.tscn")
 var firespawnpoint
 var rng = RandomNumberGenerator.new()
@@ -24,13 +29,27 @@ func take_damage_direct(damage):
 
 @rpc("authority", "call_local")
 func update_damage(damage):
-	var new_ship_health = ship_health - damage
-	ship_health = new_ship_health
-	if ship_health < 0:
-		ship_health = 0
+	$Gadgets/ShieldTimer.start()
+	if Global.hasShield and shield_health > 0:
+		var new_shield_health = shield_health - (damage * reduction)
+		shield_health = new_shield_health
+		if shield_health < 0:
+			shield_health = 0
+	else:
+		var new_ship_health = ship_health - (damage * reduction)
+		ship_health = new_ship_health
+		if ship_health < 0:
+			ship_health = 0
 
 func _ready():
 	background()
+
+func _process(delta):
+	if $Gadgets/ShieldTimer.time_left <= 0:
+		if shield_health < max_shield_health:
+			shield_health += shield_regen_rate * delta
+		else:
+			shield_health = max_shield_health
 
 #every time the ship is low on health, it will run this function
 #it chooses between different ship events
@@ -42,15 +61,15 @@ func background():
 			var shipstatusnum
 			rng.randomize()
 			shipstatusnum = rng.randi_range(1,10)
-			if shipstatusnum <= 3 and ship_dark_status == false:
-				ship_dark_status = true
-				get_node("/root/Main/World/Spaceship/PowerOutage").darkevent()
-				await get_tree().create_timer(20).timeout
-			elif shipstatusnum == 4 and ship_hack_status == false:
-				ship_hack_status = true
-				get_node("/root/Main/World/hackevent").hackevent()
-				await get_tree().create_timer(20).timeout
-			elif shipstatusnum > 4 and ship_fire_status == "not":
+#			if shipstatusnum <= 3 and ship_dark_status == false:
+#				ship_dark_status = true
+#				get_node("/root/Main/World/Spaceship/PowerOutage").darkevent()
+#				await get_tree().create_timer(20).timeout
+#			elif shipstatusnum == 4 and ship_hack_status == false:
+#				ship_hack_status = true
+#				get_node("/root/Main/World/hackevent").hackevent()
+#				await get_tree().create_timer(20).timeout
+			if shipstatusnum > 0 and ship_fire_status == "not":
 				ship_fire_status = "firespreading"
 				startfire()
 				await get_tree().create_timer(20).timeout

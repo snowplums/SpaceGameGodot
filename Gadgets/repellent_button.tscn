@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2dffro2upfbl"]
+
+[ext_resource type="Script" path="res://Gadgets/repellent_button.gd" id="1_h8sgw"]
+[ext_resource type="Texture2D" uid="uid://bnga6hvum01rf" path="res://Assets/buton.png" id="1_j57qr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rntk0"]
+size = Vector2(44, 38)
+
+[node name="RepellentButton" type="Node2D"]
+script = ExtResource("1_h8sgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j57qr")
+hframes = 2
+
+[node name="RepellentRadius" type="Area2D" parent="."]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RepellentRadius"]
+shape = SubResource("RectangleShape2D_rntk0")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

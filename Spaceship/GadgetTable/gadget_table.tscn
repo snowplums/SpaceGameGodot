@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://t6vx1h7r6lhd"]
+
+[ext_resource type="Texture2D" uid="uid://g5ooalppsk3" path="res://Assets/stonetile.png" id="1_wm2c1"]
+
+[node name="GadgetTable" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_wm2c1")

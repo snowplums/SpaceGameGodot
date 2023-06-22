@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c05gxn6dckk1y"]
+[gd_scene load_steps=48 format=3 uid="uid://c05gxn6dckk1y"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_wo2cs"]
 [ext_resource type="PackedScene" uid="uid://cctcsiympb27p" path="res://UI/player_ui.tscn" id="2_6lilu"]
@@ -6,16 +6,17 @@
 [ext_resource type="Script" path="res://Main/wavespawner.gd" id="3_krohm"]
 [ext_resource type="Script" path="res://Main/background.gd" id="3_nge16"]
 [ext_resource type="Script" path="res://Main/spaceship.gd" id="3_nqtl8"]
+[ext_resource type="AudioStream" uid="uid://bm0lyrd508rtv" path="res://Assets/Sound Effects/Spaceship/warp-speed-6255.mp3" id="4_ebbs1"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="5_4ik6t"]
 [ext_resource type="Texture2D" uid="uid://b3hjce017tqrc" path="res://Assets/Space Background (4).png" id="6_8npim"]
 [ext_resource type="PackedScene" uid="uid://c02st1m00tiyw" path="res://Spaceship/turret.tscn" id="8_yec01"]
 [ext_resource type="PackedScene" uid="uid://3bme60i5a1pi" path="res://Spaceship/Miners/crusher.tscn" id="9_q21qt"]
-[ext_resource type="PackedScene" uid="uid://eepmdlch0g3f" path="res://Spaceship/Miners/smelter.tscn" id="10_m7k1i"]
+[ext_resource type="PackedScene" uid="uid://eepmdlch0g3f" path="res://Spaceship/Miners/smelter.tscn" id="10_46own"]
 [ext_resource type="PackedScene" uid="uid://cfo2ett4iitp4" path="res://Spaceship/Miners/ship_inventory.tscn" id="11_ppb2v"]
 [ext_resource type="PackedScene" uid="uid://cn1gemr7hl5t4" path="res://Spaceship/platform.tscn" id="12_lxbp4"]
 [ext_resource type="Texture2D" uid="uid://dj0whqka3jbaq" path="res://Assets/Ship.png" id="13_c8o8b"]
-[ext_resource type="PackedScene" uid="uid://cc4w4bxorccxb" path="res://Spaceship/Miners/miner.tscn" id="13_hjaj2"]
 [ext_resource type="PackedScene" uid="uid://bbr6hfat3bcnq" path="res://Spaceship/door.tscn" id="13_r1bk3"]
+[ext_resource type="Texture2D" uid="uid://br0jaildt8gp1" path="res://Assets/Upgrades/bluefire.png" id="14_488qq"]
 [ext_resource type="PackedScene" uid="uid://b6a84wye8eca3" path="res://Spaceship/UpgradeRoom/upgrades.tscn" id="16_2uy0y"]
 [ext_resource type="PackedScene" uid="uid://c6ws56gpdebu5" path="res://Events/power_outage.tscn" id="17_pdwsh"]
 [ext_resource type="PackedScene" uid="uid://cnkw5rtawrytc" path="res://Spaceship/ShipDirectory/ship_control.tscn" id="18_gu2aq"]
@@ -26,6 +27,110 @@
 [ext_resource type="PackedScene" uid="uid://ce7iwtjtou3re" path="res://UI/waiting_room.tscn" id="22_on1a5"]
 [ext_resource type="AudioStream" uid="uid://dxvx2dapcdhot" path="res://Assets/Sound Effects/Music/space-ambience-by-alexander-nakarada-from-filmmusic-io.mp3" id="23_lk2wb"]
 [ext_resource type="AudioStream" uid="uid://7d2pn3uud1q5" path="res://Assets/Sound Effects/Music/deep-space-ambiance-48854.mp3" id="24_fqhd4"]
+[ext_resource type="PackedScene" uid="uid://kopa4l1wi4yu" path="res://Spaceship/ladder.tscn" id="24_g5ged"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x181b"]
+
+[sub_resource type="Animation" id="Animation_ac1bi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q4hpt"]
+resource_name = "change"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjqid"]
+_data = {
+"RESET": SubResource("Animation_ac1bi"),
+"change": SubResource("Animation_q4hpt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_who8i"]
+atlas = ExtResource("14_488qq")
+region = Rect2(0, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hj32"]
+atlas = ExtResource("14_488qq")
+region = Rect2(400, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q67hu"]
+atlas = ExtResource("14_488qq")
+region = Rect2(800, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqd67"]
+atlas = ExtResource("14_488qq")
+region = Rect2(1200, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdxpm"]
+atlas = ExtResource("14_488qq")
+region = Rect2(1600, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sijmr"]
+atlas = ExtResource("14_488qq")
+region = Rect2(2000, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0848"]
+atlas = ExtResource("14_488qq")
+region = Rect2(2400, 0, 400, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5b6n"]
+atlas = ExtResource("14_488qq")
+region = Rect2(2800, 0, 400, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa4fb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_who8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hj32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q67hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqd67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdxpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sijmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0848")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5b6n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nxaxi"]
 closed = false
@@ -56,12 +161,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0kvh"]
 radius = 19.47
 
+[sub_resource type="Curve2D" id="Curve2D_wne6l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -135, -250, -65.0356, -17.818, 65.0356, 17.818, 350, -235, -32.9633, -57.0175, 32.9633, 57.0175, 700, -46, 39.1995, -38.3086, -39.1995, 38.3086, 719, 149, 57.9084, -6.23629, -57.9084, 6.23629, 356, 271, 0, 0, 0, 0, -167, 267, 57.9802, 25.8361, -57.9802, -25.8361, -445, 212, -12.5082, 40.3574, 12.5082, -40.3574, -513, -106, -48.1844, 11.9032, 48.1844, -11.9032, -368, -224, 0, 0, 0, 0, -135, -250)
+}
+point_count = 10
+
 [node name="Main" type="Node"]
 script = ExtResource("1_wo2cs")
 
 [node name="Network" type="Node" parent="."]
 
 [node name="Objects" type="Node" parent="."]
+
+[node name="Asteroids" type="Node" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Player/player.tscn")
@@ -76,9 +189,33 @@ visible = false
 script = ExtResource("3_krohm")
 
 [node name="WaveTimer" type="Timer" parent="Wavespawner"]
+wait_time = 5.0
 one_shot = true
 
+[node name="AsteroidTimer" type="Timer" parent="Wavespawner"]
+wait_time = 3.0
+
+[node name="TravelSound" type="AudioStreamPlayer" parent="Wavespawner"]
+stream = ExtResource("4_ebbs1")
+volume_db = -7.0
+pitch_scale = 1.2
+
 [node name="World" type="Node2D" parent="."]
+
+[node name="PlayerBounds" type="StaticBody2D" parent="World"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/PlayerBounds"]
+polygon = PackedVector2Array(-312, -320, 432, -296, 752, -88, 776, 96, 651, 286, -8, 336, -429, 315, -543, 71, -562, 68, -464, 330, 45, 377, 687, 333, 826, 117, 792, -128, 432, -320, -320, -344, -576, -216, -560, 53, -542, 55, -552, -200)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/PlayerBounds"]
+position = Vector2(-552, 63)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/PlayerBounds/StaticBody2D"]
+shape = SubResource("RectangleShape2D_x181b")
 
 [node name="Spaceship" type="Node2D" parent="World"]
 script = ExtResource("3_nqtl8")
@@ -95,6 +232,25 @@ motion_mirroring = Vector2(2000, 0)
 [node name="Sprite2D" type="Sprite2D" parent="World/Spaceship/ParallaxBackground/Layer 1"]
 texture = ExtResource("6_8npim")
 
+[node name="AnimationTimer" type="Timer" parent="World/Spaceship/ParallaxBackground"]
+wait_time = 12.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="World/Spaceship/ParallaxBackground"]
+
+[node name="ColorRect" type="ColorRect" parent="World/Spaceship/ParallaxBackground/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Spaceship/ParallaxBackground/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_sjqid")
+}
+
 [node name="Turrets" type="Node2D" parent="World/Spaceship"]
 
 [node name="Turret" parent="World/Spaceship/Turrets" instance=ExtResource("8_yec01")]
@@ -106,6 +262,7 @@ position = Vector2(-10, -34)
 
 [node name="CollisionShape2D" parent="World/Spaceship/Turrets/Turret/TurretRadius" index="0"]
 position = Vector2(0, 0)
+polygon = PackedVector2Array(42, -19, -30, -19, -30, 21, 2, 21)
 
 [node name="Turret2" parent="World/Spaceship/Turrets" instance=ExtResource("8_yec01")]
 z_index = 1
@@ -116,20 +273,20 @@ position = Vector2(41, 62)
 
 [node name="CollisionShape2D" parent="World/Spaceship/Turrets/Turret2/TurretRadius" index="0"]
 position = Vector2(0, 0)
+polygon = PackedVector2Array(-9, -18, -41, -18, -41, 22, 31, 22)
 
 [node name="Miners" type="Node2D" parent="World/Spaceship"]
 
-[node name="Miner" parent="World/Spaceship/Miners" instance=ExtResource("13_hjaj2")]
-position = Vector2(200, -42)
-
 [node name="Crusher" parent="World/Spaceship/Miners" instance=ExtResource("9_q21qt")]
-position = Vector2(-210, 118)
-
-[node name="Smelter" parent="World/Spaceship/Miners" instance=ExtResource("10_m7k1i")]
-position = Vector2(166.5, 107.5)
+position = Vector2(-192, 38.5)
 
 [node name="Inventory" parent="World/Spaceship/Miners" instance=ExtResource("11_ppb2v")]
+modulate = Color(0.419608, 0.419608, 0.419608, 1)
 position = Vector2(-310, 32)
+
+[node name="Smelter" parent="World/Spaceship/Miners" instance=ExtResource("10_46own")]
+modulate = Color(0.419608, 0.419608, 0.419608, 1)
+position = Vector2(166.5, 107.5)
 
 [node name="ShipHurtBox" type="Area2D" parent="World/Spaceship"]
 script = ExtResource("5_4ik6t")
@@ -142,9 +299,43 @@ position = Vector2(96, 8)
 texture = ExtResource("13_c8o8b")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Spaceship/SpaceshipSprite"]
+collision_layer = 129
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Spaceship/SpaceshipSprite/StaticBody2D"]
 polygon = PackedVector2Array(-206, 131, -364, 131, -364, 51, -444, 51, -444, -24, -374, -24, -374, -34, -364, -34, -364, -104, 227, -104, 297, -34, 326, -34, 490, 47, 490, 51, 234, 51, 234, 52, 155, 131, -206, 131, -206, 126, 155, 126, 219, 62, 219, 61, -151, 61, -151, 93, -166, 93, -166, 46, 473, 46, 473, 45, 326, -29, 313, -29, 313, 13, 298, 13, 298, -19, 218, -19, 218, -34, 291, -34, 291, -35, 227, -99, 153, -99, 153, -34, 185, -34, 185, -19, 153, -19, 153, 13, 138, 13, 138, -19, -151, -19, -151, 13, -166, 13, -166, -34, 138, -34, 138, -99, -151, -99, -151, -67, -166, -67, -166, -99, -207, -99, -207, -67, -222, -67, -222, -99, -359, -99, -359, -34, -207, -34, -207, 13, -222, 13, -222, -19, -359, -19, -359, 13, -374, 13, -374, -19, -439, -19, -439, 46, -207, 46, -207, 93, -222, 93, -222, 61, -359, 61, -359, 126, -206, 126)
+
+[node name="Fire" type="AnimatedSprite2D" parent="World/Spaceship/SpaceshipSprite"]
+position = Vector2(-449, -82)
+rotation = 4.71239
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_wa4fb")
+animation = &"idle"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.608338
+speed_scale = 1.5
+
+[node name="Fire2" type="AnimatedSprite2D" parent="World/Spaceship/SpaceshipSprite"]
+position = Vector2(-524, 12)
+rotation = 4.71239
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_wa4fb")
+animation = &"idle"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.325174
+speed_scale = 1.5
+
+[node name="Fire3" type="AnimatedSprite2D" parent="World/Spaceship/SpaceshipSprite"]
+position = Vector2(-448, 99)
+rotation = 4.71239
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_wa4fb")
+animation = &"idle"
+autoplay = "idle"
+frame = 6
+frame_progress = 0.0690254
+speed_scale = 1.5
 
 [node name="Doors_Platforms" type="Node2D" parent="World/Spaceship"]
 
@@ -234,6 +425,24 @@ position = Vector2(27, 38)
 
 [node name="ShipControl" parent="World/Spaceship" instance=ExtResource("18_gu2aq")]
 position = Vector2(516.5, 40.5)
+
+[node name="Gadgets" type="Node2D" parent="World/Spaceship"]
+
+[node name="ShieldTimer" type="Timer" parent="World/Spaceship/Gadgets"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Repellent" type="Node2D" parent="World/Spaceship/Gadgets"]
+position = Vector2(11, -41)
+
+[node name="SlowDown" type="Node2D" parent="World/Spaceship/Gadgets"]
+position = Vector2(80, -40)
+
+[node name="Orchard" type="Node2D" parent="World/Spaceship/Gadgets"]
+position = Vector2(162, 35)
+
+[node name="Ladder" parent="World/Spaceship" instance=ExtResource("24_g5ged")]
+position = Vector2(-166.5, -61.5)
 
 [node name="Enemies" type="Node2D" parent="World"]
 
@@ -412,6 +621,12 @@ position = Vector2(-104, -216)
 [node name="Marker2D3" type="Marker2D" parent="World/FlyerPoints"]
 position = Vector2(464, -130)
 
+[node name="Marker2D7" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(658, -59)
+
+[node name="Marker2D8" type="Marker2D" parent="World/FlyerPoints"]
+position = Vector2(654, 142)
+
 [node name="Marker2D4" type="Marker2D" parent="World/FlyerPoints"]
 position = Vector2(410, 176)
 
@@ -439,19 +654,37 @@ texture = ExtResource("20_uupph")
 texture_scale = 0.02
 
 [node name="buttonradius" type="Area2D" parent="World/lockdown"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/lockdown/buttonradius"]
 shape = SubResource("CircleShape2D_t0kvh")
 
+[node name="ReductionDuration" type="Timer" parent="World/lockdown"]
+wait_time = 6.0
+one_shot = true
+
 [node name="hackevent" parent="World" instance=ExtResource("22_e0k4n")]
+visible = false
+
+[node name="Path2D" type="Path2D" parent="World"]
+curve = SubResource("Curve2D_wne6l")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="World/Path2D"]
+position = Vector2(632.944, 191.564)
+rotation = 2.77874
+progress = 1190.16
+
+[node name="AsteroidPoint" type="Marker2D" parent="."]
+position = Vector2(1275, 14)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_lk2wb")
-volume_db = -25.0
+volume_db = -30.0
 
 [node name="AmbientNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_fqhd4")
-volume_db = -19.0
+volume_db = -16.0
 
 [node name="Lobby" parent="." instance=ExtResource("3_a5uyi")]
 visible = false
@@ -460,6 +693,9 @@ visible = false
 visible = false
 
 [connection signal="timeout" from="Wavespawner/WaveTimer" to="Wavespawner" method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="Wavespawner/AsteroidTimer" to="Wavespawner" method="_on_asteroid_timer_timeout"]
+[connection signal="timeout" from="World/Spaceship/ParallaxBackground/AnimationTimer" to="World/Spaceship/ParallaxBackground" method="_on_animation_timer_timeout"]
+[connection signal="timeout" from="World/lockdown/ReductionDuration" to="World/lockdown" method="_on_reduction_duration_timeout"]
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/HostBtn" to="." method="_on_host_btn_pressed"]
 [connection signal="pressed" from="Lobby/CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="WaitingRoom/ReadyBtn" to="." method="_on_ready_btn_pressed"]

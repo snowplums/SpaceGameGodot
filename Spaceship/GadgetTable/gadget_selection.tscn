@@ -1,0 +1,387 @@
+[gd_scene load_steps=15 format=3 uid="uid://djx6akww40e2x"]
+
+[ext_resource type="Texture2D" uid="uid://d3k6jtugxh2lv" path="res://Assets/UI/cardback.png" id="1_5orv3"]
+[ext_resource type="Texture2D" uid="uid://bv00gcvgm8rg4" path="res://Assets/UI/card.png" id="1_wenl7"]
+[ext_resource type="Script" path="res://Spaceship/GadgetTable/gadget_selection.gd" id="1_y6nib"]
+[ext_resource type="Shader" path="res://UI/outline.gdshader" id="2_h03qy"]
+[ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="4_1i47t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0qun"]
+shader = ExtResource("2_h03qy")
+shader_parameter/color = Color(0, 0, 0, 0)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jl85n"]
+shader = ExtResource("2_h03qy")
+shader_parameter/color = Color(0, 0, 0, 0)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ph6r8"]
+shader = ExtResource("2_h03qy")
+shader_parameter/color = Color(0, 0, 0, 0)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="Animation" id="Animation_ig2ul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BackCard1/Card1:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/BackCard2/Card2:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BackCard3/Card3:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_5y4iu"]
+resource_name = "flip_card"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BackCard1:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(0.3, 6), Vector2(6, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/BackCard1/Card1:z_index")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BackCard1/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ax0ru"]
+resource_name = "flip_card_2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BackCard2:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(0.3, 6), Vector2(6, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/BackCard2/Card2:z_index")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BackCard2/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_g6pqw"]
+resource_name = "flip_card_3"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BackCard3:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(0.3, 6), Vector2(6, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/BackCard3/Card3:z_index")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BackCard3/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_lshji"]
+resource_name = "slide_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BackCard1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 800), Vector2(160, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/BackCard2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 800), Vector2(480, 240)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BackCard3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(800, 800), Vector2(800, 240)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0x2jf"]
+_data = {
+"RESET": SubResource("Animation_ig2ul"),
+"flip_card": SubResource("Animation_5y4iu"),
+"flip_card_2": SubResource("Animation_ax0ru"),
+"flip_card_3": SubResource("Animation_g6pqw"),
+"slide_up": SubResource("Animation_lshji")
+}
+
+[node name="GadgetSelection" type="Node2D"]
+script = ExtResource("1_y6nib")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackCard1" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_i0qun")
+position = Vector2(160, 800)
+scale = Vector2(6, 6)
+texture = ExtResource("1_5orv3")
+
+[node name="Card1" type="Sprite2D" parent="CanvasLayer/BackCard1"]
+z_index = -1
+texture = ExtResource("1_wenl7")
+
+[node name="Label" type="Label" parent="CanvasLayer/BackCard1"]
+visible = false
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 19.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("4_1i47t")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Orchard"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/BackCard1/Label"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 241.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("4_1i47t")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A tree
+that grows fruit which increase accuracy, speed, and carry speed."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button1" type="Button" parent="CanvasLayer/BackCard1"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -17.0
+offset_top = -25.0
+offset_right = 17.0
+offset_bottom = 24.0
+
+[node name="BackCard2" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_jl85n")
+position = Vector2(480, 800)
+scale = Vector2(6, 6)
+texture = ExtResource("1_5orv3")
+
+[node name="Card2" type="Sprite2D" parent="CanvasLayer/BackCard2"]
+z_index = -1
+texture = ExtResource("1_wenl7")
+
+[node name="Label" type="Label" parent="CanvasLayer/BackCard2"]
+visible = false
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = -4.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("4_1i47t")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Repellent"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/BackCard2/Label"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 242.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("4_1i47t")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A repellent device that slows the enemy's next wave."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer/BackCard2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -17.0
+offset_top = -25.0
+offset_right = 17.0
+offset_bottom = 24.0
+
+[node name="BackCard3" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ph6r8")
+position = Vector2(800, 800)
+scale = Vector2(6, 6)
+texture = ExtResource("1_5orv3")
+
+[node name="Card3" type="Sprite2D" parent="CanvasLayer/BackCard3"]
+z_index = -1
+texture = ExtResource("1_wenl7")
+
+[node name="Label" type="Label" parent="CanvasLayer/BackCard3"]
+visible = false
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = -4.0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("4_1i47t")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "EMP"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/BackCard3/Label"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 242.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("4_1i47t")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A device that hacks the surrounding enemies, making them move slower."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="CanvasLayer/BackCard3"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -17.0
+offset_top = -25.0
+offset_right = 17.0
+offset_bottom = 24.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_0x2jf")
+}
+
+[connection signal="mouse_entered" from="CanvasLayer/BackCard1/Button1" to="." method="_on_button_1_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackCard1/Button1" to="." method="_on_button_1_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/BackCard1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/BackCard2/Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackCard2/Button2" to="." method="_on_button_2_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/BackCard2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/BackCard3/Button3" to="." method="_on_button_3_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackCard3/Button3" to="." method="_on_button_3_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/BackCard3/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

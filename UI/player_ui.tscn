@@ -23,24 +23,33 @@ script = ExtResource("1_spoxc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 44.0
-offset_top = 7.0
-offset_right = 98.0
-offset_bottom = 30.0
+offset_left = 22.0
+offset_top = 5.0
+offset_right = 76.0
+offset_bottom = 28.0
 theme = ExtResource("1_t6w7q")
 text = "destroyer"
 
 [node name="ShipHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+visible = false
 offset_left = 32.0
 offset_top = 21.0
 offset_right = 192.0
 offset_bottom = 61.0
+max_value = 1000.0
 value = 100.0
 texture_under = ExtResource("3_qsdw1")
 texture_over = ExtResource("4_6tc10")
 texture_progress = ExtResource("5_ky6ig")
 
+[node name="ShieldBar" type="ProgressBar" parent="CanvasLayer"]
+offset_top = 24.0
+offset_right = 183.0
+offset_bottom = 34.0
+show_percentage = false
+
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+visible = false
 offset_left = 32.0
 offset_top = 27.0
 offset_right = 192.0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6cllf51sdrkj"
+path="res://.godot/imported/flint-strike-38491.mp3-fba9b50779bad148809ffd8a4c8eb91b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/Attacking/flint-strike-38491.mp3"
+dest_files=["res://.godot/imported/flint-strike-38491.mp3-fba9b50779bad148809ffd8a4c8eb91b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

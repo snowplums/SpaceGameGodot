@@ -89,6 +89,8 @@ texture = ExtResource("2_ayrfi")
 texture_scale = 0.02
 
 [node name="switchradius" type="Area2D" parent="lightswitch"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch/switchradius"]
 shape = SubResource("CircleShape2D_5c8oq")
@@ -106,6 +108,8 @@ texture = ExtResource("2_ayrfi")
 texture_scale = 0.02
 
 [node name="switchradius" type="Area2D" parent="lightswitch2"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch2/switchradius"]
 shape = SubResource("CircleShape2D_5c8oq")
@@ -123,6 +127,8 @@ texture = ExtResource("2_ayrfi")
 texture_scale = 0.02
 
 [node name="switchradius" type="Area2D" parent="lightswitch3"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lightswitch3/switchradius"]
 shape = SubResource("CircleShape2D_5c8oq")

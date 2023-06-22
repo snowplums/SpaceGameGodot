@@ -1,11 +1,139 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6a84wye8eca3"]
+[gd_scene load_steps=35 format=3 uid="uid://b6a84wye8eca3"]
 
 [ext_resource type="Script" path="res://Spaceship/UpgradeRoom/upgrades.gd" id="1_l4um3"]
 [ext_resource type="Texture2D" uid="uid://g5ooalppsk3" path="res://Assets/stonetile.png" id="2_q6quj"]
 [ext_resource type="Theme" uid="uid://serbg2cavx44" path="res://UI/default_theme.tres" id="3_lyb5b"]
+[ext_resource type="Script" path="res://Spaceship/UpgradeRoom/shopscrollbar.gd" id="3_wrjm4"]
+[ext_resource type="Texture2D" uid="uid://c707gy3hlj4mp" path="res://Assets/Upgrades/upgrade_ui_outline.png" id="4_y17wu"]
+[ext_resource type="Texture2D" uid="uid://unno07k1mja1" path="res://Assets/Upgrades/upgradeui.png" id="4_y436b"]
+[ext_resource type="Texture2D" uid="uid://care7a44a6wc1" path="res://Assets/Upgrades/upgrade_slot.png" id="6_rlvmu"]
+[ext_resource type="Texture2D" uid="uid://bfy802j8u1uut" path="res://Assets/UI/upgrade_icons_fix1.png" id="7_1g127"]
+[ext_resource type="Texture2D" uid="uid://gkm6tn1fbud7" path="res://Assets/Upgrades/shop_inventory_ui.png" id="8_gr8dp"]
+[ext_resource type="Texture2D" uid="uid://6ga2nd3rk4s1" path="res://Assets/UI/upgrade_icons_fix8.png" id="8_ntt2f"]
+[ext_resource type="Texture2D" uid="uid://c13c560rod54k" path="res://Assets/UI/upgrade_icons_fix7.png" id="9_iwhhh"]
+[ext_resource type="PackedScene" uid="uid://duxsl7kbuu3dv" path="res://UI/price.tscn" id="9_txhah"]
+[ext_resource type="Texture2D" uid="uid://dc0ay6coq2vsx" path="res://Assets/UI/upgrade_icons_fix6.png" id="10_wb3hn"]
+[ext_resource type="Texture2D" uid="uid://cmkp3h15rnbj" path="res://Assets/UI/upgrade_icons_fix5.png" id="11_sw86i"]
+[ext_resource type="Texture2D" uid="uid://c8kyyyimiikyv" path="res://Assets/UI/upgrade_icons_fix4.png" id="12_2n53x"]
+[ext_resource type="Texture2D" uid="uid://b0768qvkn3thd" path="res://Assets/UI/upgrade_icons_fix3.png" id="13_87bmr"]
+[ext_resource type="Texture2D" uid="uid://ctcuxdbmru507" path="res://Assets/UI/upgrade_icons_fix2.png" id="14_w2iaj"]
+[ext_resource type="Texture2D" uid="uid://cvc4f0ucvga0q" path="res://Assets/UI/upgrade_icons_fix9.png" id="15_d5mtk"]
+[ext_resource type="AudioStream" uid="uid://c8vmxk7on6iki" path="res://Assets/Sound Effects/UI/338229__fachii__button-hover.wav" id="19_1s6lx"]
+[ext_resource type="AudioStream" uid="uid://cpy1wyc4h12yf" path="res://Assets/Sound Effects/UI/purchase.wav" id="20_itb7m"]
+[ext_resource type="AudioStream" uid="uid://bcaj674kgxeh6" path="res://Assets/Sound Effects/Attacking/Hit_Hurt38.wav" id="21_p7m6m"]
+[ext_resource type="AudioStream" uid="uid://162i8sf6xwmc" path="res://Assets/Sound Effects/Ambient/item-equip-6904.mp3" id="22_s6yhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fcrp"]
 size = Vector2(104, 49)
+
+[sub_resource type="Animation" id="Animation_bqj0c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yq214"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1), Color(1.05, 1.05, 1.05, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ai4xp"]
+_data = {
+"RESET": SubResource("Animation_bqj0c"),
+"pulse": SubResource("Animation_yq214")
+}
+
+[sub_resource type="Gradient" id="Gradient_cbrag"]
+offsets = PackedFloat32Array(0, 0.814815, 1)
+colors = PackedColorArray(0.312907, 0.000785686, 0.785277, 1, 1, 1, 1, 0.72549, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_87rry"]
+gradient = SubResource("Gradient_cbrag")
+
+[sub_resource type="Curve" id="Curve_buu05"]
+max_value = 5.0
+_data = [Vector2(0, 4.31818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3t0yb"]
+curve = SubResource("Curve_buu05")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cu6a1"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 150.0
+angular_velocity_max = 360.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 15.0
+damping_max = 35.0
+angle_max = 360.0
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_3t0yb")
+color_ramp = SubResource("GradientTexture1D_87rry")
+
+[sub_resource type="Animation" id="Animation_7crjr"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_enhf4"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.2, 1.2, 1.2, 1), Color(1.5, 1.5, 1.5, 1), Color(1.2, 1.2, 1.2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btdgv"]
+_data = {
+"RESET": SubResource("Animation_7crjr"),
+"pulse": SubResource("Animation_enhf4")
+}
 
 [node name="Upgrades" type="Node2D"]
 script = ExtResource("1_l4um3")
@@ -15,6 +143,8 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_q6quj")
 
 [node name="UpgradeRadius" type="Area2D" parent="."]
+collision_layer = 129
+collision_mask = 129
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeRadius"]
@@ -26,22 +156,385 @@ visible = false
 offset = Vector2(160, 90)
 transform = Transform2D(1, 0, 0, 1, 160, 90)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_left = -120.0
-offset_top = -58.0
-offset_right = 778.0
-offset_bottom = 420.0
-color = Color(0.317647, 0.317647, 0.317647, 1)
-
-[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 11.0
-offset_right = 212.0
-offset_bottom = 45.0
+[node name="UpgradeTitle" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 0.792157, 0.541176, 1)
+top_level = true
+z_index = 1
+offset_left = -80.0
+offset_top = -26.0
+offset_right = 220.0
+offset_bottom = 3.0
 theme = ExtResource("3_lyb5b")
 theme_override_font_sizes/font_size = 32
-text = "Upgrade Damage"
+text = "Shop"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="CanvasLayer/UpgradeTitle"]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = -48.0
+offset_top = 22.0
+offset_right = 192.0
+offset_bottom = 102.0
+theme = ExtResource("3_lyb5b")
+theme_override_font_sizes/font_size = 16
+text = "Purchase upgrades here for the ores collected throughout your journey!"
+autowrap_mode = 3
+
+[node name="UpgradeBackground" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(317, 162)
+texture = ExtResource("4_y436b")
+
+[node name="Outline" type="Sprite2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(317, 162)
+texture = ExtResource("4_y17wu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -32.0
+offset_right = -249.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical = 50
+script = ExtResource("3_wrjm4")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/ScrollContainer"]
+custom_minimum_size = Vector2(796, 800)
+layout_mode = 2
+color = Color(0.0784314, 0.258824, 0.0862745, 0)
+
+[node name="UpgradeBoxes" type="Sprite2D" parent="CanvasLayer/ScrollContainer/Background"]
+position = Vector2(536, 331)
+texture = ExtResource("6_rlvmu")
+
+[node name="UpgDmg" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -404.5
+offset_top = -583.5
+offset_right = -372.5
+offset_bottom = -551.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_1g127")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgDmg" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgDmg"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgMinerCap" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = -23.0
+offset_top = 69.0
+offset_right = 9.0
+offset_bottom = 101.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("8_ntt2f")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerCap" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerCap"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgPlayerCap" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = -163.0
+offset_top = 69.0
+offset_right = -131.0
+offset_bottom = 101.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("9_iwhhh")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgPlayerCap" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgPlayerCap"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgMvmtSpd" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = 113.0
+offset_top = -99.0
+offset_right = 145.0
+offset_bottom = -67.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("10_wb3hn")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMvmtSpd" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMvmtSpd"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgBlastRadius" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = -23.0
+offset_top = -99.0
+offset_right = 9.0
+offset_bottom = -67.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("11_sw86i")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBlastRadius" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBlastRadius"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgBulletPenetration" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = -163.0
+offset_top = -99.0
+offset_right = -131.0
+offset_bottom = -67.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("12_2n53x")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletPenetration" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletPenetration"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgBulletsFired" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = 109.0
+offset_top = -265.0
+offset_right = 141.0
+offset_bottom = -233.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("13_87bmr")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletsFired" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletsFired"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgFirerate" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = -23.0
+offset_top = -265.0
+offset_right = 9.0
+offset_bottom = -233.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("14_w2iaj")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgFirerate" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgFirerate"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="UpgMinerSpd" type="TextureButton" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes"]
+offset_left = 117.0
+offset_top = 69.0
+offset_right = 149.0
+offset_bottom = 101.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(16, 16)
+texture_normal = ExtResource("15_d5mtk")
+
+[node name="Price" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerSpd" instance=ExtResource("9_txhah")]
+position = Vector2(40, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerSpd"]
+libraries = {
+"": SubResource("AnimationLibrary_ai4xp")
+}
+
+[node name="Stored&Cost" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(30, 263)
+scale = Vector2(2, 2)
+texture = ExtResource("8_gr8dp")
+
+[node name="Inventory" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = -40.0
+offset_top = -53.5
+offset_right = 14.0
+offset_bottom = -30.5
+theme = ExtResource("3_lyb5b")
+text = "Stored"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = 2.5
+offset_top = -54.0
+offset_right = 42.5
+offset_bottom = -31.0
+theme = ExtResource("3_lyb5b")
+text = "Cost"
+
+[node name="CopperStored" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = -19.0
+offset_top = -41.5
+offset_right = 21.0
+offset_bottom = -18.5
+theme = ExtResource("3_lyb5b")
+text = "0"
+
+[node name="CopperCost" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = 6.5
+offset_top = -41.5
+offset_right = 46.5
+offset_bottom = -18.5
+theme = ExtResource("3_lyb5b")
+
+[node name="IronStored" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = -19.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = -5.0
+theme = ExtResource("3_lyb5b")
+text = "0"
+
+[node name="IronCost" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = 7.0
+offset_top = -28.0
+offset_right = 47.0
+offset_bottom = -5.0
+theme = ExtResource("3_lyb5b")
+
+[node name="PlatinumStored" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = -18.5
+offset_top = -13.0
+offset_right = 21.5
+offset_bottom = 10.0
+theme = ExtResource("3_lyb5b")
+text = "0"
+
+[node name="PlatinumCost" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = 7.0
+offset_top = -13.0
+offset_right = 47.0
+offset_bottom = 10.0
+theme = ExtResource("3_lyb5b")
+
+[node name="GoldStored" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = -18.5
+offset_top = 1.5
+offset_right = 21.5
+offset_bottom = 24.5
+theme = ExtResource("3_lyb5b")
+text = "0"
+
+[node name="GoldCost" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 47.0
+offset_bottom = 25.0
+theme = ExtResource("3_lyb5b")
+
+[node name="BaitiumStored" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = -18.5
+offset_top = 17.5
+offset_right = 21.5
+offset_bottom = 40.5
+theme = ExtResource("3_lyb5b")
+text = "0"
+
+[node name="BaitiumCost" type="Label" parent="CanvasLayer/Stored&Cost"]
+offset_left = 7.0
+offset_top = 17.5
+offset_right = 47.0
+offset_bottom = 40.5
+theme = ExtResource("3_lyb5b")
+
+[node name="PurchaseParticles" type="GPUParticles2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(464, 88)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_cu6a1")
+lifetime = 0.5
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.8
+randomness = 0.1
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_1s6lx")
+
+[node name="Purchase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_itb7m")
+volume_db = -5.0
+
+[node name="FailedPurchase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_p7m6m")
+volume_db = 3.0
+pitch_scale = 0.9
+
+[node name="Enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_s6yhb")
+volume_db = -8.0
+pitch_scale = 1.3
+
+[node name="Exit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_s6yhb")
+volume_db = -8.0
+pitch_scale = 1.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_btdgv")
+}
 
 [connection signal="body_exited" from="UpgradeRadius" to="." method="_on_area_2d_body_exited"]
-[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgDmg" to="." method="_on_upg_dmg_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgDmg" to="." method="_on_upg_dmg_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgDmg" to="." method="_on_upg_dmg_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerCap" to="." method="_on_upg_miner_cap_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerCap" to="." method="_on_upg_miner_cap_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerCap" to="." method="_on_upg_miner_cap_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgPlayerCap" to="." method="_on_upg_player_cap_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgPlayerCap" to="." method="_on_upg_player_cap_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgPlayerCap" to="." method="_on_upg_player_cap_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMvmtSpd" to="." method="_on_upg_mvmt_spd_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMvmtSpd" to="." method="_on_upg_mvmt_spd_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMvmtSpd" to="." method="_on_upg_mvmt_spd_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBlastRadius" to="." method="_on_upg_blast_radius_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBlastRadius" to="." method="_on_upg_blast_radius_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBlastRadius" to="." method="_on_upg_blast_radius_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletPenetration" to="." method="_on_upg_bullet_penetration_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletPenetration" to="." method="_on_upg_bullet_penetration_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletPenetration" to="." method="_on_upg_bullet_penetration_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletsFired" to="." method="_on_upg_bullets_fired_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletsFired" to="." method="_on_upg_bullets_fired_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgBulletsFired" to="." method="_on_upg_bullets_fired_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgFirerate" to="." method="_on_upg_firerate_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgFirerate" to="." method="_on_upg_firerate_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgFirerate" to="." method="_on_upg_firerate_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerSpd" to="." method="_on_upg_miner_spd_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerSpd" to="." method="_on_upg_miner_spd_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/Background/UpgradeBoxes/UpgMinerSpd" to="." method="_on_upg_miner_spd_pressed"]

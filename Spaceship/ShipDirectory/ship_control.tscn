@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnkw5rtawrytc"]
+[gd_scene load_steps=9 format=3 uid="uid://cnkw5rtawrytc"]
 
 [ext_resource type="Texture2D" uid="uid://c66dci03hhl2d" path="res://Assets/shipui.png" id="1_ph78d"]
 [ext_resource type="PackedScene" uid="uid://bsglqgif0sxqa" path="res://Spaceship/ShipDirectory/ship_directory_ui.tscn" id="3_oyd4h"]
 [ext_resource type="Script" path="res://Spaceship/ShipDirectory/ship_control.gd" id="3_sd1yb"]
+[ext_resource type="AudioStream" uid="uid://cm0s3sqxns4p0" path="res://Assets/Sound Effects/UI/computer-processing-sound-effects-short-click-select-01-122134.mp3" id="4_fu4aj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_loqwl"]
-size = Vector2(68, 25)
+size = Vector2(61, 22)
 
 [sub_resource type="Animation" id="Animation_fu0rt"]
 length = 0.001
@@ -50,9 +51,11 @@ texture = ExtResource("1_ph78d")
 script = ExtResource("3_sd1yb")
 
 [node name="DirectoryRadius" type="Area2D" parent="."]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectoryRadius"]
-position = Vector2(0, 1.5)
+position = Vector2(-3.5, 3)
 shape = SubResource("RectangleShape2D_loqwl")
 
 [node name="Ship Directory UI" parent="." instance=ExtResource("3_oyd4h")]
@@ -63,6 +66,10 @@ autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_1jgnq")
 }
+
+[node name="Interact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fu4aj")
+volume_db = -12.381
 
 [connection signal="body_exited" from="DirectoryRadius" to="." method="_on_directory_radius_body_exited"]
 [connection signal="pressed" from="Ship Directory UI/GoButton" to="." method="_on_go_button_pressed"]

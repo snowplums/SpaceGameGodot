@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cm0s3sqxns4p0"
+path="res://.godot/imported/computer-processing-sound-effects-short-click-select-01-122134.mp3-07e59193211d0be99d2c1a76497cb02f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/UI/computer-processing-sound-effects-short-click-select-01-122134.mp3"
+dest_files=["res://.godot/imported/computer-processing-sound-effects-short-click-select-01-122134.mp3-07e59193211d0be99d2c1a76497cb02f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

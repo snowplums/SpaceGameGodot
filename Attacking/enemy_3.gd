@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 
-const FLY_SPEED = 400.0
+var FLY_SPEED = 400.0
 
-var health = 10
+var health = 4
 var damage = 10
 var shotFromTurret = false
 var shortest_ray_point = Vector2.ZERO
 var notified = false
+var death_scene = preload("res://Attacking/enemy_death.tscn")
 
 var spawn_delay = 0.0
 var finished_spawning = false
@@ -25,6 +26,12 @@ func choose_point():
 				shortest_ray_point = $ShipDetection.get_collision_point()
 	print(shortest_ray_point)
 	notify()
+
+func slowed(pressed):
+	if pressed:
+		FLY_SPEED = 70.0
+	else:
+		FLY_SPEED = 400.0
 
 func notify():
 	#Play Audio Cue
@@ -60,11 +67,17 @@ func _physics_process(_delta):
 func check_health():
 	if health <= 0:
 		Global.enemies_left -= 1
+		var dead = death_scene.instantiate()
+		dead.global_position = global_position
+		get_parent().add_child(dead)
 		queue_free()
 
 func attack():
 	get_node("/root/Main/World/Spaceship").take_damage_direct(damage)
 	Global.enemies_left -= 1
+	var dead = death_scene.instantiate()
+	dead.global_position = get_last_slide_collision().get_position()
+	get_parent().add_child(dead)
 	queue_free()
 
 #on_animation_finished():
@@ -72,6 +85,7 @@ func attack():
 
 func take_damage(hitbox) -> void:
 	if hitbox.shotFromTurret:
+		$HurtSFX.play()
 		health -= hitbox.damage
 
 

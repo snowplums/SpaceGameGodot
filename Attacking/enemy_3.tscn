@@ -1,24 +1,88 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxymg81xib57t"]
+[gd_scene load_steps=18 format=3 uid="uid://bxymg81xib57t"]
 
 [ext_resource type="Script" path="res://Attacking/enemy_3.gd" id="1_5d3yk"]
-[ext_resource type="Texture2D" uid="uid://c3rx8w1ng1jhw" path="res://icon.svg" id="1_di34m"]
+[ext_resource type="Texture2D" uid="uid://dyrlmkg6ml35j" path="res://Assets/Enemies/sawenemy.PNG" id="2_wdml7"]
 [ext_resource type="Script" path="res://Attacking/HurtBox.gd" id="3_njbqv"]
 [ext_resource type="PackedScene" uid="uid://bjcepwmay0itt" path="res://Attacking/notify_particles.tscn" id="4_t54xb"]
 [ext_resource type="AudioStream" uid="uid://c7goprkqbe3y1" path="res://Assets/Sound Effects/notifysound.wav" id="5_skx8p"]
 [ext_resource type="AudioStream" uid="uid://bpxuo56e13yh6" path="res://Assets/Sound Effects/Diver Enemy/chargesound.wav" id="6_857ds"]
+[ext_resource type="AudioStream" uid="uid://bcaj674kgxeh6" path="res://Assets/Sound Effects/Attacking/Hit_Hurt38.wav" id="7_gwxce"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="8_kft28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m4qj"]
 size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7kua"]
-size = Vector2(42, 42)
+size = Vector2(44, 44)
 
-[node name="Enemy3" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_v8la8"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gpgnv"]
+resource_name = "spin"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7vyl"]
+_data = {
+"idle": SubResource("Animation_v8la8"),
+"spin": SubResource("Animation_gpgnv")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_105n8"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ccnuf"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ya61n"]
+gradient = SubResource("Gradient_ccnuf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_et5fj"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_ya61n")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Enemy3" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
 script = ExtResource("1_5d3yk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_di34m")
+texture = ExtResource("2_wdml7")
+hframes = 5
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5m4qj")
@@ -45,5 +109,30 @@ stream = ExtResource("6_857ds")
 
 [node name="SpawnDelayTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gwxce")
+volume_db = 7.0
+pitch_scale = 0.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_p7vyl")
+}
+
+[node name="EyeLight" type="PointLight2D" parent="."]
+position = Vector2(1.19209e-07, 1.13687e-13)
+scale = Vector2(1.36719, 1.36719)
+color = Color(0.858824, 0.231373, 0, 1)
+energy = 1.25
+texture = ExtResource("8_kft28")
+texture_scale = 0.01
+
+[node name="GhostParticle" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_105n8")
+process_material = SubResource("ParticleProcessMaterial_et5fj")
+texture = ExtResource("2_wdml7")
+lifetime = 0.3
 
 [connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

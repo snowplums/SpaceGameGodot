@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://ddhwpuwn6q01g"]
+
+[ext_resource type="Script" path="res://Attacking/enemy_death.gd" id="1_t44mf"]
+[ext_resource type="Texture2D" uid="uid://b5kef4dsw2ci8" path="res://Assets/Smoke &amp; Fire.png" id="1_v4xy6"]
+[ext_resource type="Texture2D" uid="uid://fy3x3217x58r" path="res://Assets/light.png" id="2_r516u"]
+[ext_resource type="Texture2D" uid="uid://bq7lcxgtgfpp0" path="res://Assets/Enemies/explosion-6.png" id="3_7peit"]
+[ext_resource type="AudioStream" uid="uid://cutry0fn5poj3" path="res://Assets/Sound Effects/Attacking/robot_death.wav" id="3_s7fjf"]
+
+[sub_resource type="Gradient" id="Gradient_5aoxb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.513726)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jjr6k"]
+gradient = SubResource("Gradient_5aoxb")
+
+[sub_resource type="Curve" id="Curve_fv3io"]
+_data = [Vector2(0, 0.854545), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p2uwu"]
+curve = SubResource("Curve_fv3io")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ghwg"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 65.0
+flatness = 0.05
+gravity = Vector3(0, -98, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_p2uwu")
+color_ramp = SubResource("GradientTexture1D_jjr6k")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_205s5"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_b8w8d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.615686)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_osx8y"]
+gradient = SubResource("Gradient_b8w8d")
+
+[sub_resource type="Curve" id="Curve_dguvf"]
+_data = [Vector2(0, 0.945454), 0.0, 0.0, 0, 0, Vector2(1, 0.152727), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3o5xf"]
+curve = SubResource("Curve_dguvf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cmfdj"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 1.0
+damping_max = 1.0
+scale_min = 0.8
+scale_curve = SubResource("CurveTexture_3o5xf")
+color_ramp = SubResource("GradientTexture1D_osx8y")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="EnemyDeath" type="Node2D"]
+script = ExtResource("1_t44mf")
+
+[node name="Light" type="PointLight2D" parent="."]
+color = Color(1, 0.478431, 0, 1)
+energy = 1.75
+texture = ExtResource("2_r516u")
+texture_scale = 0.05
+
+[node name="DeathParticle" type="GPUParticles2D" parent="."]
+z_index = 2
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_5ghwg")
+texture = ExtResource("1_v4xy6")
+lifetime = 0.9
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.5
+randomness = 0.1
+
+[node name="DeathParticle2" type="GPUParticles2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_205s5")
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_cmfdj")
+texture = ExtResource("3_7peit")
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.8
+randomness = 0.2
+
+[node name="DeathSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s7fjf")
+volume_db = -22.0
+
+[node name="DeleteTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

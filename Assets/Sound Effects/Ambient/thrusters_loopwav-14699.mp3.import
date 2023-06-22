@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cacslspmnv7he"
+path="res://.godot/imported/thrusters_loopwav-14699.mp3-297a326d2d2604574b635c66ed7ebd85.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/Ambient/thrusters_loopwav-14699.mp3"
+dest_files=["res://.godot/imported/thrusters_loopwav-14699.mp3-297a326d2d2604574b635c66ed7ebd85.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

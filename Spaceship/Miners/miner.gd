@@ -18,7 +18,7 @@ func _on_area_2d_body_exited(body):
 		in_radius = false
 
 func start_mining():
-	if geode != max_geode_capacity:
+	if geode != max_geode_capacity and Global.stop_mining == false:
 		$AnimatedSprite2D.play("start")
 		$GeodeTimer.start()
 	

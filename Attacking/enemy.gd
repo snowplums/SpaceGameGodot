@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const FLY_SPEED = 100.0
+var FLY_SPEED = 100.0
 
 var health = 50
 var damage = 10
@@ -24,6 +24,7 @@ var is_attached = false
 var finished_spawning = false
 var spawn_delay = 0.0
 
+var death_scene = preload("res://Attacking/enemy_death.tscn")
 @onready var spawn_delay_timer = $SpawnDelayTimer
 @onready var raycast_array = [$ShipDetection/RayCast2D1, $ShipDetection/RayCast2D2, $ShipDetection/RayCast2D3, $ShipDetection/RayCast2D4]
 @onready var detection_array = get_node("ClosestRay").get_children()
@@ -38,6 +39,14 @@ func _ready():
 			if raycast.global_transform.origin.distance_to(raycast.get_collision_point()) < raycast.global_transform.origin.distance_to(target):
 				target = raycast.get_collision_point()
 
+func slowed(pressed):
+	if pressed:
+		FLY_SPEED = 40
+		speed = 7.0
+	else:
+		FLY_SPEED = 100.0
+		speed = 17.0
+	
 func _physics_process(delta):
 	if finished_spawning:
 		if is_on_floor():
@@ -86,6 +95,9 @@ func _physics_process(delta):
 		if health <= 0:
 			can_attack = false
 			Global.enemies_left -= 1
+			var dead = death_scene.instantiate()
+			dead.global_position = global_position
+			get_parent().add_child(dead)
 			queue_free()
 
 func enemy_behavior():
@@ -129,6 +141,7 @@ func _on_wander_timer_timeout():
 
 func take_damage(hitbox) -> void:
 	if hitbox.shotFromTurret:
+		$HurtSFX.play()
 		$DamagePlayer.play("hit")
 		health -= hitbox.damage
 
